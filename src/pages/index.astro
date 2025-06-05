@@ -1,0 +1,126 @@
+---
+import Progress from "../components/progress/Progress.astro";
+import Slide from "../components/slide/Slide.astro";
+import "../styles/global.css";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>CSS Scroll Driven Animations</title>
+    <meta name="description" content="Web science presentatio" />
+    <meta name="author" content="Lukas Chylik" />
+    <meta
+      name="keywords"
+      content="CSS Scroll Driven Animations, Web Science, Presentation"
+    />
+  </head>
+  <body class="m-0 bg-black">
+    <style>
+      .presentation {
+        overflow-y: scroll;
+        overflow-x: hidden;
+        scroll-snap-type: y mandatory;
+        scroll-marker-group: after;
+        &::-webkit-scrollbar {
+          width: 0;
+          scrollbar-gutter: auto;
+        }
+
+        &::scroll-marker-group {
+          position: fixed;
+          inset: auto auto 1rem 1rem;
+          display: flex;
+          justify-content: start;
+          block-size: 1.5rem;
+          gap: 1rem;
+        }
+
+        &::scroll-button(*) {
+          position: absolute;
+          right: 1rem;
+          display: none;
+          place-items: center;
+          background-color: var(--black-trans);
+          border: 3px solid black;
+          border-radius: 100vmax;
+          inline-size: 3.5rem;
+          block-size: 3.5rem;
+          padding: 0;
+          aspect-ratio: 1;
+          color: white;
+          font-size: 1.5rem;
+          font-weight: bold;
+          opacity: 1;
+          transition: opacity 0.3s ease;
+          z-index: 100;
+        }
+
+        &::scroll-button(*):disabled {
+          opacity: 0;
+        }
+
+        &::scroll-button(*):focus-visible {
+          border-color: red;
+        }
+
+        &::scroll-button(up) {
+          content: "↑";
+          top: 1rem;
+        }
+
+        &::scroll-button(down) {
+          content: "↓";
+          bottom: 1rem;
+        }
+
+        > section {
+          scroll-snap-align: start;
+          container-type: inline-size;
+
+          &::scroll-marker {
+            content: " ";
+            background-color: var(--marker-bg, var(--black-trans));
+            inline-size: 1.5rem;
+            block-size: 1.5rem;
+            display: block;
+            box-sizing: border-box;
+            border-radius: 100vmax;
+            border: 2px solid black;
+            scale: 1;
+            transition:
+              scale 0.3s ease,
+              background-color 0.3s ease;
+          }
+
+          &::scroll-marker:target-current {
+            --marker-bg: black;
+            scale: 1.2;
+          }
+        }
+      }
+    </style>
+
+    <div class="presentation max-h-svh relative">
+      <Progress />
+      <Slide id="slide-1" title="Slide 1" desc="Description">
+        <p>Content</p>
+      </Slide>
+      <Slide id="slide-2" title="Slide 2" desc="Description">
+        <p>Content</p>
+      </Slide>
+      <Slide id="slide-3" title="Slide 3" desc="Description">
+        <p>Content</p>
+      </Slide>
+      <Slide id="slide-4" title="Slide 4" desc="Description">
+        <p>Content</p>
+      </Slide>
+      <Slide id="slide-5" title="Slide 5" desc="Description">
+        <p>Content</p>
+      </Slide>
+    </div>
+  </body>
+</html>
