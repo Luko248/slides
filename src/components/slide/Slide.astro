@@ -1,26 +1,35 @@
 ---
 interface Props {
-  id: string;
   title: string;
-  desc: string;
+  desc?: string;
   code?: string;
   image?: string;
 }
 
-const { id, title, desc, code, image } = Astro.props;
+const { title, desc, code, image } = Astro.props;
 ---
 
 <section
-  id={id}
-  class="h-svh flex flex-col justify-center p-8 bg-white/85 backdrop-blur-md"
+  class="h-svh grid gap-[8svb] p-[8svb] bg-white/85 backdrop-blur-md content-start"
 >
-  <h2 class="text-3xl font-bold mb-4 text-blue-600">{title}</h2>
-  <p class="text-gray-600 mb-6">{desc}</p>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+  <div>
+    <h2 class="text-8xl font-bold mb-4 text-green-500">
+      {title}
+      {
+        desc && (
+          <small class="text-black font-semibold block mt-[.5em] text-[.5em]">
+            {desc}
+          </small>
+        )
+      }
+    </h2>
+  </div>
+
+  <div class="grid grid-cols-2 gap-6 content-center">
     <div class="prose max-w-none">
       <slot />
     </div>
-    <div class="bg-white rounded-lg shadow p-4">
+    <div>
       {
         code && (
           <pre class="bg-gray-100 p-4 rounded overflow-auto max-h-96">

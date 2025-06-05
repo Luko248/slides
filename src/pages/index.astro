@@ -4,7 +4,7 @@ import Slide from "../components/slide/Slide.astro";
 import "../styles/global.css";
 ---
 
-<html lang="en">
+<html lang="sk">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -25,6 +25,7 @@ import "../styles/global.css";
         overflow-x: hidden;
         scroll-snap-type: y mandatory;
         scroll-marker-group: after;
+        scroll-timeline: --presentation block;
         &::-webkit-scrollbar {
           width: 0;
           scrollbar-gutter: auto;
@@ -32,9 +33,9 @@ import "../styles/global.css";
 
         &::scroll-marker-group {
           position: fixed;
-          inset: auto auto 1rem 1rem;
+          inset: auto 0 1rem 0;
           display: flex;
-          justify-content: start;
+          justify-content: center;
           block-size: 1.5rem;
           gap: 1rem;
         }
@@ -61,10 +62,6 @@ import "../styles/global.css";
 
         &::scroll-button(*):disabled {
           opacity: 0;
-        }
-
-        &::scroll-button(*):focus-visible {
-          border-color: red;
         }
 
         &::scroll-button(up) {
@@ -97,7 +94,7 @@ import "../styles/global.css";
           }
 
           &::scroll-marker:target-current {
-            --marker-bg: black;
+            --marker-bg: var(--color-green-500);
             scale: 1.2;
           }
         }
@@ -106,21 +103,92 @@ import "../styles/global.css";
 
     <div class="presentation max-h-svh relative">
       <Progress />
-      <Slide id="slide-1" title="Slide 1" desc="Description">
+      <Slide title="Najčastejšie problémy">
+        <ul>
+          <li>
+            Performance
+            <ul>
+              <li>
+                Príliš časté volanie handlera bez debouncingu → spomalenie
+                stránky <code>requestAnimationFrame</code>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Viditeľnosť prvku
+            <ul>
+              <li>
+                Manuálne porovnávanie s getBoundingClientRect() → možnosť chýb
+                pri výpočtoch
+              </li>
+            </ul>
+          </li>
+          <li>
+            Nastavenie štýlov
+            <ul>
+              <li>Chýba overflow alebo výška → scroll event nefunguje</li>
+            </ul>
+          </li>
+          <li>
+            Multiscroll eventy
+            <ul>
+              <li>
+                Nepoužitie pasívneho listerneru <code>passive: true</code> → menej
+                plynulé scrollovanie
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </Slide>
+      <Slide title="Web Animations API" desc="Nové CSS vlastnosti">
+        <ul>
+          <li>
+            <code>scroll-timeline</code>
+          </li>
+          <li>
+            <code>view-timeline</code>
+          </li>
+          <li>
+            <code>animation-timeline</code>
+          </li>
+          <li>
+            <code>animation-range</code>
+          </li>
+          <li>
+            <code>view-timeline-inset</code>
+          </li>
+          <li>
+            <code>timeline-scope</code>
+          </li>
+        </ul>
+      </Slide>
+      <Slide title="animation-timeline" desc="TODO">
         <p>Content</p>
       </Slide>
-      <Slide id="slide-2" title="Slide 2" desc="Description">
+      <Slide title="Anonymné časové osy" desc="TODO">
         <p>Content</p>
       </Slide>
-      <Slide id="slide-3" title="Slide 3" desc="Description">
+      <Slide title="scroll-timeline" desc="Časová os scrolovania">
         <p>Content</p>
       </Slide>
-      <Slide id="slide-4" title="Slide 4" desc="Description">
+      <Slide title="view-timeline" desc="Časová os viditeľnosti elementu">
         <p>Content</p>
       </Slide>
-      <Slide id="slide-5" title="Slide 5" desc="Description">
+      <Slide title="view-timeline-inset" desc="TODO">
+        <p>Content</p>
+      </Slide>
+      <Slide title="animation-range" desc="TODO">
+        <p>Content</p>
+      </Slide>
+      <Slide title="timeline-scope" desc="TODO">
         <p>Content</p>
       </Slide>
     </div>
+    <footer>
+      <div>
+        <p>Thank you</p>
+        <p>Lukas Chylik</p>
+      </div>
+    </footer>
   </body>
 </html>
