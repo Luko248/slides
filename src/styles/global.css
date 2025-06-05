@@ -46,3 +46,5 @@ p {
   @apply font-normal text-gray-700;
   font-size: 3svb;
 }
+
+@plugin "tailwind-variants";
