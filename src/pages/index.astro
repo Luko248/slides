@@ -1,4 +1,5 @@
 ---
+import Lava from "../components/lava/Lava.astro";
 import Progress from "../components/progress/Progress.astro";
 import Slide from "../components/slide/Slide.astro";
 import "../styles/global.css";
@@ -18,7 +19,7 @@ import "../styles/global.css";
       content="CSS Scroll Driven Animations, Web Science, Presentation"
     />
   </head>
-  <body class="m-0 bg-black">
+  <body class="m-0 bg-white max-h-svh overflow-hidden">
     <style>
       .presentation {
         overflow-y: scroll;
@@ -38,6 +39,7 @@ import "../styles/global.css";
           justify-content: center;
           block-size: 1.5rem;
           gap: 1rem;
+          z-index: 100;
         }
 
         &::scroll-button(*) {
@@ -102,7 +104,9 @@ import "../styles/global.css";
     </style>
 
     <div class="presentation max-h-svh relative">
+      <Lava />
       <Progress />
+
       <Slide title="Najčastejšie problémy">
         <ul>
           <li>
