@@ -82,15 +82,23 @@ import "../styles/global.css";
     <div class="presentation max-h-svh relative">
       <Lava />
       <Progress />
-      <Slide title="Lukáš Chylík" speaker>
+      <!-- <Slide title="Lukáš Chylík" speaker>
         <p>
           VIGo Design System lead developer at AIS Servis<br />
           Frontendisti Brno meetups host<br />
           Lecturer & Mentor<br />
           CSS wizard 🧙🏼
         </p>
-      </Slide>
-      <Slide title="Najčastejšie problémy">
+      </Slide> -->
+      <Slide
+        title="Najčastejšie problémy"
+        image={{
+          url: "/assets/scroll-event-vithout-debouncing-meme.webp",
+          alt: "Scroll event without debouncing meme",
+          width: 768,
+          height: 1152,
+        }}
+      >
         <ul>
           <li>
             Performance
@@ -127,11 +135,7 @@ import "../styles/global.css";
           </li>
         </ul>
       </Slide>
-      <Slide
-        title="Web Animations API"
-        desc="Nové CSS vlastnosti"
-        image="assets/js-scroll-event-without-debouncing-meme.png"
-      >
+      <Slide title="Web Animations API" desc="Nové CSS vlastnosti">
         <ul>
           <li>
             <code>scroll-timeline</code>
