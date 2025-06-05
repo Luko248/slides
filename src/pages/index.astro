@@ -1,4 +1,5 @@
 ---
+import Footer from "../components/footer/Footer.astro";
 import Lava from "../components/lava/Lava.astro";
 import Progress from "../components/progress/Progress.astro";
 import Slide from "../components/slide/Slide.astro";
@@ -26,7 +27,7 @@ import "../styles/global.css";
         overflow-x: hidden;
         scroll-snap-type: y mandatory;
         scroll-marker-group: after;
-        scroll-timeline: --presentation block;
+        scroll-timeline: --progress block;
         &::-webkit-scrollbar {
           width: 0;
           scrollbar-gutter: auto;
@@ -34,10 +35,10 @@ import "../styles/global.css";
 
         &::scroll-marker-group {
           position: fixed;
-          inset: auto 0 1rem 0;
+          inset: auto 0 2svb 0;
           display: flex;
           justify-content: center;
-          block-size: 1.5rem;
+          block-size: 1rem;
           gap: 1rem;
           z-index: 100;
         }
@@ -48,7 +49,7 @@ import "../styles/global.css";
           display: none;
           place-items: center;
           background-color: var(--black-trans);
-          border: 3px solid black;
+          border: 3px solid white;
           border-radius: 100vmax;
           inline-size: 3.5rem;
           block-size: 3.5rem;
@@ -75,38 +76,20 @@ import "../styles/global.css";
           content: "↓";
           bottom: 1rem;
         }
-
-        > section {
-          scroll-snap-align: start;
-          container-type: inline-size;
-
-          &::scroll-marker {
-            content: " ";
-            background-color: var(--marker-bg, var(--black-trans));
-            inline-size: 1.5rem;
-            block-size: 1.5rem;
-            display: block;
-            box-sizing: border-box;
-            border-radius: 100vmax;
-            border: 2px solid black;
-            scale: 1;
-            transition:
-              scale 0.3s ease,
-              background-color 0.3s ease;
-          }
-
-          &::scroll-marker:target-current {
-            --marker-bg: var(--color-green-500);
-            scale: 1.2;
-          }
-        }
       }
     </style>
 
     <div class="presentation max-h-svh relative">
       <Lava />
       <Progress />
-
+      <Slide title="Lukáš Chylík" speaker>
+        <p>
+          VIGo Design System lead developer at AIS Servis<br />
+          Frontendisti Brno meetups host<br />
+          Lecturer & Mentor<br />
+          CSS wizard 🧙🏼
+        </p>
+      </Slide>
       <Slide title="Najčastejšie problémy">
         <ul>
           <li>
@@ -188,11 +171,6 @@ import "../styles/global.css";
         <p>Content</p>
       </Slide>
     </div>
-    <footer>
-      <div>
-        <p>Thank you</p>
-        <p>Lukas Chylik</p>
-      </div>
-    </footer>
+    <Footer />
   </body>
 </html>

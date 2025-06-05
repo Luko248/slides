@@ -4,16 +4,70 @@ interface Props {
   desc?: string;
   code?: string;
   image?: string;
+  speaker?: boolean;
+  intro?: boolean;
 }
 
-const { title, desc, code, image } = Astro.props;
+const { title, desc, code, image, speaker, intro } = Astro.props;
 ---
 
+<style>
+  section {
+    container-type: scroll-state;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+
+    &::scroll-marker {
+      content: " ";
+      background-color: var(--marker-bg, var(--black-trans));
+      inline-size: 1rem;
+      block-size: 1rem;
+      display: block;
+      box-sizing: border-box;
+      border-radius: 100vmax;
+      border: 2px solid var(--color-green-500);
+      scale: 1;
+      transition:
+        scale 0.3s ease,
+        background-color 0.3s ease;
+    }
+
+    &::scroll-marker:target-current {
+      --marker-bg: var(--color-green-500);
+      scale: 1.5;
+    }
+    :is(.top, .left, .right) {
+      opacity: 0;
+      translate: 0 5svb;
+      transition:
+        opacity 500ms ease-in,
+        translate 500ms ease-in;
+
+      @container scroll-state(snapped: block) {
+        opacity: 1;
+        translate: 0 0;
+      }
+    }
+    .top {
+      transition-delay: 500ms;
+    }
+
+    .left {
+      transition-delay: 1000ms;
+    }
+    .right {
+      transition-delay: 1500ms;
+    }
+  }
+</style>
+
 <section
-  class="h-svh grid gap-[8svb] p-[8svb] bg-white/90 backdrop-blur-lg content-start relative z-50"
+  class={`h-svh grid gap-[8svb] p-[8svb] bg-white/90 backdrop-blur-lg ${speaker || intro ? "content-center" : "content-start"} relative z-50`}
 >
-  <div>
-    <h2 class="text-8xl font-bold mb-4 text-green-500">
+  <div class="top">
+    <h2
+      class=`${speaker || intro ? "text-8xl" : "text-6xl"} font-bold mb-4 text-green-500`
+    >
       {title}
       {
         desc && (
@@ -26,10 +80,10 @@ const { title, desc, code, image } = Astro.props;
   </div>
 
   <div class="grid grid-cols-2 gap-6 content-center">
-    <div class="prose max-w-none">
+    <div class="prose max-w-none left">
       <slot />
     </div>
-    <div>
+    <div class="right">
       {
         code && (
           <pre class="bg-gray-100 p-4 rounded overflow-auto max-h-96">
