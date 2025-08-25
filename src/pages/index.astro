@@ -4,6 +4,91 @@ import Lava from "../components/lava/Lava.astro";
 import Progress from "../components/progress/Progress.astro";
 import Slide from "../components/slide/Slide.astro";
 import "../styles/global.css";
+import { codeToHtml } from "shiki";
+
+// CSS code examples for syntax highlighting
+const scrollStateBasicSyntax = `/* Základná syntax */
+.container {
+  container-type: scroll-state;
+  container-name: my-container;
+}
+
+@container my-container scroll-state(scrollable: top) {
+  .scroll-indicator {
+    opacity: 1;
+  }
+}`;
+
+const scrollStateTypes = `/* Typy scroll-state queries */
+
+/* scrollable - detekuje možnosť scrollovania */
+@container scroll-state(scrollable: top) { /* ... */ }
+@container scroll-state(scrollable: bottom) { /* ... */ }
+
+/* snapped - identifikuje snap pozície */
+@container scroll-state(snapped: block) { /* ... */ }
+@container scroll-state(snapped: inline) { /* ... */ }
+
+/* stuck - sleduje sticky elementy */
+@container scroll-state(stuck: top) { /* ... */ }
+@container scroll-state(stuck: left) { /* ... */ }`;
+
+const scrollToTopExample = `/* Scroll-to-top tlačidlo */
+.scroll-container {
+  container-type: scroll-state;
+  container-name: main-scroll;
+}
+
+.scroll-to-top {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+@container main-scroll scroll-state(scrollable: top) {
+  .scroll-to-top {
+    opacity: 1;
+  }
+}`;
+
+const fallbackExample = `/* Fallback stratégia */
+@supports (container-type: scroll-state) {
+  /* Modern browsers */
+  .container {
+    container-type: scroll-state;
+  }
+  
+  @container scroll-state(scrollable: top) {
+    .indicator { opacity: 1; }
+  }
+}
+
+@supports not (container-type: scroll-state) {
+  /* Fallback pre staršie prehliadače */
+  .indicator {
+    opacity: 1; /* Vždy zobrazené */
+  }
+}`;
+
+// Generate highlighted HTML using Shiki
+const highlightedBasicSyntax = await codeToHtml(scrollStateBasicSyntax, {
+  lang: "css",
+  theme: "github-light",
+});
+
+const highlightedTypes = await codeToHtml(scrollStateTypes, {
+  lang: "css",
+  theme: "github-light",
+});
+
+const highlightedScrollToTop = await codeToHtml(scrollToTopExample, {
+  lang: "css",
+  theme: "github-light",
+});
+
+const highlightedFallback = await codeToHtml(fallbackExample, {
+  lang: "css",
+  theme: "github-light",
+});
 ---
 
 <html lang="sk">
@@ -11,172 +96,136 @@ import "../styles/global.css";
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>CSS Scroll Driven Animations</title>
-    <meta name="description" content="Web science presentatio" />
+    <meta name="generator" content="Astro" />
+    <title>CSS Container Scroll-State Queries</title>
+    <meta
+      name="description"
+      content="CSS Container Scroll-State Queries Presentation"
+    />
     <meta name="author" content="Lukas Chylik" />
     <meta
       name="keywords"
-      content="CSS Scroll Driven Animations, Web Science, Presentation"
+      content="CSS Container Scroll-State Queries, CSS, Web Development, Presentation"
     />
+    <!-- Shiki syntax highlighting (server-side generated) -->
   </head>
   <body class="m-0 bg-white max-h-svh overflow-hidden">
-    <style>
-      .presentation {
-        overflow-y: scroll;
-        overflow-x: hidden;
-        scroll-snap-type: y mandatory;
-        scroll-marker-group: after;
-        scroll-timeline: --progress block;
-        &::-webkit-scrollbar {
-          width: 0;
-          scrollbar-gutter: auto;
-        }
-
-        &::scroll-marker-group {
-          position: fixed;
-          inset: auto 0 2svb 0;
-          display: flex;
-          justify-content: center;
-          block-size: 1rem;
-          gap: 1rem;
-          z-index: 100;
-        }
-
-        &::scroll-button(*) {
-          position: absolute;
-          right: 1rem;
-          display: none;
-          place-items: center;
-          background-color: var(--black-trans);
-          border: 3px solid white;
-          border-radius: 100vmax;
-          inline-size: 3.5rem;
-          block-size: 3.5rem;
-          padding: 0;
-          aspect-ratio: 1;
-          color: white;
-          font-size: 1.5rem;
-          font-weight: bold;
-          opacity: 1;
-          transition: opacity 0.3s ease;
-          z-index: 100;
-        }
-
-        &::scroll-button(*):disabled {
-          opacity: 0;
-        }
-
-        &::scroll-button(up) {
-          content: "↑";
-          top: 1rem;
-        }
-
-        &::scroll-button(down) {
-          content: "↓";
-          bottom: 1rem;
-        }
-      }
-    </style>
-
     <div class="presentation max-h-svh relative">
       <Lava />
       <Progress />
-      <!-- <Slide title="Lukáš Chylík" speaker>
+      <Slide title="CSS Container Scroll-State Queries" speaker>
         <p>
-          VIGo Design System lead developer at AIS Servis<br />
-          Frontendisti Brno meetups host<br />
-          Lecturer & Mentor<br />
-          CSS wizard 🧙🏼
+          Nový spôsob reagovania na stavy scrollovania v CSS<br />
+          Bez potreby JavaScriptu<br />
+          Interaktívne rozhrania na úrovni CSS<br />
+          🎯 Cielené štýlovanie na základe scroll stavu
         </p>
-      </Slide> -->
-      <Slide
-        title="Najčastejšie problémy"
-        image={{
-          url: "/assets/scroll-event-vithout-debouncing-meme.webp",
-          alt: "Scroll event without debouncing meme",
-          width: 768,
-          height: 1152,
-        }}
-      >
+      </Slide>
+
+      <Slide title="Čo sú Scroll-State Queries?" desc="Základné informácie">
         <ul>
+          <li>Súčasť rodiny container queries</li>
+          <li>Umožňujú selektívne štýlovanie na základe scroll stavu</li>
           <li>
-            Performance
+            Tri hlavné typy:
             <ul>
-              <li>
-                Príliš časté volanie handlera bez debouncingu → spomalenie
-                stránky <code>requestAnimationFrame</code>
-              </li>
-            </ul>
-          </li>
-          <li>
-            Viditeľnosť prvku
-            <ul>
-              <li>
-                Manuálne porovnávanie s getBoundingClientRect() → možnosť chýb
-                pri výpočtoch
-              </li>
-            </ul>
-          </li>
-          <li>
-            Nastavenie štýlov
-            <ul>
-              <li>Chýba overflow alebo výška → scroll event nefunguje</li>
-            </ul>
-          </li>
-          <li>
-            Multiscroll eventy
-            <ul>
-              <li>
-                Nepoužitie pasívneho listerneru <code>passive: true</code> → menej
-                plynulé scrollovanie
-              </li>
+              <li><code>scrollable</code> - detekuje možnosť scrollovania</li>
+              <li><code>snapped</code> - identifikuje snap pozície</li>
+              <li><code>stuck</code> - sleduje sticky elementy</li>
             </ul>
           </li>
         </ul>
       </Slide>
-      <Slide title="Web Animations API" desc="Nové CSS vlastnosti">
+
+      <Slide title="Základná syntax" desc="Ako to funguje">
+        <Fragment set:html={highlightedBasicSyntax} />
+      </Slide>
+
+      <Slide title="Typy Scroll-State Queries" desc="Kompletný prehľad">
+        <Fragment set:html={highlightedTypes} />
+      </Slide>
+
+      <Slide title="Praktický príklad" desc="Scroll-to-top tlačidlo">
+        <Fragment set:html={highlightedScrollToTop} />
+      </Slide>
+
+      <Slide title="Príklady použitia" desc="Reálne scenáre">
         <ul>
           <li>
-            <code>scroll-timeline</code>
+            <strong>Scroll-to-top tlačidlo</strong>
+            <ul><li>Zobrazenie len keď je možné scrollovať nahor</li></ul>
           </li>
           <li>
-            <code>view-timeline</code>
+            <strong>Carousel indikátory</strong>
+            <ul><li>Zvýraznenie aktuálnej položky</li></ul>
           </li>
           <li>
-            <code>animation-timeline</code>
+            <strong>Navigačná lišta</strong>
+            <ul><li>Transformácia pri scrollovaní</li></ul>
           </li>
           <li>
-            <code>animation-range</code>
-          </li>
-          <li>
-            <code>view-timeline-inset</code>
-          </li>
-          <li>
-            <code>timeline-scope</code>
+            <strong>Sticky elementy</strong>
+            <ul><li>Vizuálne rozdiely keď sú "prilepené"</li></ul>
           </li>
         </ul>
       </Slide>
-      <Slide title="animation-timeline" desc="TODO">
-        <p>Content</p>
+
+      <Slide title="Podpora prehliadačov" desc="Aktuálny stav">
+        <ul>
+          <li>
+            <strong style="color: #28a745;">Chrome:</strong> Podporované od verzie
+            127
+          </li>
+          <li>
+            <strong style="color: #dc3545;">Firefox:</strong> Zatiaľ nepodporované
+          </li>
+          <li>
+            <strong style="color: #dc3545;">Safari:</strong> Zatiaľ nepodporované
+          </li>
+          <li style="margin-top: 1rem;">
+            <em
+              >💡 Tip: Používajte progressive enhancement s fallback riešeniami</em
+            >
+          </li>
+        </ul>
       </Slide>
-      <Slide title="Anonymné časové osy" desc="TODO">
-        <p>Content</p>
+
+      <Slide title="Fallback stratégia" desc="Podpora starších prehliadačov">
+        <Fragment set:html={highlightedFallback} />
       </Slide>
-      <Slide title="scroll-timeline" desc="Časová os scrolovania">
-        <p>Content</p>
+
+      <Slide title="Kľúčové výhody" desc="Prečo použiť scroll-state queries?">
+        <ul>
+          <li>
+            <strong>Bez JavaScriptu</strong>
+            <ul><li>Interaktívne rozhrania priamo v CSS</li></ul>
+          </li>
+          <li>
+            <strong>Responzívny design</strong>
+            <ul><li>Reaguje na scroll na úrovni CSS</li></ul>
+          </li>
+          <li>
+            <strong>Lepšie UX</strong>
+            <ul><li>Plynulejšie animácie a prechody</li></ul>
+          </li>
+          <li>
+            <strong>Minimálny kód</strong>
+            <ul><li>Menej kódu na dosiahnutie rovnakého výsledku</li></ul>
+          </li>
+        </ul>
       </Slide>
-      <Slide title="view-timeline" desc="Časová os viditeľnosti elementu">
-        <p>Content</p>
-      </Slide>
-      <Slide title="view-timeline-inset" desc="TODO">
-        <p>Content</p>
-      </Slide>
-      <Slide title="animation-range" desc="TODO">
-        <p>Content</p>
-      </Slide>
-      <Slide title="timeline-scope" desc="TODO">
-        <p>Content</p>
+
+      <Slide title="Odporúčané ďalšie kroky" desc="Ako začať">
+        <ul>
+          <li>Experimentujte v moderných projektoch</li>
+          <li>Implementujte s fallback riešeniami</li>
+          <li>Sledujte kompatibilitu prehliadačov</li>
+          <li>Testujte v rôznych prostrediach</li>
+          <li>Dokumentujte svoje implementácie</li>
+        </ul>
+        <p style="margin-top: 2rem; font-style: italic;">
+          🚀 Budúcnosť CSS je tu - využite ju už dnes!
+        </p>
       </Slide>
     </div>
     <Footer />

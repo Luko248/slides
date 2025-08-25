@@ -49,3 +49,30 @@ p {
   @apply font-normal text-gray-700;
   font-size: 3.5svb;
 }
+
+pre.shiki {
+  font-size: 2svb;
+}
+
+.presentation {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
+  scroll-marker-group: after;
+  scroll-timeline: --progress block;
+}
+
+.presentation::-webkit-scrollbar {
+  width: 0;
+  scrollbar-gutter: auto;
+}
+
+.presentation::scroll-marker-group {
+  position: fixed;
+  inset: auto 0 2svb 0;
+  display: flex;
+  justify-content: center;
+  block-size: 1rem;
+  gap: 1rem;
+  z-index: 100;
+}
