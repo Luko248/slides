@@ -3,15 +3,23 @@
     from,
     to {
       translate: -20svb 30svb;
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      rotate: 0deg;
     }
     25% {
       translate: 20svb -50svb;
+      border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+      rotate: 90deg;
     }
     50% {
       translate: 50svb 10svb;
+      border-radius: 70% 30% 60% 40% / 30% 40% 60% 50%;
+      rotate: 180deg;
     }
     75% {
       translate: -50svb -20svb;
+      border-radius: 40% 60% 50% 30% / 70% 50% 40% 60%;
+      rotate: 270deg;
     }
   }
 
@@ -19,18 +27,28 @@
     from,
     to {
       translate: 15svb -30svb;
+      border-radius: 50% 50% 20% 80% / 25% 25% 75% 75%;
+      rotate: 0deg;
     }
     20% {
       translate: -40svb 0svb;
+      border-radius: 80% 20% 60% 40% / 40% 70% 30% 60%;
+      rotate: 72deg;
     }
     40% {
       translate: 30svb 40svb;
+      border-radius: 40% 80% 30% 70% / 60% 40% 80% 20%;
+      rotate: 144deg;
     }
     60% {
       translate: -50svb 20svb;
+      border-radius: 70% 30% 50% 50% / 80% 20% 40% 60%;
+      rotate: 216deg;
     }
     80% {
       translate: 10svb -10svb;
+      border-radius: 30% 70% 40% 60% / 50% 50% 20% 80%;
+      rotate: 288deg;
     }
   }
 
@@ -38,12 +56,18 @@
     from,
     to {
       translate: -30svb -40svb;
+      border-radius: 80% 20% 50% 50% / 20% 80% 50% 50%;
+      rotate: 0deg;
     }
     33% {
       translate: 50svb 0svb;
+      border-radius: 50% 50% 80% 20% / 50% 50% 20% 80%;
+      rotate: 120deg;
     }
     66% {
       translate: -10svb 50svb;
+      border-radius: 20% 80% 50% 50% / 80% 20% 50% 50%;
+      rotate: 240deg;
     }
   }
 
@@ -51,24 +75,35 @@
     from,
     to {
       translate: 40svb 20svb;
+      border-radius: 40% 60% 60% 40% / 60% 30% 70% 40%;
+      rotate: 0deg;
     }
     20% {
       translate: -20svb -30svb;
+      border-radius: 60% 40% 30% 70% / 40% 60% 40% 60%;
+      rotate: -72deg;
     }
     40% {
       translate: -50svb 40svb;
+      border-radius: 30% 70% 40% 60% / 70% 40% 60% 30%;
+      rotate: -144deg;
     }
     60% {
       translate: 0svb 0svb;
+      border-radius: 70% 30% 60% 40% / 30% 70% 30% 70%;
+      rotate: -216deg;
     }
     80% {
       translate: 30svb -50svb;
+      border-radius: 25% 75% 40% 60% / 55% 45% 65% 35%;
+      rotate: -288deg;
     }
   }
 
   .blob {
     position: absolute;
     aspect-ratio: 1;
+    border-radius: 50%;
   }
 
   .blob-1 {
@@ -128,20 +163,20 @@
   }
 </style>
 <div class="lava-bg fixed h-svh w-svw overflow-hidden">
-  <div class="blob blob-1 bg-green-500 w-[25svb] aspect-square rounded-full">
+  <div class="blob blob-1 bg-theme-500 w-[25svb] aspect-square">
   </div>
-  <div class="blob blob-2 bg-indigo-500 w-[15svb] aspect-square rounded-full">
+  <div class="blob blob-2 bg-indigo-500 w-[15svb] aspect-square">
   </div>
-  <div class="blob blob-3 bg-green-500 w-[10svb] aspect-square rounded-full">
+  <div class="blob blob-3 bg-theme-500 w-[10svb] aspect-square">
   </div>
-  <div class="blob blob-4 bg-indigo-500 w-[30svb] aspect-square rounded-full">
+  <div class="blob blob-4 bg-indigo-500 w-[30svb] aspect-square">
   </div>
-  <div class="blob blob-5 bg-green-500 w-[15svb] aspect-square rounded-full">
+  <div class="blob blob-5 bg-theme-500 w-[15svb] aspect-square">
   </div>
-  <div class="blob blob-6 bg-indigo-500 w-[20svb] aspect-square rounded-full">
+  <div class="blob blob-6 bg-indigo-500 w-[20svb] aspect-square">
   </div>
-  <div class="blob blob-7 bg-green-500 w-[30svb] aspect-square rounded-full">
+  <div class="blob blob-7 bg-theme-500 w-[30svb] aspect-square">
   </div>
-  <div class="blob blob-8 bg-indigo-500 w-[15svb] aspect-square rounded-full">
+  <div class="blob blob-8 bg-indigo-500 w-[15svb] aspect-square">
   </div>
 </div>

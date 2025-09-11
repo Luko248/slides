@@ -2,93 +2,20 @@
 import Footer from "../components/footer/Footer.astro";
 import Lava from "../components/lava/Lava.astro";
 import Progress from "../components/progress/Progress.astro";
-import Slide from "../components/slide/Slide.astro";
 import "../styles/global.css";
-import { codeToHtml } from "shiki";
 
-// CSS code examples for syntax highlighting
-const scrollStateBasicSyntax = `/* Základná syntax */
-.container {
-  container-type: scroll-state;
-  container-name: my-container;
-}
-
-@container my-container scroll-state(scrollable: top) {
-  .scroll-indicator {
-    opacity: 1;
-  }
-}`;
-
-const scrollStateTypes = `/* Typy scroll-state queries */
-
-/* scrollable - detekuje možnosť scrollovania */
-@container scroll-state(scrollable: top) { /* ... */ }
-@container scroll-state(scrollable: bottom) { /* ... */ }
-
-/* snapped - identifikuje snap pozície */
-@container scroll-state(snapped: block) { /* ... */ }
-@container scroll-state(snapped: inline) { /* ... */ }
-
-/* stuck - sleduje sticky elementy */
-@container scroll-state(stuck: top) { /* ... */ }
-@container scroll-state(stuck: left) { /* ... */ }`;
-
-const scrollToTopExample = `/* Scroll-to-top tlačidlo */
-.scroll-container {
-  container-type: scroll-state;
-  container-name: main-scroll;
-}
-
-.scroll-to-top {
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-@container main-scroll scroll-state(scrollable: top) {
-  .scroll-to-top {
-    opacity: 1;
-  }
-}`;
-
-const fallbackExample = `/* Fallback stratégia */
-@supports (container-type: scroll-state) {
-  /* Modern browsers */
-  .container {
-    container-type: scroll-state;
-  }
-  
-  @container scroll-state(scrollable: top) {
-    .indicator { opacity: 1; }
-  }
-}
-
-@supports not (container-type: scroll-state) {
-  /* Fallback pre staršie prehliadače */
-  .indicator {
-    opacity: 1; /* Vždy zobrazené */
-  }
-}`;
-
-// Generate highlighted HTML using Shiki
-const highlightedBasicSyntax = await codeToHtml(scrollStateBasicSyntax, {
-  lang: "css",
-  theme: "github-light",
-});
-
-const highlightedTypes = await codeToHtml(scrollStateTypes, {
-  lang: "css",
-  theme: "github-light",
-});
-
-const highlightedScrollToTop = await codeToHtml(scrollToTopExample, {
-  lang: "css",
-  theme: "github-light",
-});
-
-const highlightedFallback = await codeToHtml(fallbackExample, {
-  lang: "css",
-  theme: "github-light",
-});
+// Import all slide components
+import TitleSlide from "../slides/TitleSlide.astro";
+import IntroSlide from "../slides/IntroSlide.astro";
+import BasicSyntaxSlide from "../slides/BasicSyntaxSlide.astro";
+import TypesSlide from "../slides/TypesSlide.astro";
+import ExampleSlide from "../slides/ExampleSlide.astro";
+import UseCasesSlide from "../slides/UseCasesSlide.astro";
+import BrowserSupportSlide from "../slides/BrowserSupportSlide.astro";
+import FallbackSlide from "../slides/FallbackSlide.astro";
+import AdvantagesSlide from "../slides/AdvantagesSlide.astro";
+import NextStepsSlide from "../slides/NextStepsSlide.astro";
+import Slide from "../components/slide/Slide.astro";
 ---
 
 <html lang="sk">
@@ -97,6 +24,12 @@ const highlightedFallback = await codeToHtml(fallbackExample, {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content="Astro" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@200..800&family=League+Spartan:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
     <title>CSS Container Scroll-State Queries</title>
     <meta
       name="description"
@@ -113,120 +46,16 @@ const highlightedFallback = await codeToHtml(fallbackExample, {
     <div class="presentation max-h-svh relative">
       <Lava />
       <Progress />
-      <Slide title="CSS Container Scroll-State Queries" speaker>
-        <p>
-          Nový spôsob reagovania na stavy scrollovania v CSS<br />
-          Bez potreby JavaScriptu<br />
-          Interaktívne rozhrania na úrovni CSS<br />
-          🎯 Cielené štýlovanie na základe scroll stavu
-        </p>
-      </Slide>
-
-      <Slide title="Čo sú Scroll-State Queries?" desc="Základné informácie">
-        <ul>
-          <li>Súčasť rodiny container queries</li>
-          <li>Umožňujú selektívne štýlovanie na základe scroll stavu</li>
-          <li>
-            Tri hlavné typy:
-            <ul>
-              <li><code>scrollable</code> - detekuje možnosť scrollovania</li>
-              <li><code>snapped</code> - identifikuje snap pozície</li>
-              <li><code>stuck</code> - sleduje sticky elementy</li>
-            </ul>
-          </li>
-        </ul>
-      </Slide>
-
-      <Slide title="Základná syntax" desc="Ako to funguje">
-        <Fragment set:html={highlightedBasicSyntax} />
-      </Slide>
-
-      <Slide title="Typy Scroll-State Queries" desc="Kompletný prehľad">
-        <Fragment set:html={highlightedTypes} />
-      </Slide>
-
-      <Slide title="Praktický príklad" desc="Scroll-to-top tlačidlo">
-        <Fragment set:html={highlightedScrollToTop} />
-      </Slide>
-
-      <Slide title="Príklady použitia" desc="Reálne scenáre">
-        <ul>
-          <li>
-            <strong>Scroll-to-top tlačidlo</strong>
-            <ul><li>Zobrazenie len keď je možné scrollovať nahor</li></ul>
-          </li>
-          <li>
-            <strong>Carousel indikátory</strong>
-            <ul><li>Zvýraznenie aktuálnej položky</li></ul>
-          </li>
-          <li>
-            <strong>Navigačná lišta</strong>
-            <ul><li>Transformácia pri scrollovaní</li></ul>
-          </li>
-          <li>
-            <strong>Sticky elementy</strong>
-            <ul><li>Vizuálne rozdiely keď sú "prilepené"</li></ul>
-          </li>
-        </ul>
-      </Slide>
-
-      <Slide title="Podpora prehliadačov" desc="Aktuálny stav">
-        <ul>
-          <li>
-            <strong style="color: #28a745;">Chrome:</strong> Podporované od verzie
-            127
-          </li>
-          <li>
-            <strong style="color: #dc3545;">Firefox:</strong> Zatiaľ nepodporované
-          </li>
-          <li>
-            <strong style="color: #dc3545;">Safari:</strong> Zatiaľ nepodporované
-          </li>
-          <li style="margin-top: 1rem;">
-            <em
-              >💡 Tip: Používajte progressive enhancement s fallback riešeniami</em
-            >
-          </li>
-        </ul>
-      </Slide>
-
-      <Slide title="Fallback stratégia" desc="Podpora starších prehliadačov">
-        <Fragment set:html={highlightedFallback} />
-      </Slide>
-
-      <Slide title="Kľúčové výhody" desc="Prečo použiť scroll-state queries?">
-        <ul>
-          <li>
-            <strong>Bez JavaScriptu</strong>
-            <ul><li>Interaktívne rozhrania priamo v CSS</li></ul>
-          </li>
-          <li>
-            <strong>Responzívny design</strong>
-            <ul><li>Reaguje na scroll na úrovni CSS</li></ul>
-          </li>
-          <li>
-            <strong>Lepšie UX</strong>
-            <ul><li>Plynulejšie animácie a prechody</li></ul>
-          </li>
-          <li>
-            <strong>Minimálny kód</strong>
-            <ul><li>Menej kódu na dosiahnutie rovnakého výsledku</li></ul>
-          </li>
-        </ul>
-      </Slide>
-
-      <Slide title="Odporúčané ďalšie kroky" desc="Ako začať">
-        <ul>
-          <li>Experimentujte v moderných projektoch</li>
-          <li>Implementujte s fallback riešeniami</li>
-          <li>Sledujte kompatibilitu prehliadačov</li>
-          <li>Testujte v rôznych prostrediach</li>
-          <li>Dokumentujte svoje implementácie</li>
-        </ul>
-        <p style="margin-top: 2rem; font-style: italic;">
-          🚀 Budúcnosť CSS je tu - využite ju už dnes!
-        </p>
-      </Slide>
+      <TitleSlide />
+      <IntroSlide />
+      <BasicSyntaxSlide />
+      <TypesSlide />
+      <ExampleSlide />
+      <UseCasesSlide />
+      <BrowserSupportSlide />
+      <FallbackSlide />
+      <AdvantagesSlide />
+      <NextStepsSlide />
     </div>
     <Footer />
   </body>

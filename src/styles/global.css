@@ -2,10 +2,29 @@
 
 @theme {
   --black-trans: hsl(0 0% 0% / 0.5);
-  --color-green-500: hsl(147 48% 47%);
-  --color-green-200: hsl(147 48% 85%);
+  --color-theme-500: hsl(0deg 100% 63.53%);
+  --color-theme-200: hsl(0deg 100% 80%);
+  --color-indigo-500: rgb(174, 45, 246);
   --text-8xl: 12svb;
   --text-6xl: 8svb;
+
+  /* League Spartan font family for headings */
+  --font-family-heading: "League Spartan", sans-serif;
+  --font-family-spartan: "League Spartan", sans-serif;
+}
+
+/* Configure all heading elements with League Spartan font */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family-heading);
+  font-weight: 600;
+  color: black;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 
 ul {
@@ -22,12 +41,12 @@ ul {
       place-items: center;
       content: "●";
       font-size: 0.75em;
-      color: var(--color-green-500);
+      color: var(--color-theme-500);
     }
   }
 
   code {
-    @apply bg-green-200 px-2 rounded-[.25em] text-[.8em];
+    @apply bg-theme-200 px-2 rounded-[.25em] text-[.8em];
   }
 
   ul {

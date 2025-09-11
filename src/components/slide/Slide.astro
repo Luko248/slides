@@ -30,7 +30,7 @@ const { title, desc, code, image, speaker, intro } = Astro.props;
       display: block;
       box-sizing: border-box;
       border-radius: 100vmax;
-      border: 2px solid var(--color-green-500);
+      border: 2px solid var(--color-theme-500);
       scale: 1;
       transition:
         scale 0.3s ease,
@@ -38,30 +38,26 @@ const { title, desc, code, image, speaker, intro } = Astro.props;
     }
 
     &::scroll-marker:target-current {
-      --marker-bg: var(--color-green-500);
+      --marker-bg: var(--color-theme-500);
       scale: 1.5;
     }
     :is(.top, .left, .right) {
       opacity: 0;
-      translate: 0 5svb;
-      transition:
-        opacity 500ms ease-in,
-        translate 500ms ease-in;
+      transition: opacity 200ms ease-in;
 
       @container scroll-state(snapped: block) {
         opacity: 1;
-        translate: 0 0;
       }
     }
     .top {
-      transition-delay: 500ms;
+      transition-delay: 400ms;
     }
 
     .left {
-      transition-delay: 1000ms;
+      transition-delay: 600ms;
     }
     .right {
-      transition-delay: 1500ms;
+      transition-delay: 800ms;
     }
   }
 </style>
@@ -71,7 +67,7 @@ const { title, desc, code, image, speaker, intro } = Astro.props;
 >
   <div class="top">
     <h2
-      class=`${speaker || intro ? "text-8xl" : "text-6xl"} font-bold text-green-500`
+      class=`${speaker || intro ? "text-8xl" : "text-6xl"} font-bold text-theme-500`
     >
       {title}
       {
@@ -103,7 +99,7 @@ const { title, desc, code, image, speaker, intro } = Astro.props;
             alt={image.alt}
             width={image.width}
             height={image.height}
-            class="max-h-[70svb] object-contain w-auto absolute rounded-[.5em] border-[3px] border-green-500"
+            class="max-h-[70svb] object-contain w-auto absolute rounded-[.5em] border-[3px] border-theme-500"
           />
         )
       }

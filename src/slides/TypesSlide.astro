@@ -1,0 +1,27 @@
+---
+import Slide from "../components/slide/Slide.astro";
+import { codeToHtml } from "shiki";
+
+const scrollStateTypes = `/* Typy scroll-state queries */
+
+/* scrollable - detekuje možnosť scrollovania */
+@container scroll-state(scrollable: top) { /* ... */ }
+@container scroll-state(scrollable: bottom) { /* ... */ }
+
+/* snapped - identifikuje snap pozície */
+@container scroll-state(snapped: block) { /* ... */ }
+@container scroll-state(snapped: inline) { /* ... */ }
+
+/* stuck - sleduje sticky elementy */
+@container scroll-state(stuck: top) { /* ... */ }
+@container scroll-state(stuck: left) { /* ... */ }`;
+
+const highlightedTypes = await codeToHtml(scrollStateTypes, {
+  lang: "css",
+  theme: "github-light",
+});
+---
+
+<Slide title="Typy Scroll-State Queries" desc="Kompletný prehľad">
+  <Fragment set:html={highlightedTypes} />
+</Slide>

@@ -1,0 +1,25 @@
+---
+import Slide from "../components/slide/Slide.astro";
+import { codeToHtml } from "shiki";
+
+const scrollStateBasicSyntax = `/* Základná syntax */
+.container {
+  container-type: scroll-state;
+  container-name: my-container;
+}
+
+@container my-container scroll-state(scrollable: top) {
+  .scroll-indicator {
+    opacity: 1;
+  }
+}`;
+
+const highlightedBasicSyntax = await codeToHtml(scrollStateBasicSyntax, {
+  lang: "css",
+  theme: "github-light",
+});
+---
+
+<Slide title="Základná syntax" desc="Ako to funguje">
+  <Fragment set:html={highlightedBasicSyntax} />
+</Slide>

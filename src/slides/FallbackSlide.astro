@@ -1,0 +1,32 @@
+---
+import Slide from "../components/slide/Slide.astro";
+import { codeToHtml } from "shiki";
+
+const fallbackExample = `/* Fallback stratégia */
+@supports (container-type: scroll-state) {
+  /* Modern browsers */
+  .container {
+    container-type: scroll-state;
+  }
+  
+  @container scroll-state(scrollable: top) {
+    .indicator { opacity: 1; }
+  }
+}
+
+@supports not (container-type: scroll-state) {
+  /* Fallback pre staršie prehliadače */
+  .indicator {
+    opacity: 1; /* Vždy zobrazené */
+  }
+}`;
+
+const highlightedFallback = await codeToHtml(fallbackExample, {
+  lang: "css",
+  theme: "github-light",
+});
+---
+
+<Slide title="Fallback stratégia" desc="Podpora starších prehliadačov">
+  <Fragment set:html={highlightedFallback} />
+</Slide>

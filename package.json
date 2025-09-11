@@ -9,13 +9,13 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.3.4",
-    "astro": "^5.8.2",
+    "@astrojs/mdx": "^4.3.5",
+    "astro": "^5.13.7",
     "tailwind-variants": "^1.0.0"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "^4.1.8",
-    "shiki": "^3.11.0",
-    "tailwindcss": "^4.1.8"
+    "@tailwindcss/vite": "^4.1.13",
+    "shiki": "^3.12.2",
+    "tailwindcss": "^4.1.13"
   }
 }
