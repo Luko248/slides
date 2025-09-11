@@ -1,6 +1,6 @@
 ---
 interface Props {
-  title: string;
+  title?: string;
   desc?: string;
   code?: string;
   image?: {
@@ -9,11 +9,10 @@ interface Props {
     height?: number;
     alt?: string;
   };
-  speaker?: boolean;
-  intro?: boolean;
+  centerContent?: boolean;
 }
 
-const { title, desc, code, image, speaker, intro } = Astro.props;
+const { title, desc, code, image, centerContent } = Astro.props;
 ---
 
 <style>
@@ -21,25 +20,36 @@ const { title, desc, code, image, speaker, intro } = Astro.props;
     container-type: scroll-state;
     scroll-snap-align: center;
     scroll-snap-stop: always;
+    counter-increment: slides-counter;
 
     &::scroll-marker {
-      content: " ";
+      color: transparent;
+      text-decoration: 0;
+      line-height: 1;
+      content: counter(slides-counter);
       background-color: var(--marker-bg, var(--black-trans));
       inline-size: 1rem;
       block-size: 1rem;
-      display: block;
+      font-size: 0.65em;
+      display: grid;
+      place-items: center;
       box-sizing: border-box;
       border-radius: 100vmax;
       border: 2px solid var(--color-theme-500);
       scale: 1;
+      z-index: 1;
       transition:
         scale 0.3s ease,
+        color 0.3s ease,
         background-color 0.3s ease;
     }
 
     &::scroll-marker:target-current {
       --marker-bg: var(--color-theme-500);
+      color: white;
+      opacity: 1;
       scale: 1.5;
+      z-index: 2;
     }
     :is(.top, .left, .right) {
       opacity: 0;
@@ -63,13 +73,13 @@ const { title, desc, code, image, speaker, intro } = Astro.props;
 </style>
 
 <section
-  class={`h-svh grid gap-[8svb] p-[8svb] bg-white/90 backdrop-blur-lg ${speaker || intro ? "content-center" : "content-start"} relative z-50`}
+  class={`h-svh grid gap-[8svb] p-[8svb] bg-white/90 backdrop-blur-lg ${centerContent ? "content-center" : "content-start"} relative z-50`}
 >
   <div class="top">
     <h2
-      class=`${speaker || intro ? "text-8xl" : "text-6xl"} font-bold text-theme-500`
+      class=`${centerContent ? "text-8xl text-center" : "text-6xl"} font-bold text-theme-500`
     >
-      {title}
+      <slot name="title">{title}</slot>
       {
         desc && (
           <small class="text-black font-semibold block mt-[.5em] text-[.5em]">
@@ -81,7 +91,7 @@ const { title, desc, code, image, speaker, intro } = Astro.props;
   </div>
 
   <div class="grid grid-cols-[7fr_5fr] gap-[8svb] content-center">
-    <div class="max-w-none left">
+    <div class=`${centerContent ? "col-span-2" : ""} max-w-none left`>
       <slot />
     </div>
     <div class="right relative grid items-center">

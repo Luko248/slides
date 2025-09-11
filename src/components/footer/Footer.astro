@@ -1,3 +1,16 @@
+<style>
+  footer {
+    &:after {
+      content: attr(data-slides-count);
+      color: white;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      translate: 25% -50%;
+    }
+  }
+</style>
+
 <footer
   class="bg-black text-[2svb] py-[1.5svb] px-[8svb] z-50 absolute inset-[auto_0_0_0] flex items-center gap-2 justify-between"
 >

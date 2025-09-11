@@ -2,9 +2,9 @@
 
 @theme {
   --black-trans: hsl(0 0% 0% / 0.5);
-  --color-theme-500: hsl(0deg 100% 63.53%);
-  --color-theme-200: hsl(0deg 100% 80%);
-  --color-indigo-500: rgb(174, 45, 246);
+  --color-theme-500: hsl(283 91% 57%);
+  --color-theme-200: hsl(283 91% 80%);
+  --color-blue-500: hsl(207.67 100% 51.96%);
   --text-8xl: 12svb;
   --text-6xl: 8svb;
 
