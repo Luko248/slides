@@ -5,17 +5,19 @@ import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://luko248.github.io",
+  base: "/slides",
   server: {
     port: 4444,
   },
   integrations: [
     mdx({
-      syntaxHighlight: 'shiki',
+      syntaxHighlight: "shiki",
       shikiConfig: {
-        theme: 'github-dark',
+        theme: "github-dark",
         wrap: true,
       },
-    })
+    }),
   ],
   vite: {
     plugins: [tailwindcss()],
