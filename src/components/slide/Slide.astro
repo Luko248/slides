@@ -131,7 +131,7 @@ const getLayoutVariant = () => {
       <slot name="title">{title}</slot>
       {
         desc && (
-          <small class="text-theme-500 font-semibold block mt-[.5em] text-[.5em]">
+          <small class="text-theme-500 font-semibold block mt-[.35em] text-[.6em]">
             {desc}
           </small>
         )
@@ -159,7 +159,7 @@ const getLayoutVariant = () => {
               alt={image.alt}
               width={image.width}
               height={image.height}
-              class="max-h-[70svb] object-contain w-auto absolute rounded-[.5em] border-[3px] border-theme-500"
+              class="max-h-[70svb] object-contain w-auto absolute rounded-[.5em] border-[3px"
             />
           )
         }

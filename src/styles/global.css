@@ -65,8 +65,8 @@ ul {
 }
 
 p {
-  @apply font-normal text-gray-700;
-  font-size: 3.5svb;
+  @apply font-normal text-black;
+  font-size: 3svb;
 }
 
 pre.shiki {
@@ -98,4 +98,8 @@ pre.shiki {
 
 .shiki.github-light {
   background-color: transparent !important;
+}
+
+img[alt="Lukáš Chylík"] {
+  scale: 1.25;
 }
