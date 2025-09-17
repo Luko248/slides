@@ -28,5 +28,9 @@ const highlightedFallback = await codeToHtml(fallbackExample, {
 ---
 
 <Slide title="Fallback stratégia" desc="Podpora starších prehliadačov">
-  <Fragment set:html={highlightedFallback} />
+  <p slot="left">
+    Používajte @supports pravidlá na detekciu podpory scroll-state queries. Vždy
+    implementujte fallback riešenia pre staršie prehliadače.
+  </p>
+  <div slot="right" set:html={highlightedFallback} />
 </Slide>

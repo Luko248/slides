@@ -23,5 +23,9 @@ const highlightedTypes = await codeToHtml(scrollStateTypes, {
 ---
 
 <Slide title="Typy Scroll-State Queries" desc="Kompletný prehľad">
-  <Fragment set:html={highlightedTypes} />
+  <p slot="left">
+    Existujú tri hlavné typy scroll-state queries, každý s rôznymi možnosťami a
+    použitím. Každý typ reaguje na iný aspekt scrollovania.
+  </p>
+  <div slot="right" set:html={highlightedTypes} />
 </Slide>

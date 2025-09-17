@@ -26,5 +26,9 @@ const highlightedScrollToTop = await codeToHtml(scrollToTopExample, {
 ---
 
 <Slide title="Praktický príklad" desc="Scroll-to-top tlačidlo">
-  <Fragment set:html={highlightedScrollToTop} />
+  <p slot="left">
+    Tento príklad ukazuje, ako vytvoriť scroll-to-top tlačidlo, ktoré sa zobrazí
+    len vtedy, keď je možné scrollovať nahor. Bez jediného riadku JavaScriptu!
+  </p>
+  <div slot="right" set:html={highlightedScrollToTop} />
 </Slide>

@@ -95,3 +95,7 @@ pre.shiki {
   gap: 1rem;
   z-index: 100;
 }
+
+.shiki.github-light {
+  background-color: transparent !important;
+}

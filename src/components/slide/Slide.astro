@@ -1,8 +1,9 @@
 ---
+import { tv } from "tailwind-variants";
+
 interface Props {
   title?: string;
   desc?: string;
-  code?: string;
   image?: {
     url: string;
     width?: number;
@@ -10,9 +11,61 @@ interface Props {
     alt?: string;
   };
   centerContent?: boolean;
+  speaker?: boolean;
 }
 
-const { title, desc, code, image, centerContent } = Astro.props;
+const { title, desc, image, centerContent, speaker } = Astro.props;
+
+const slideVariants = tv({
+  base: "h-svh grid gap-[8svb] p-[8svb] bg-white/90 backdrop-blur-lg relative z-50",
+  variants: {
+    layout: {
+      default: "content-start",
+      center: "content-center",
+      speaker: "grid-rows-[auto_1fr] content-start",
+    },
+  },
+  defaultVariants: {
+    layout: "default",
+  },
+});
+
+const titleVariants = tv({
+  base: "font-bold text-theme-500",
+  variants: {
+    size: {
+      default: "text-6xl",
+      large: "text-8xl text-center",
+    },
+  },
+  defaultVariants: {
+    size: "default",
+  },
+});
+
+const contentVariants = tv({
+  base: "max-w-none left",
+  variants: {
+    span: {
+      default: "",
+      full: "col-span-2",
+    },
+    type: {
+      default: "",
+      speaker: "self-start",
+    },
+  },
+  defaultVariants: {
+    span: "default",
+    type: "default",
+  },
+});
+
+const getLayoutVariant = () => {
+  if (speaker) return "speaker";
+  if (centerContent) return "center";
+  return "default";
+};
 ---
 
 <style>
@@ -72,17 +125,13 @@ const { title, desc, code, image, centerContent } = Astro.props;
   }
 </style>
 
-<section
-  class={`h-svh grid gap-[8svb] p-[8svb] bg-white/90 backdrop-blur-lg ${centerContent ? "content-center" : "content-start"} relative z-50`}
->
+<section class={slideVariants({ layout: getLayoutVariant() })}>
   <div class="top">
-    <h2
-      class=`${centerContent ? "text-8xl text-center" : "text-6xl"} font-bold text-theme-500`
-    >
+    <h2 class={titleVariants({ size: centerContent ? "large" : "default" })}>
       <slot name="title">{title}</slot>
       {
         desc && (
-          <small class="text-black font-semibold block mt-[.5em] text-[.5em]">
+          <small class="text-theme-500 font-semibold block mt-[.5em] text-[.5em]">
             {desc}
           </small>
         )
@@ -90,29 +139,31 @@ const { title, desc, code, image, centerContent } = Astro.props;
     </h2>
   </div>
 
-  <div class="grid grid-cols-[7fr_5fr] gap-[8svb] content-center">
-    <div class=`${centerContent ? "col-span-2" : ""} max-w-none left`>
-      <slot />
+  <div class="grid grid-cols-[7fr_5fr] gap-[8svb] align-center">
+    <div
+      class={contentVariants({
+        span: centerContent ? "full" : "default",
+        type: speaker ? "speaker" : "default",
+      })}
+    >
+      <slot name="left">
+        <slot />
+      </slot>
     </div>
     <div class="right relative grid items-center">
-      {
-        code && (
-          <pre class="bg-gray-100 p-4 rounded overflow-auto max-h-96">
-            {code}
-          </pre>
-        )
-      }
-      {
-        image && (
-          <img
-            src={image.url}
-            alt={image.alt}
-            width={image.width}
-            height={image.height}
-            class="max-h-[70svb] object-contain w-auto absolute rounded-[.5em] border-[3px] border-theme-500"
-          />
-        )
-      }
+      <slot name="right">
+        {
+          image && (
+            <img
+              src={image.url}
+              alt={image.alt}
+              width={image.width}
+              height={image.height}
+              class="max-h-[70svb] object-contain w-auto absolute rounded-[.5em] border-[3px] border-theme-500"
+            />
+          )
+        }
+      </slot>
     </div>
   </div>
 </section>
