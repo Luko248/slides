@@ -1,8 +1,14 @@
 ---
 import Slide from "../components/slide/Slide.astro";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
 ---
 
-<Slide centerContent>
+<Slide order={order} center>
   <Fragment slot="title">
     CSS scroll-state
     <br />

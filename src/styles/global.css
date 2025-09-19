@@ -3,7 +3,8 @@
 @theme {
   --black-trans: hsl(0 0% 0% / 0.5);
   --color-theme-500: hsl(283 91% 57%);
-  --color-theme-200: hsl(283 91% 80%);
+  --color-theme-600: hsl(283 91% 65%);
+  --color-theme-200: hsl(279deg 92% 90%);
   --color-blue-500: hsl(207.67 100% 51.96%);
   --text-8xl: 12svb;
   --text-6xl: 8svb;
@@ -17,6 +18,7 @@
 /* Main carousel */
 
 .presentation {
+  display: grid;
   overflow-y: scroll;
   overflow-x: hidden;
   scroll-snap-type: y mandatory;
@@ -37,6 +39,10 @@
   block-size: 1rem;
   gap: 1rem;
   z-index: 100;
+}
+
+section {
+  grid-row-start: attr(data-order type(<integer>), auto);
 }
 
 /* Configure all heading elements with League Spartan font */
@@ -72,9 +78,7 @@ ul {
       color: var(--color-theme-500);
     }
   }
-
   code {
-    @apply bg-theme-200 px-3 rounded-[.25em] text-[.8em] font-light;
     margin-inline-start: 0.75svi;
   }
 
@@ -96,6 +100,10 @@ ul {
 p {
   @apply font-normal text-black;
   font-size: var(--paragraph-dynamic);
+}
+
+:where(p, ul) code {
+  @apply bg-theme-200 px-3 rounded-[.25em] text-[.8em] font-light;
 }
 
 /* Syntax highlighting customization */

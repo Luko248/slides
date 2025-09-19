@@ -6,16 +6,11 @@ import "../styles/global.css";
 
 // Import all slide components
 import TitleSlide from "../slides/TitleSlide.astro";
+import SpeakerSlide from "../slides/SpeakerSlide.astro";
 import IntroSlide from "../slides/IntroSlide.astro";
 import BasicSyntaxSlide from "../slides/BasicSyntaxSlide.astro";
-import TypesSlide from "../slides/TypesSlide.astro";
-import ExampleSlide from "../slides/ExampleSlide.astro";
-import UseCasesSlide from "../slides/UseCasesSlide.astro";
-import BrowserSupportSlide from "../slides/BrowserSupportSlide.astro";
-import FallbackSlide from "../slides/FallbackSlide.astro";
-import AdvantagesSlide from "../slides/AdvantagesSlide.astro";
-import NextStepsSlide from "../slides/NextStepsSlide.astro";
-import SpeakerSlide from "../slides/SpeakerSlide.astro";
+import ScrollableBasicsSlide from "../slides/ScrollableBasicsSlide.astro";
+import ScrollableAdvancedSlide from "../slides/ScrollableAdvancedSlide.astro";
 ---
 
 <html lang="sk">
@@ -46,17 +41,12 @@ import SpeakerSlide from "../slides/SpeakerSlide.astro";
     <div class="presentation max-h-svh relative">
       <Lava />
       <Progress />
-      <TitleSlide />
-      <SpeakerSlide />
-      <IntroSlide />
-      <BasicSyntaxSlide />
-      <TypesSlide />
-      <ExampleSlide />
-      <UseCasesSlide />
-      <BrowserSupportSlide />
-      <FallbackSlide />
-      <AdvantagesSlide />
-      <NextStepsSlide />
+      <TitleSlide order={1} />
+      <SpeakerSlide order={2} />
+      <IntroSlide order={3} />
+      <BasicSyntaxSlide order={4} />
+      <ScrollableBasicsSlide order={5} />
+      <ScrollableAdvancedSlide order={6} />
     </div>
     <Footer />
   </body>

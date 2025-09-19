@@ -1,8 +1,17 @@
 ---
 import Slide from "../components/slide/Slide.astro";
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
 ---
 
-<Slide title="Čo sú scroll state container queries?" desc="Základné informácie">
+<Slide
+  title="Čo sú scroll state container queries?"
+  desc="Základné informácie"
+  order={order}
+>
   <p>
     Nový prírastok do rodiny <strong>container queries</strong>.<br />
     Umožňujú štýlovanie na základe <strong>scroll stavu</strong>.<br />

@@ -2,6 +2,12 @@
 import Slide from "../components/slide/Slide.astro";
 import { codeToHtml } from "shiki";
 
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
 const scrollStateBasicSyntax = `/* Základná syntax */
 .container {
   container-type: scroll-state;
@@ -20,11 +26,26 @@ const highlightedBasicSyntax = await codeToHtml(scrollStateBasicSyntax, {
 });
 ---
 
-<Slide title="Základná syntax" desc="Ako to funguje">
-  <p slot="left">
-    Scroll-state queries umožňujú reagovať na rôzne stavy scrollovania priamo v
-    CSS. Základom je definovanie container-type a následné použitie @container
-    pravidiel.
-  </p>
+<Slide title="Základná syntax" desc="Ako to funguje?" order={order}>
+  <div slot="left">
+    <p>
+      Rovnako ako u container queries je základom definovanie vlastnosti
+      <code>container-type</code> a následné použitie
+      <code>@container</code> pravidla.
+    </p>
+    <p>
+      Jednotlivé dotazy sú zapísané pomocou <code>scroll-state()</code> query.
+    </p>
+    <br />
+    <br />
+    <p>
+      Pokiaľ chceme štýl priradiť ku konkrétnemu kontaineru, môžeme použiť <code
+        >container-name</code
+      >.
+      <br />
+      <br />
+      <strong>Táto možnosť je voliteľná.</strong>
+    </p>
+  </div>
   <div slot="right" set:html={highlightedBasicSyntax} />
 </Slide>

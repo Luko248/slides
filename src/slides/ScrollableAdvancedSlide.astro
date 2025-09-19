@@ -1,0 +1,52 @@
+---
+import Slide from "../components/slide/Slide.astro";
+import { codeToHtml } from "shiki";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const scrollStateTypes = `/* Možné scrollovanie zhora */
+@container scroll-state(scrollable: top | block-start) { /* ... */ }
+/* Možné scrollovanie zdola */
+@container scroll-state(scrollable: bottom | block-end) { /* ... */ }
+/* Možné scrollovanie zľava */
+@container scroll-state(scrollable: left | inline-start) { /* ... */ }
+/* Možné scrollovanie zprava */
+@container scroll-state(scrollable: right | inline-end) { /* ... */ }
+/* Možné scrollovanie po x osi */
+@container scroll-state(scrollable: x | inline) { /* ... */ }
+/* Možné scrollovanie po y osi */
+@container scroll-state(scrollable: y | block) { /* ... */ }
+`;
+
+const highlightedTypes = await codeToHtml(scrollStateTypes, {
+  lang: "css",
+  theme: "github-light",
+});
+---
+
+<Slide
+  title="scrollable"
+  desc="Pokročilé možnosti"
+  sampleUrl="https://codepen.io/web-dot-dev/pen/OPLZWBj"
+  order={order}
+>
+  <div slot="left">
+    <p>
+      Jednotlivé dotazy je možné kombinovať pomocou<br />
+      logických operátorov
+      <code>and</code> a
+      <code>or</code>.
+      <br />
+      <br />
+      <p>
+        Zároveň možeme podmienky v dotazoch negovať pomocou <code>not</code>.
+      </p>
+    </p>
+  </div>
+
+  <div slot="right" set:html={highlightedTypes} />
+</Slide>

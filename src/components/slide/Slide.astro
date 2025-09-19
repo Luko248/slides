@@ -4,67 +4,39 @@ import { tv } from "tailwind-variants";
 interface Props {
   title?: string;
   desc?: string;
+  order?: number;
+  sampleUrl?: string;
   image?: {
     url: string;
     width?: number;
     height?: number;
     alt?: string;
   };
-  centerContent?: boolean;
+  center?: boolean;
   speaker?: boolean;
 }
 
-const { title, desc, image, centerContent, speaker } = Astro.props;
+const { title, desc, order, sampleUrl, image, center, speaker } = Astro.props;
 
-const slideVariants = tv({
-  base: "h-svh grid gap-[8svb] p-[8svb] bg-white/90 backdrop-blur-lg relative z-50",
-  variants: {
-    layout: {
-      default: "content-start",
-      center: "content-center",
-      speaker: "grid-rows-[auto_1fr] content-start",
-    },
-  },
-  defaultVariants: {
-    layout: "default",
-  },
-});
+// Base classes for different layouts
+const getSlideClasses = () => {
+  const base =
+    "h-svh grid gap-[8svb] p-[8svb] bg-white/90 backdrop-blur-lg relative z-50";
+  if (speaker) return `${base} grid-rows-[auto_1fr] content-start`;
+  if (center) return `${base} content-center`;
+  return `${base} content-start`;
+};
 
-const titleVariants = tv({
-  base: "font-bold text-theme-500",
-  variants: {
-    size: {
-      default: "text-6xl",
-      large: "text-8xl text-center",
-    },
-  },
-  defaultVariants: {
-    size: "default",
-  },
-});
+const getTitleClasses = () => {
+  const base = "font-bold text-theme-500";
+  return center ? `${base} text-8xl text-center` : `${base} text-6xl`;
+};
 
-const contentVariants = tv({
-  base: "max-w-none left",
-  variants: {
-    span: {
-      default: "",
-      full: "col-span-2",
-    },
-    type: {
-      default: "",
-      speaker: "self-start",
-    },
-  },
-  defaultVariants: {
-    span: "default",
-    type: "default",
-  },
-});
-
-const getLayoutVariant = () => {
-  if (speaker) return "speaker";
-  if (centerContent) return "center";
-  return "default";
+const getContentClasses = () => {
+  const base = "max-w-none left";
+  if (center) return `${base} col-span-2`;
+  if (speaker) return `${base} self-start`;
+  return base;
 };
 ---
 
@@ -125,9 +97,9 @@ const getLayoutVariant = () => {
   }
 </style>
 
-<section class={slideVariants({ layout: getLayoutVariant() })}>
-  <div class="top">
-    <h2 class={titleVariants({ size: centerContent ? "large" : "default" })}>
+<section class={getSlideClasses()} data-order={order}>
+  <div class={`top ${sampleUrl ? 'flex flex-row flex-nowrap justify-between items-start' : ''}`}>
+    <h2 class={getTitleClasses()}>
       <slot name="title">{title}</slot>
       {
         desc && (
@@ -137,15 +109,22 @@ const getLayoutVariant = () => {
         )
       }
     </h2>
+    {
+      sampleUrl && (
+        <a
+          href={sampleUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-theme-500 hover:bg-theme-600 transition-colors duration-200 ease-in-out font-semibold px-10 py-5 text-3xl rounded-[.25em] uppercase text-white"
+        >
+          Demo
+        </a>
+      )
+    }
   </div>
 
-  <div class="grid grid-cols-[7fr_5fr] gap-[8svb] align-center">
-    <div
-      class={contentVariants({
-        span: centerContent ? "full" : "default",
-        type: speaker ? "speaker" : "default",
-      })}
-    >
+  <div class="grid grid-cols-[7fr_5fr] gap-[8svb] align-start">
+    <div class={getContentClasses()}>
       <slot name="left">
         <slot />
       </slot>

@@ -1,8 +1,15 @@
 ---
 import Slide from "../components/slide/Slide.astro";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
 ---
 
 <Slide
+  order={order}
   title="Kto Som?"
   desc="Lukáš Chylík"
   image={{ url: "/slides/assets/me.webp", alt: "Lukáš Chylík" }}
