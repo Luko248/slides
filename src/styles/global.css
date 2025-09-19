@@ -7,71 +7,14 @@
   --color-blue-500: hsl(207.67 100% 51.96%);
   --text-8xl: 12svb;
   --text-6xl: 8svb;
+  --paragraph-dynamic: 3svb;
 
   /* League Spartan font family for headings */
   --font-family-heading: "League Spartan", sans-serif;
   --font-family-spartan: "League Spartan", sans-serif;
 }
 
-/* Configure all heading elements with League Spartan font */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-family-heading);
-  font-weight: 600;
-  color: black;
-  font-optical-sizing: auto;
-  font-style: normal;
-}
-
-ul {
-  display: grid;
-  @apply list-disc list-inside gap-8;
-
-  li {
-    @apply font-semibold text-gray-900;
-    font-size: 3.5svb;
-    text-box: trim-start cap text;
-
-    &::marker {
-      display: grid;
-      place-items: center;
-      content: "●";
-      font-size: 0.75em;
-      color: var(--color-theme-500);
-    }
-  }
-
-  code {
-    @apply bg-theme-200 px-2 rounded-[.25em] text-[.8em];
-  }
-
-  ul {
-    @apply mt-2;
-  }
-
-  ul li {
-    @apply font-normal text-gray-700;
-    font-size: 0.75em;
-    padding-inline-start: 1.2em;
-
-    &::marker {
-      font-size: 0;
-    }
-  }
-}
-
-p {
-  @apply font-normal text-black;
-  font-size: 3svb;
-}
-
-pre.shiki {
-  font-size: 2svb;
-}
+/* Main carousel */
 
 .presentation {
   overflow-y: scroll;
@@ -94,6 +37,70 @@ pre.shiki {
   block-size: 1rem;
   gap: 1rem;
   z-index: 100;
+}
+
+/* Configure all heading elements with League Spartan font */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family-heading);
+  font-weight: 600;
+  color: black;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+ul {
+  margin-block-start: 2svb;
+  display: grid;
+  @apply list-disc list-inside gap-8;
+
+  li {
+    @apply font-semibold text-gray-900;
+    font-size: var(--paragraph-dynamic);
+    text-box: trim-start cap text;
+    padding-inline-start: 1svi;
+
+    &::marker {
+      display: grid;
+      place-items: center;
+      content: "●";
+      font-size: 0.75em;
+      color: var(--color-theme-500);
+    }
+  }
+
+  code {
+    @apply bg-theme-200 px-3 rounded-[.25em] text-[.8em] font-light;
+    margin-inline-start: 0.75svi;
+  }
+
+  ul {
+    @apply mt-2;
+  }
+
+  ul li {
+    @apply font-normal text-gray-700;
+    font-size: 0.75em;
+    padding-inline-start: 1.2em;
+
+    &::marker {
+      font-size: 0;
+    }
+  }
+}
+
+p {
+  @apply font-normal text-black;
+  font-size: var(--paragraph-dynamic);
+}
+
+/* Syntax highlighting customization */
+pre.shiki {
+  font-size: 2svb;
 }
 
 .shiki.github-light {
