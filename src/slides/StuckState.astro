@@ -1,0 +1,41 @@
+---
+import Slide from "../components/slide/Slide.astro";
+import { codeToHtml } from "shiki";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const stuckedTypes = `/* Prichytený zhora */
+@container scroll-state(stuck: top | block-start) { /* ... */ }
+/* Prichytený zdola */
+@container scroll-state(stuck: bottom | block-end) { /* ... */ }
+/* Prichytený zľava */
+@container scroll-state(stuck: left | inline-start) { /* ... */ }
+/* Prichytený zprava */
+@container scroll-state(stuck: right | inline-end) { /* ... */ }
+`;
+
+const highlightedTypes = await codeToHtml(stuckedTypes, {
+  lang: "css",
+  theme: "github-light",
+});
+---
+
+<Slide title="Stuck state" desc="Detekcia možnosti scrollovania" order={order}>
+  <div slot="left">
+    <p>
+      Pomocou kľúčového slova <code>stuck</code>
+      zistíme, či je container prichytený z niektorej zo štyroch možných strán pomocou
+      <code>position: sticky;</code>
+    </p>
+    <br />
+    <p>
+      Dotaz takisto ako <code>scrollable</code> podporuje logické osy
+      <code>inline</code> a <code>block</code>.
+    </p>
+  </div>
+  <div slot="right" set:html={highlightedTypes} />
+</Slide>

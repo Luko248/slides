@@ -1,0 +1,62 @@
+---
+import Slide from "../components/slide/Slide.astro";
+import { codeToHtml } from "shiki";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const snapTypes = `.carousel {
+  overflow: auto clip;
+  scroll-snap-type: x mandatory;
+
+  > .card {
+    container-type: scroll-state;
+    scroll-snap-align: center;
+
+    @supports (container-type: scroll-state) {
+      > * {
+        transition: opacity .5s ease;
+
+        @container not scroll-state(snapped: x) {
+          opacity: .25;
+        }
+      }
+    }
+  }
+}`;
+
+const highlightedTypes = await codeToHtml(snapTypes, {
+  lang: "css",
+  theme: "github-light",
+});
+---
+
+<Slide
+  title="Snap state"
+  desc="Reálny príklad"
+  sampleUrl="https://codepen.io/luko248/pen/jEOQOGw?editors=1100"
+  order={order}
+>
+  <div slot="left">
+    <p>
+      Máme horizontálny <code>carousel</code> s niekoľkými <code>card</code>
+      elementmi.
+    </p>
+    <br />
+    <p>
+      Všetky <code>card</code> elementy majú <code>opacity: .25</code>, ten
+      ktorý je práve <code>snapped</code> má <code>opacity: 1</code>.
+    </p>
+    <br />
+    <br />
+    <p>
+      <strong>Tip 🚀</strong><br />
+      <code>scroll-snap-align: center</code> zabezpečuje, že sa
+      <code>card</code> elementy zobrazi v strede.
+    </p>
+  </div>
+  <div slot="right" set:html={highlightedTypes} />
+</Slide>

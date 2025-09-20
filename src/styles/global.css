@@ -78,8 +78,13 @@ ul {
       color: var(--color-theme-500);
     }
   }
-  code {
+  :where(code, span) {
     margin-inline-start: 0.75svi;
+  }
+
+  span {
+    text-box: trim-both cap text;
+    line-height: 1;
   }
 
   ul {
@@ -103,7 +108,7 @@ p {
 }
 
 :where(p, ul) code {
-  @apply bg-theme-200 px-3 rounded-[.25em] text-[.8em] font-light;
+  @apply bg-theme-200 px-2 rounded-[.25em] text-[.8em] font-light;
 }
 
 /* Syntax highlighting customization */

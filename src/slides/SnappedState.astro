@@ -1,0 +1,39 @@
+---
+import Slide from "../components/slide/Slide.astro";
+import { codeToHtml } from "shiki";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const snapTypes = `/* Zmena snap pozície na x osi */
+@container scroll-state(snapped: x) {}
+/* Zmena snap pozície na y osi */
+@container scroll-state(snapped: y) {}
+/* Zmena snap pozície na inline osi */
+@container scroll-state(snapped: inline) {}
+/* Zmena snap pozície na block osi */
+@container scroll-state(snapped: block) {}`;
+
+const highlightedTypes = await codeToHtml(snapTypes, {
+  lang: "css",
+  theme: "github-light",
+});
+---
+
+<Slide title="Snap state" desc="Identifikacia snap pozície" order={order}>
+  <div slot="left">
+    <p>
+      Pomocou kľúčového slova <code>snapped</code>
+      zistíme, či sa zmenila <code>snap</code> pozícia containera.
+    </p>
+    <br />
+    <p>
+      Rovnako ako ostatné scroll-state queries podporuje aj snapped
+      <code>inline</code> a <code>block</code> logické osy.
+    </p>
+  </div>
+  <div slot="right" set:html={highlightedTypes} />
+</Slide>

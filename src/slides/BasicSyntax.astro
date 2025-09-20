@@ -12,6 +12,8 @@ const scrollStateBasicSyntax = `/* Základná syntax */
 .container {
   container-type: scroll-state;
   container-name: my-container;
+  /* Skratka */
+  container: my-container / scroll-state; 
 }
 
 @container my-container scroll-state(scrollable: top) {
@@ -39,9 +41,9 @@ const highlightedBasicSyntax = await codeToHtml(scrollStateBasicSyntax, {
     <br />
     <br />
     <p>
-      Pokiaľ chceme štýl priradiť ku konkrétnemu kontaineru, môžeme použiť <code
-        >container-name</code
-      >.
+      Pokiaľ chceme vyhľad priradiť ku konkrétnemu conteineru, môžeme použiť
+      vlastnosť
+      <code>container-name</code>.
       <br />
       <br />
       <strong>Táto možnosť je voliteľná.</strong>

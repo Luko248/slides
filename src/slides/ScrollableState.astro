@@ -28,12 +28,15 @@ const highlightedTypes = await codeToHtml(scrollStateTypes, {
 });
 ---
 
-<Slide title="scrollable" desc="Detekcia možnosti scrollovania" order={order}>
+<Slide
+  title="Scrollable state"
+  desc="Detekcia možnosti scrollovania"
+  order={order}
+>
   <div slot="left">
     <p>
-      Pomocou kľúčového slova <code>scrollable</code>
-      zistíme, či je vybraný element možné aktuálne scrollovať z niektorej zo štyroch
-      možných strán.
+      Použitím kľúčového slova <code>scrollable</code> v dotaze zistíme, či je container
+      aktuálne možné scrollovať z niektorej zo štyroch možných strán.
     </p>
     <br />
     <p>

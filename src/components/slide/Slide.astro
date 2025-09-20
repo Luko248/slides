@@ -85,20 +85,22 @@ const getContentClasses = () => {
       }
     }
     .top {
-      transition-delay: 400ms;
+      transition-delay: 500ms;
     }
 
     .left {
       transition-delay: 600ms;
     }
     .right {
-      transition-delay: 800ms;
+      transition-delay: 700ms;
     }
   }
 </style>
 
 <section class={getSlideClasses()} data-order={order}>
-  <div class={`top ${sampleUrl ? 'flex flex-row flex-nowrap justify-between items-start' : ''}`}>
+  <div
+    class={`top ${sampleUrl ? "flex flex-row flex-nowrap justify-between items-start" : ""}`}
+  >
     <h2 class={getTitleClasses()}>
       <slot name="title">{title}</slot>
       {

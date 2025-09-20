@@ -1,0 +1,44 @@
+---
+import Slide from "../components/slide/Slide.astro";
+import { codeToHtml } from "shiki";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const stuckedTypes = `.stuck-top {
+  container-type: scroll-state;
+  position: sticky;
+  top: 0;
+
+  > nav {
+    @container scroll-state(stuck: top) {
+      background-color: Highlight;
+      color: HighlightText;
+    }
+  }
+}`;
+
+const highlightedTypes = await codeToHtml(stuckedTypes, {
+  lang: "css",
+  theme: "github-light",
+});
+---
+
+<Slide
+  title="Stuck state"
+  desc="Reálny príklad"
+  sampleUrl="https://codepen.io/luko248/pen/QwWMGjb?editors=1100"
+  order={order}
+>
+  <div slot="left">
+    <p>
+      Po prichytení conteineru zhora sa zmení vzhľad jeho potomka, v tomto
+      prípade
+      <code>nav</code> elementu.
+    </p>
+  </div>
+  <div slot="right" set:html={highlightedTypes} />
+</Slide>

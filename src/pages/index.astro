@@ -5,12 +5,16 @@ import Progress from "../components/progress/Progress.astro";
 import "../styles/global.css";
 
 // Import all slide components
-import TitleSlide from "../slides/TitleSlide.astro";
-import SpeakerSlide from "../slides/SpeakerSlide.astro";
-import IntroSlide from "../slides/IntroSlide.astro";
-import BasicSyntaxSlide from "../slides/BasicSyntaxSlide.astro";
-import ScrollableBasicsSlide from "../slides/ScrollableBasicsSlide.astro";
-import ScrollableAdvancedSlide from "../slides/ScrollableAdvancedSlide.astro";
+import BasicSyntax from "../slides/BasicSyntax.astro";
+import Intro from "../slides/Intro.astro";
+import Main from "../slides/Main.astro";
+import ScrollableState from "../slides/ScrollableState.astro";
+import Speaker from "../slides/Speaker.astro";
+import ScrollableStateAdvanced from "../slides/ScrollableStateAdvanced.astro";
+import StuckState from "../slides/StuckState.astro";
+import StuckStateAdvanced from "../slides/StuckStateAdvanced.astro";
+import SnappedState from "../slides/SnappedState.astro";
+import SnappedStateAdvanced from "../slides/SnappedStateAdvanced.astro";
 ---
 
 <html lang="sk">
@@ -41,12 +45,16 @@ import ScrollableAdvancedSlide from "../slides/ScrollableAdvancedSlide.astro";
     <div class="presentation max-h-svh relative">
       <Lava />
       <Progress />
-      <TitleSlide order={1} />
-      <SpeakerSlide order={2} />
-      <IntroSlide order={3} />
-      <BasicSyntaxSlide order={4} />
-      <ScrollableBasicsSlide order={5} />
-      <ScrollableAdvancedSlide order={6} />
+      <Main order={1} />
+      <Speaker order={2} />
+      <Intro order={3} />
+      <BasicSyntax order={4} />
+      <ScrollableState order={5} />
+      <ScrollableStateAdvanced order={6} />
+      <StuckState order={7} />
+      <StuckStateAdvanced order={8} />
+      <SnappedState order={9} />
+      <SnappedStateAdvanced order={10} />
     </div>
     <Footer />
   </body>
