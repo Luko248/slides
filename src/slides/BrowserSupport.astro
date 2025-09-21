@@ -1,6 +1,5 @@
 ---
 import Slide from "../components/slide/Slide.astro";
-import { codeToHtml } from "shiki";
 
 interface Props {
   order?: number;
@@ -11,7 +10,7 @@ const { order } = Astro.props;
 
 <Slide
   title="Podpora prehliadačov"
-  desc="TODO"
+  desc="Global: 67.79%"
   image={{
     url: "/slides/assets/support.avif",
     alt: "Podpora prehliadačov",
@@ -21,6 +20,12 @@ const { order } = Astro.props;
   order={order}
 >
   <div slot="left">
-    <p>TODO</p>
+    <p>
+      CSS container scroll-state queries podporujú všetky prehliadače
+      <br />založené na <strong>Chromium</strong>.
+      <br />
+      <br />
+      Safari a Firefox túto funkcionalitu <strong>zatiaľ nepodporujú</strong>.
+    </p>
   </div>
 </Slide>
