@@ -76,7 +76,7 @@ const getContentClasses = () => {
       scale: 1.5;
       z-index: 2;
     }
-    :is(.top, .left, .right) {
+    :where(.top, .left, .right) {
       opacity: 0;
       transition: opacity 200ms ease-in;
 
@@ -84,6 +84,19 @@ const getContentClasses = () => {
         opacity: 1;
       }
     }
+
+    .right:has(> img[alt="Lukáš Chylík"]) {
+      opacity: 1;
+      transition:
+        opacity 200ms ease-in,
+        translate 200ms ease-in;
+
+      @container scroll-state(not (snapped: block)) {
+        translate: 0 100%;
+        opacity: 0;
+      }
+    }
+
     .top {
       transition-delay: 500ms;
     }
