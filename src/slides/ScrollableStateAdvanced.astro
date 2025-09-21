@@ -8,7 +8,25 @@ interface Props {
 
 const { order } = Astro.props;
 
-const scrollStateTypes = `/* TODO */`;
+const scrollStateTypes = `nav {
+  container-type: scroll-state inline-size;
+  overflow: auto clip;
+
+  &:before {
+    mask: linear-gradient(
+      90deg, black 0%, transparent var(--mask-left, 0%),
+      transparent var(--mask-right, 100%, black 100%
+    );
+
+    @container scroll-state(scrollable: inline-start) {
+      --mask-left: 15%;
+    }
+
+    @container scroll-state(scrollable: inline-end) {
+      --mask-right: 85%;
+    }
+  }
+}`;
 
 const highlightedTypes = await codeToHtml(scrollStateTypes, {
   lang: "css",
@@ -18,21 +36,14 @@ const highlightedTypes = await codeToHtml(scrollStateTypes, {
 
 <Slide
   title="Scrollable state"
-  desc="Pokročilé možnosti"
-  sampleUrl="https://codepen.io/web-dot-dev/pen/OPLZWBj"
+  desc="Reálny príklad"
+  sampleUrl="https://codepen.io/luko248/pen/KwKvNdV?editors=1100"
   order={order}
 >
   <div slot="left">
     <p>
-      Jednotlivé dotazy je možné kombinovať pomocou<br />
-      logických operátorov
-      <code>and</code> a
-      <code>or</code>.
-      <br />
-      <br />
-      <p>
-        Zároveň možeme podmienky v dotazoch negovať pomocou <code>not</code>.
-      </p>
+      Mobilná <strong>breadcrumbs</strong> navigácia, ktorá svojím vzhľadom indikuje
+      či je možné scrollovať vľavo/vpravo.
     </p>
   </div>
 
