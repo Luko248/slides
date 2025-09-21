@@ -1,0 +1,43 @@
+---
+import Slide from "../components/slide/Slide.astro";
+import { codeToHtml } from "shiki";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const scrollStateBasicSyntax = `/* Je možné scrollovať hore alebo NIE dolu */
+@container scroll-state((scrollable: top) or (not (scrollable: bottom))) {
+  .arrow-down { opacity: 1; }
+}
+
+/* Je možné scrollovať hore a NIE dolu */
+@container scroll-state((scrollable: top) and (not (scrollable: bottom))) {
+  .arrow-down { rotate: .5turn; }
+}
+`;
+
+const highlightedBasicSyntax = await codeToHtml(scrollStateBasicSyntax, {
+  lang: "css",
+  theme: "github-light",
+});
+---
+
+<Slide title="Pokročilé nastavenia" desc="Reťazenie a negácia" order={order}>
+  <div slot="left">
+    <p>
+      Jednotlivé dotazy je možné kombinovať pomocou<br />
+      logických operátorov
+      <code>and</code> a
+      <code>or</code>.
+    </p>
+    <br />
+    <br />
+    <p>
+      Zároveň možeme podmienky v dotazoch negovať pomocou <code>not</code>.
+    </p>
+  </div>
+  <div slot="right" set:html={highlightedBasicSyntax} />
+</Slide>

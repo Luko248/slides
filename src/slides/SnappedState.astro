@@ -9,13 +9,13 @@ interface Props {
 const { order } = Astro.props;
 
 const snapTypes = `/* Zmena snap pozície na x osi */
-@container scroll-state(snapped: x) {}
+@container scroll-state(snapped: x) { /* ... */ }
 /* Zmena snap pozície na y osi */
-@container scroll-state(snapped: y) {}
+@container scroll-state(snapped: y) { /* ... */ }
 /* Zmena snap pozície na inline osi */
-@container scroll-state(snapped: inline) {}
+@container scroll-state(snapped: inline) { /* ... */ }
 /* Zmena snap pozície na block osi */
-@container scroll-state(snapped: block) {}`;
+@container scroll-state(snapped: block) { /* ... */ }`;
 
 const highlightedTypes = await codeToHtml(snapTypes, {
   lang: "css",
