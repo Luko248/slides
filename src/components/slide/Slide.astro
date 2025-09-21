@@ -21,7 +21,7 @@ const { title, desc, order, sampleUrl, image, center, speaker } = Astro.props;
 // Base classes for different layouts
 const getSlideClasses = () => {
   const base =
-    "h-svh grid gap-[8svb] p-[8svb] bg-white/90 backdrop-blur-lg relative z-50";
+    "h-svh grid gap-[8svb] p-[8svb] bg-white/85 backdrop-blur-lg relative z-50";
   if (speaker) return `${base} grid-rows-[auto_1fr] content-start`;
   if (center) return `${base} content-center`;
   return `${base} content-start`;
