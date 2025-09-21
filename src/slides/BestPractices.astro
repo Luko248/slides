@@ -1,14 +1,46 @@
 ---
 import Slide from "../components/slide/Slide.astro";
+import { codeToHtml } from "shiki";
+
 interface Props {
   order?: number;
 }
 
 const { order } = Astro.props;
+
+const bestPractices = `/* použitie scroll-state */
+@supports (container-type: scroll-state) {
+
+  /* vypnúť animácie v scroll-state */
+  @media (prefers-reduced-motion: reduce) {
+    
+    @container scroll-state(*) {
+      transition: none;
+      animation: none;
+    }
+  }
+}`;
+
+const highlightedBestPractices = await codeToHtml(bestPractices, {
+  lang: "css",
+  theme: "github-light",
+});
 ---
 
 <Slide title="Best practices" desc="Fallback & accessibility" order={order}>
   <div slot="left">
-    <p>TODO</p>
+    <p>
+      Vždy používajte <code>@supports</code> pravidlo pre zistenie podpory prehlíadačom.
+    </p>
+    <br />
+    <br />
+    <p>
+      Aby bola pre uživateľa zabezpečená prístupnosť a pohodlné používanie
+      nezabudnite vždy pri prechdových animáciach pomoocu
+      <code>scroll-state()</code> rešpektovať preferenciu používateľa na zníženie
+      pohybu na webe použitím
+      <code>@media (prefers-reduced-motion: reduce)</code>.
+    </p>
   </div>
+  <div slot="right" set:html={highlightedBestPractices} />
 </Slide>

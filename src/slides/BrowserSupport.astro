@@ -1,0 +1,16 @@
+---
+import Slide from "../components/slide/Slide.astro";
+import { codeToHtml } from "shiki";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide title="Podpora prehliadačov" desc="TODO" order={order}>
+  <div slot="left">
+    <p>TODO</p>
+  </div>
+</Slide>
