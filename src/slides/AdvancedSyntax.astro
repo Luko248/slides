@@ -8,12 +8,12 @@ interface Props {
 
 const { order } = Astro.props;
 
-const scrollStateBasicSyntax = `/* Je možné scrollovať hore alebo NIE dolu */
+const scrollStateBasicSyntax = `/* Je možné scrollovať hore ALEBO NIE dolu */
 @container scroll-state((scrollable: top) or (not (scrollable: bottom))) {
   .arrow-down { opacity: 1; }
 }
 
-/* Je možné scrollovať hore a NIE dolu */
+/* Je možné scrollovať hore A NIE dolu */
 @container scroll-state((scrollable: top) and (not (scrollable: bottom))) {
   .arrow-down { rotate: .5turn; }
 }
