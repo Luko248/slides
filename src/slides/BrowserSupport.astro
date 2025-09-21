@@ -9,7 +9,17 @@ interface Props {
 const { order } = Astro.props;
 ---
 
-<Slide title="Podpora prehliadačov" desc="TODO" order={order}>
+<Slide
+  title="Podpora prehliadačov"
+  desc="TODO"
+  image={{
+    url: "/slides/assets/support.avif",
+    alt: "Podpora prehliadačov",
+    width: 400,
+    height: 500,
+  }}
+  order={order}
+>
   <div slot="left">
     <p>TODO</p>
   </div>
