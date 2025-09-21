@@ -1,5 +1,6 @@
 ---
 import { tv } from "tailwind-variants";
+import Heart from "../heart/Heart.astro";
 
 interface Props {
   title?: string;
@@ -14,9 +15,11 @@ interface Props {
   };
   center?: boolean;
   speaker?: boolean;
+  outro?: boolean;
 }
 
-const { title, desc, order, sampleUrl, image, center, speaker } = Astro.props;
+const { title, desc, order, sampleUrl, image, center, speaker, outro } =
+  Astro.props;
 
 // Base classes for different layouts
 const getSlideClasses = () => {
@@ -33,7 +36,7 @@ const getTitleClasses = () => {
 };
 
 const getContentClasses = () => {
-  const base = "max-w-none left";
+  const base = "max-w-none left [&:empty]:hidden";
   if (center) return `${base} col-span-2`;
   if (speaker) return `${base} self-start`;
   return base;
@@ -42,10 +45,15 @@ const getContentClasses = () => {
 
 <style>
   section {
+    position: relative;
     container-type: scroll-state;
     scroll-snap-align: center;
     scroll-snap-stop: always;
     counter-increment: slides-counter;
+
+    &:last-of-type .top + div {
+      display: none;
+    }
 
     &::scroll-marker {
       color: transparent;
@@ -61,19 +69,19 @@ const getContentClasses = () => {
       box-sizing: border-box;
       border-radius: 100vmax;
       border: 2px solid var(--color-theme-500);
-      scale: 1;
+      scale: 1 !important;
       z-index: 1;
       transition:
-        scale 0.3s ease,
-        color 0.3s ease,
-        background-color 0.3s ease;
+        scale 0.25s ease,
+        color 0.25s ease,
+        background-color 0.25s ease;
     }
 
     &::scroll-marker:target-current {
       --marker-bg: var(--color-theme-500);
       color: white;
       opacity: 1;
-      scale: 1.5;
+      scale: 1.5 !important;
       z-index: 2;
     }
     :where(.top, .left, .right) {
@@ -111,6 +119,7 @@ const getContentClasses = () => {
 </style>
 
 <section class={getSlideClasses()} data-order={order}>
+  {outro && <Heart />}
   <div
     class={`top ${sampleUrl ? "flex flex-row flex-nowrap justify-between items-start" : ""}`}
   >
@@ -138,13 +147,15 @@ const getContentClasses = () => {
     }
   </div>
 
-  <div class="grid grid-cols-[7fr_5fr] gap-[8svb] align-start">
+  <div
+    class="grid grid-cols-[7fr_5fr] gap-[8svb] align-start [&:has(.left:empty,.right:empty)]:hidden"
+  >
     <div class={getContentClasses()}>
       <slot name="left">
         <slot />
       </slot>
     </div>
-    <div class="right relative grid items-center">
+    <div class="right relative grid items-center [&:empty]:hidden">
       <slot name="right">
         {
           image && (

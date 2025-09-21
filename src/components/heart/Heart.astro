@@ -1,0 +1,51 @@
+<style>
+  :root {
+    --rect: 250px;
+  }
+
+  .slide-animation {
+    animation: slideAround 10s infinite alternate linear;
+    will-change: grid-template-columns, grid-template-rows;
+  }
+
+  .rect-size {
+    block-size: var(--rect);
+  }
+
+  @keyframes slideAround {
+    0% {
+      grid-template-columns: 70% 1fr;
+      grid-template-rows: var(--rect) 1fr;
+    }
+    25% {
+      grid-template-columns: 20% 1fr;
+      grid-template-rows: 100% 1fr;
+    }
+    50% {
+      grid-template-columns: 50% 1fr;
+      grid-template-rows: var(--rect) 1fr;
+    }
+    75% {
+      grid-template-columns: var(--rect) 1fr;
+      grid-template-rows: 70% 1fr;
+    }
+    100% {
+      grid-template-columns: 100% 1fr;
+      grid-template-rows: 100% 1fr;
+    }
+  }
+</style>
+
+<div class="grid absolute inset-0 h-screen overflow-clip slide-animation -z-10">
+  <div
+    class="grid place-items-center place-self-end rect-size aspect-square box-border"
+  >
+    <img
+      class="mx-auto object-cover"
+      src="/slides/assets/heart-symbol.svg"
+      alt="Frontendisti heart symbol"
+      width="250"
+      height="250"
+    />
+  </div>
+</div>

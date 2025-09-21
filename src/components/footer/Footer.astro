@@ -1,13 +1,6 @@
 <style>
-  footer {
-    &:after {
-      content: attr(data-slides-count);
-      color: white;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      translate: 25% -50%;
-    }
+  .presentation:has(> section::scroll-marker:target-current) + footer {
+    display: none;
   }
 </style>
 
