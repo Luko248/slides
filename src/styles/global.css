@@ -69,6 +69,7 @@ ul {
     font-size: var(--paragraph-dynamic);
     text-box: trim-start cap text;
     padding-inline-start: 1svi;
+    font-weight: 400;
 
     &::marker {
       display: grid;
