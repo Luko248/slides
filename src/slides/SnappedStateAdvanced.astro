@@ -16,13 +16,10 @@ const snapTypes = `.carousel {
     container-type: scroll-state;
     scroll-snap-align: center;
 
-    @supports (container-type: scroll-state) {
-      > * {
-        transition: opacity .5s ease;
-
-        @container not scroll-state(snapped: x) {
-          opacity: .25;
-        }
+    > * {
+      transition: opacity .5s ease;
+      @container not scroll-state(snapped: x) {
+        opacity: .25;
       }
     }
   }
@@ -42,20 +39,14 @@ const highlightedTypes = await codeToHtml(snapTypes, {
 >
   <div slot="left">
     <p>
-      Máme horizontálny <code>carousel</code> s niekoľkými <code>card</code>
+      Horizontálny <code>carousel</code> s niekoľkými <code>card</code>
       elementmi.
     </p>
     <br />
     <p>
-      Všetky <code>card</code> elementy majú <code>opacity: .25</code>, ten
-      ktorý je práve <code>snapped</code> má <code>opacity: 1</code>.
-    </p>
-    <br />
-    <br />
-    <p>
-      <strong>Tip 🚀</strong><br />
-      <code>scroll-snap-align: center</code> zabezpečuje, že sa
-      <code>card</code> element zobrazi v strede.
+      <code>card</code> elementy ktoré <strong>nemajú</strong> práve <code
+        >snapped</code
+      > pozíciu, majú nastavenú <code>opacity: .25</code>.
     </p>
   </div>
   <div slot="right" set:html={highlightedTypes} />

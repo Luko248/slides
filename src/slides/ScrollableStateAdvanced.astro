@@ -15,13 +15,11 @@ const scrollStateTypes = `nav {
   &:before {
     mask: linear-gradient(
       90deg, black 0%, transparent var(--mask-left, 0%),
-      transparent var(--mask-right, 100%), black 100%
-    );
+      transparent var(--mask-right, 100%), black 100%);
 
     @container scroll-state(scrollable: inline-start) {
       --mask-left: 15%;
     }
-
     @container scroll-state(scrollable: inline-end) {
       --mask-right: 85%;
     }

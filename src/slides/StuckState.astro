@@ -27,15 +27,13 @@ const highlightedTypes = await codeToHtml(stuckedTypes, {
 <Slide title="Stuck state" desc="Sledovanie prichytania elementu" order={order}>
   <div slot="left">
     <p>
-      Pomocou kľúčového slova <code>stuck</code>
-      zistíme, či je container prichytený z niektorej zo štyroch možných strán pomocou
-      <code>position: sticky;</code>
+      <code>stuck</code> detekuje, či je element prichytený cez <code
+        >position: sticky</code
+      >
     </p>
     <br />
-    <p>
-      Dotaz takisto ako <code>scrollable</code> podporuje logické osy
-      <code>inline</code> a <code>block</code>.
-    </p>
+    <br />
+    <p>Podporuje fyzické aj logické smery.</p>
   </div>
   <div slot="right" set:html={highlightedTypes} />
 </Slide>

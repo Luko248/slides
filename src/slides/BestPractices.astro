@@ -8,7 +8,7 @@ interface Props {
 
 const { order } = Astro.props;
 
-const bestPractices = `/* Použitie scroll-state */
+const bestPractices = `/* Podpora scroll-state */
 @supports (container-type: scroll-state) {
 
   /* Vypnúť animácie v scroll-state */
@@ -30,16 +30,15 @@ const highlightedBestPractices = await codeToHtml(bestPractices, {
 <Slide title="Best practices" desc="Fallback & accessibility" order={order}>
   <div slot="left">
     <p>
-      Vždy používajte <code>@supports</code> pravidlo pre zistenie podpory prehliadačom.
+      Vždy používajte <code>@supports</code> pre detekciu podpory prehliadača.
     </p>
     <br />
     <br />
     <p>
-      Aby bola pre uživateľa zabezpečená prístupnosť a pohodlné používanie
-      nezabudnite vždy pri prechdových animáciach pomoocu
-      <code>scroll-state()</code> rešpektovať preferenciu používateľa na zníženie
-      pohybu na webe použitím
-      <code>@media (prefers-reduced-motion: reduce)</code>.
+      Rešpektujte <code>prefers-reduced-motion</code> pre accessibility.
+    </p>
+    <p>
+      Vypnite animácie v scroll-state pre používateľov s citlivosťou na pohyb.
     </p>
   </div>
   <div slot="right" set:html={highlightedBestPractices} />

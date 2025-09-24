@@ -8,7 +8,7 @@
   --color-blue-500: hsl(207.67 100% 51.96%);
   --text-8xl: 12svb;
   --text-6xl: 8svb;
-  --paragraph-dynamic: 3svb;
+  --paragraph-dynamic: 3.5svb;
 
   /* League Spartan font family for headings */
   --font-family-heading: "League Spartan", sans-serif;
@@ -114,7 +114,7 @@ p {
 
 /* Syntax highlighting customization */
 pre.shiki {
-  font-size: 2svb;
+  font-size: 2.25svb;
 }
 
 .shiki.min-light {

@@ -12,8 +12,6 @@ const scrollStateBasicSyntax = `/* Základná syntax */
 .container {
   container-type: scroll-state;
   container-name: my-container;
-  /* Skratka */
-  container: my-container / scroll-state; 
 }
 
 @container my-container scroll-state(scrollable: top) {
@@ -31,22 +29,20 @@ const highlightedBasicSyntax = await codeToHtml(scrollStateBasicSyntax, {
 <Slide title="Základná syntax" desc="Ako to funguje?" order={order}>
   <div slot="left">
     <p>
-      Rovnako ako u container queries je základom definovanie vlastnosti
-      <code>container-type</code> a následné použitie
-      <code>@container</code> pravidla.
-    </p>
-    <p>
-      Jednotlivé dotazy sú zapísané pomocou <code>scroll-state()</code> query.
+      Definícia pomocou <code>container-type: scroll-state</code> a použite
+      <br />pomocou
+      <code>@container</code> pravidla s <code>scroll-state()</code> query.
     </p>
     <br />
     <br />
     <p>
-      Pokiaľ chceme vyhľad priradiť ku konkrétnemu containeru, môžeme použiť
-      vlastnosť
-      <code>container-name</code>.
-      <br />
-      <br />
-      <strong>Táto možnosť je voliteľná.</strong>
+      <code>container-name</code> je voliteľné - cielenie na konkrétny container.
+    </p>
+    <br />
+    <br />
+    <p>
+      <strong>Skratka:</strong>
+      <code>container: name / scroll-state</code>
     </p>
   </div>
   <div slot="right" set:html={highlightedBasicSyntax} />

@@ -26,14 +26,11 @@ const highlightedTypes = await codeToHtml(snapTypes, {
 <Slide title="Snap state" desc="Identifikacia snap pozície" order={order}>
   <div slot="left">
     <p>
-      Pomocou kľúčového slova <code>snapped</code>
-      zistíme, či sa zmenila <code>snap</code> pozícia containera.
+      <code>snapped</code> detekuje zmenu snap pozície containera
     </p>
     <br />
-    <p>
-      Rovnako ako ostatné scroll-state queries podporuje aj snapped
-      <code>inline</code> a <code>block</code> logické osy.
-    </p>
+    <br />
+    <p>Podporuje fyzické aj logické osi.</p>
   </div>
   <div slot="right" set:html={highlightedTypes} />
 </Slide>

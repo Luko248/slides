@@ -35,14 +35,14 @@ const highlightedTypes = await codeToHtml(scrollStateTypes, {
 >
   <div slot="left">
     <p>
-      Použitím kľúčového slova <code>scrollable</code> v dotaze zistíme, či je container
-      aktuálne možné scrollovať z niektorej zo štyroch možných strán.
+      <code>scrollable</code> detekuje, či je možné scrollovať v danom smere.
     </p>
     <br />
+    <br />
     <p>
-      Dotaz podporuje logické osy
-      <code>inline</code> a <code>block</code>, čo je možné využiť pri práci s
-      CSS vlastnosťou <code>writing-mode</code>.
+      Podporuje ako fyzické smery <code>top</code>, <code>bottom</code>,
+      <code>left</code>, <code>right</code> tak aj logické <code>inline</code>,
+      <code>block</code> pre prácu s <code>writing-mode</code>.
     </p>
   </div>
   <div slot="right" set:html={highlightedTypes} />
