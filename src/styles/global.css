@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @theme {
+  /* Base colors */
   --black-trans: hsl(0 0% 0% / 0.5);
   --color-theme-500: hsl(283 91% 57%);
   --color-theme-600: hsl(283 91% 65%);
@@ -13,6 +14,18 @@
   /* League Spartan font family for headings */
   --font-family-heading: "League Spartan", sans-serif;
   --font-family-spartan: "League Spartan", sans-serif;
+
+  /* Elephant bone color for light mode background */
+  --color-elephant-bone: hsl(48 20% 96%);
+  
+  /* Theme colors using light-dark() function */
+  --color-bg-primary: light-dark(var(--color-elephant-bone), hsl(0 0% 10%));
+  --color-bg-secondary: light-dark(hsl(48 20% 96% / 0.85), hsl(0 0% 10% / 0.85));
+  --color-text-primary: light-dark(hsl(0 0% 0%), hsl(0 0% 100%));
+  --color-text-secondary: light-dark(hsl(0 0% 20%), hsl(0 0% 85%));
+  --color-gray-700: light-dark(hsl(0 0% 40%), hsl(0 0% 70%));
+  --color-gray-900: light-dark(hsl(0 0% 10%), hsl(0 0% 90%));
+  --color-code-bg: light-dark(hsl(279deg 92% 90%), hsl(283 91% 20%));
 }
 
 /* Main carousel */
@@ -54,7 +67,7 @@ h5,
 h6 {
   font-family: var(--font-family-heading);
   font-weight: 600;
-  color: black;
+  color: light-dark(black, white);
   font-optical-sizing: auto;
   font-style: normal;
 }
@@ -65,7 +78,8 @@ ul {
   @apply list-disc list-inside gap-8;
 
   li {
-    @apply font-semibold text-gray-900;
+    @apply font-semibold;
+    color: light-dark(hsl(0 0% 10%), hsl(0 0% 90%));
     font-size: var(--paragraph-dynamic);
     text-box: trim-start cap text;
     padding-inline-start: 1svi;
@@ -94,7 +108,8 @@ ul {
   }
 
   ul li {
-    @apply font-normal text-gray-700;
+    @apply font-normal;
+    color: light-dark(hsl(0 0% 40%), hsl(0 0% 70%));
     font-size: 0.75em;
     padding-inline-start: 1.2em;
 
@@ -105,21 +120,34 @@ ul {
 }
 
 p {
-  @apply font-normal text-black;
+  @apply font-normal;
+  color: light-dark(black, white);
   font-size: var(--paragraph-dynamic);
 }
 
 :where(p, ul) code {
-  @apply bg-theme-200 px-2 rounded-[.25em] text-[.8em] font-light;
+  @apply px-2 rounded-[.25em] text-[.8em] font-light;
+  background-color: light-dark(hsl(279deg 92% 90%), hsl(283 91% 20%));
+  color: light-dark(black, white);
 }
 
 /* Syntax highlighting customization */
 pre.shiki {
   font-size: 2.25svb;
+  background-color: transparent !important;
 }
 
-.shiki.github-light {
-  background-color: transparent !important;
+/* Dual theme support for Shiki */
+.shiki,
+.shiki span {
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
+}
+
+.dark .shiki,
+.dark .shiki span {
+  color: var(--shiki-dark);
+  background-color: var(--shiki-dark-bg);
 }
 
 img[alt="Lukáš Chylík"] {

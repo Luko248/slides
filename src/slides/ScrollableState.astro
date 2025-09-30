@@ -1,6 +1,6 @@
 ---
 import Slide from "../components/slide/Slide.astro";
-import { codeToHtml } from "shiki";
+import { highlightCode } from "../utils/shiki-helper";
 
 interface Props {
   order?: number;
@@ -22,10 +22,7 @@ const scrollStateTypes = `/* Možné scrollovanie zhora */
 @container scroll-state(scrollable: y | block) { /* ... */ }
 `;
 
-const highlightedTypes = await codeToHtml(scrollStateTypes, {
-  lang: "css",
-  theme: "github-light",
-});
+const highlightedTypes = await highlightCode(scrollStateTypes, "css");
 ---
 
 <Slide

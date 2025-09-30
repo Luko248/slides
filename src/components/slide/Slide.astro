@@ -24,7 +24,8 @@ const { title, desc, order, sampleUrl, image, center, speaker, outro } =
 // Base classes for different layouts
 const getSlideClasses = () => {
   const base =
-    "h-svh grid gap-[8svb] p-[8svb] bg-white/85 backdrop-blur-lg relative z-50";
+    "h-svh grid gap-[8svb] p-[8svb] backdrop-blur-lg relative z-50 transition-colors duration-300";
+  const bgStyle = "style='background-color: var(--color-bg-secondary);'";
   if (speaker) return `${base} grid-rows-[auto_1fr] content-start`;
   if (center) return `${base} content-center`;
   return `${base} content-start`;
@@ -118,7 +119,7 @@ const getContentClasses = () => {
   }
 </style>
 
-<section class={getSlideClasses()} data-order={order}>
+<section class={getSlideClasses()} data-order={order} style="background-color: var(--color-bg-secondary);">
   {outro && <Heart />}
   <div
     class={`top ${sampleUrl ? "flex flex-row flex-nowrap justify-between items-start" : ""}`}
