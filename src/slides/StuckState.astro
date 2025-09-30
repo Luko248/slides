@@ -1,6 +1,6 @@
 ---
 import Slide from "../components/slide/Slide.astro";
-import { codeToHtml } from "shiki";
+import { highlightCode } from "../utils/shiki-helper";
 
 interface Props {
   order?: number;
@@ -18,10 +18,7 @@ const stuckedTypes = `/* Prichytený zhora */
 @container scroll-state(stuck: right | inline-end) { /* ... */ }
 `;
 
-const highlightedTypes = await codeToHtml(stuckedTypes, {
-  lang: "css",
-  theme: "github-light",
-});
+const highlightedTypes = await highlightCode(stuckedTypes, "css");
 ---
 
 <Slide title="Stuck state" desc="Sledovanie prichytania elementu" order={order}>

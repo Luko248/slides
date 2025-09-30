@@ -2,6 +2,7 @@
 import Footer from "../components/footer/Footer.astro";
 import Lava from "../components/lava/Lava.astro";
 import Progress from "../components/progress/Progress.astro";
+import ThemeToggle from "../components/theme-toggle/ThemeToggle.astro";
 import "../styles/global.css";
 
 // Import all slide components
@@ -29,6 +30,18 @@ import Intro2 from "../slides/Intro2.astro";
     <link rel="icon" type="image/svg+xml" href="/slides/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content="Astro" />
+    <script is:inline>
+      // Prevent flash of wrong theme - must run before page renders
+      (function() {
+        const getTheme = () => {
+          const stored = localStorage.getItem('theme');
+          if (stored) return stored;
+          return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        };
+        const theme = getTheme();
+        document.documentElement.style.colorScheme = theme;
+      })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -49,7 +62,8 @@ import Intro2 from "../slides/Intro2.astro";
     />
     <!-- Shiki syntax highlighting (server-side generated) -->
   </head>
-  <body class="m-0 bg-white max-h-svh overflow-hidden">
+  <body class="m-0 max-h-svh overflow-hidden transition-colors duration-300" style="background-color: var(--color-bg-primary); color-scheme: light dark;">
+    <ThemeToggle />
     <div class="presentation max-h-svh relative">
       <Lava />
       <Progress />

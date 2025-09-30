@@ -1,6 +1,6 @@
 ---
 import Slide from "../components/slide/Slide.astro";
-import { codeToHtml } from "shiki";
+import { highlightCode } from "../utils/shiki-helper";
 
 interface Props {
   order?: number;
@@ -21,10 +21,7 @@ const bestPractices = `/* Podpora scroll-state */
   }
 }`;
 
-const highlightedBestPractices = await codeToHtml(bestPractices, {
-  lang: "css",
-  theme: "github-light",
-});
+const highlightedBestPractices = await highlightCode(bestPractices, "css");
 ---
 
 <Slide title="Best practices" desc="Fallback & accessibility" order={order}>
