@@ -10,16 +10,15 @@ const { order } = Astro.props;
 
 const snapTypes = `.carousel {
   overflow: auto clip;
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: inline mandatory;
 
   > .card {
     container-type: scroll-state;
-    scroll-snap-align: center;
 
-    > * {
-      transition: opacity .5s ease;
-      @container not scroll-state(snapped: x) {
-        opacity: .25;
+    &:after {
+      @container scroll-state(snapped: inline) {
+        opacity: 1;
+        scale: 1;
       }
     }
   }

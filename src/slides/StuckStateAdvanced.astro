@@ -8,12 +8,12 @@ interface Props {
 
 const { order } = Astro.props;
 
-const stuckedTypes = `.stuck-top {
+const stuckedTypes = `nav {
   container-type: scroll-state;
   position: sticky;
   top: 0;
 
-  > nav {
+  > ul {
     @container scroll-state(stuck: top) {
       background-color: Highlight;
       color: HighlightText;
@@ -35,9 +35,8 @@ const highlightedTypes = await codeToHtml(stuckedTypes, {
 >
   <div slot="left">
     <p>
-      Po prichytení containeru zhora sa zmení vzhľad jeho potomka, v tomto
-      prípade
-      <code>nav</code> elementu.
+      Po prichytení <code>nav</code> containeru zhora sa zmení vzhľad jeho
+      <code>ul</code> potomka.
     </p>
   </div>
   <div slot="right" set:html={highlightedTypes} />

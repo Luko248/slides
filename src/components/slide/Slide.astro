@@ -161,10 +161,11 @@ const getContentClasses = () => {
           image && (
             <img
               src={image.url}
+              loading="lazy"
               alt={image.alt}
               width={image.width}
               height={image.height}
-              class="max-h-[70svb] object-contain w-auto absolute rounded-[.5em] border-[3px"
+              class="max-h-[70svb] max-w-[768px] object-contain w-auto absolute rounded-[.5em] border-[3px"
             />
           )
         }

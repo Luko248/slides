@@ -9,18 +9,17 @@ const { order } = Astro.props;
 
 <Slide
   title="Čo sú scroll-state container queries?"
-  desc="Základné informácie"
   order={order}
+  speaker
+  image={{
+    url: "/slides/assets/illustration.avif",
+    width: 768,
+    height: 768,
+    alt: "Scroll state container queries illustration",
+  }}
 >
   <p>
     Nový prírastok do rodiny <strong>container queries</strong>.<br />
     Umožňujú štýlovanie na základe <strong>scroll stavu</strong>.<br />
-    <br />
-    Tri hlavné typy stavov:
   </p>
-  <ul>
-    <li><code>scrollable</code> - detekuje možnosť scrollovania</li>
-    <li><code>stuck</code> - sleduje sticky elementy</li>
-    <li><code>snapped</code> - identifikuje snap pozície</li>
-  </ul>
 </Slide>
