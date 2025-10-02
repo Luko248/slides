@@ -1,47 +1,60 @@
-# Astro Starter Kit: Minimal
+# Slides Project
+
+A modern presentation framework built with Astro, featuring smooth scroll-based navigation and beautiful syntax highlighting.
+
+## 📋 About
+
+This project uses **Astro** with **MDX** for creating interactive slide presentations. Code blocks are highlighted using **Shiki** with support for multiple themes.
+
+The slider is built on **pure CSS** using a combination of three modern CSS technologies:
+- **CSS Container Scroll-State Queries**
+- **CSS Scroll-Driven Animations**
+- **CSS Carousel**
+
+No JavaScript is required for the slide navigation and animations—everything is powered by cutting-edge CSS features combined with Tailwind CSS for styling.
+
+## 🚀 Installation
+
+Install dependencies using your preferred package manager:
 
 ```sh
-pnpm create astro@latest -- --template minimal
+# Using npm
+npm install
+
+# Using pnpm
+pnpm install
+
+# Using bun
+bun install
 ```
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
 
 ## 🧞 Commands
 
-All commands are run from the root of the project, from a terminal:
+All commands are run from the root of the project:
 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
 
-## 👀 Want to learn more?
+Replace `npm` with `pnpm` or `bun` as needed.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## 🎨 Customizing Theme Colors
+
+Theme colors are defined as CSS custom properties in `src/styles/global.css`. To change the main theme colors, modify the values in the `@theme` block:
+
+```css
+@theme {
+  --color-theme-500: oklch(65% 0.25 310);  /* Primary theme color */
+  --color-theme-600: oklch(70% 0.22 310);  /* Lighter variant */
+  --color-theme-200: oklch(92% 0.08 310);  /* Background tint */
+}
+```
+
+These colors are used throughout the presentation for:
+- List markers
+- Code block backgrounds
+- Accent elements
+
+Simply update the OKLCH values to match your desired color scheme. Enjoy! 🚀
