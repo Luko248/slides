@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+/* Configure content sources for tree-shaking optimization */
+@source "../../src/**/*.{astro,html,js,jsx,ts,tsx,md,mdx}";
+
+/* Configure dark mode to use .dark class (Tailwind 4) */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   /* Base colors */
   --black-trans: hsl(0 0% 0% / 0.5);
@@ -137,17 +143,16 @@ pre.shiki {
   background-color: transparent !important;
 }
 
-/* Dual theme support for Shiki */
+/* Shiki syntax highlighting - toggle between github-light and github-dark */
 .shiki,
 .shiki span {
-  color: var(--shiki-light);
-  background-color: var(--shiki-light-bg);
+  color: var(--shiki-dark);
 }
 
-.dark .shiki,
-.dark .shiki span {
-  color: var(--shiki-dark);
-  background-color: var(--shiki-dark-bg);
+/* Light mode */
+html:not(.dark) .shiki,
+html:not(.dark) .shiki span {
+  color: var(--shiki-light);
 }
 
 img[alt="Lukáš Chylík"] {

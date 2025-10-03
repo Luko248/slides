@@ -31,16 +31,25 @@ import Intro2 from "../slides/Intro2.astro";
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content="Astro" />
     <script is:inline>
-      // Prevent flash of wrong theme - must run before page renders
-      (function() {
-        const getTheme = () => {
-          const stored = localStorage.getItem('theme');
-          if (stored) return stored;
-          return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        };
-        const theme = getTheme();
-        document.documentElement.style.colorScheme = theme;
+      // Prevent flash of wrong theme - runs before page renders
+      const theme = (() => {
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme === 'dark' || storedTheme === 'light') {
+          return storedTheme;
+        }
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
       })();
+      
+      const html = document.documentElement;
+      
+      // Apply theme immediately
+      if (theme === 'dark') {
+        html.classList.add('dark');
+      } else {
+        html.classList.remove('dark');
+      }
+      html.style.colorScheme = theme;
+      localStorage.setItem('theme', theme);
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -62,7 +71,7 @@ import Intro2 from "../slides/Intro2.astro";
     />
     <!-- Shiki syntax highlighting (server-side generated) -->
   </head>
-  <body class="m-0 max-h-svh overflow-hidden transition-colors duration-300" style="background-color: var(--color-bg-primary); color-scheme: light dark;">
+  <body class="m-0 max-h-svh overflow-hidden transition-colors duration-300" style="background-color: var(--color-bg-primary);">
     <ThemeToggle />
     <div class="presentation max-h-svh relative">
       <Lava />

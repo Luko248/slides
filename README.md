@@ -1,6 +1,6 @@
 # Slides Project
 
-A modern presentation framework built with Astro, featuring smooth scroll-based navigation and beautiful syntax highlighting.
+A modern presentation framework built with Astro, featuring smooth scroll-based navigation, beautiful syntax highlighting, and automatic light/dark theme support.
 
 ## 📋 About
 
@@ -12,6 +12,39 @@ The slider is built on **pure CSS** using a combination of three modern CSS tech
 - **CSS Carousel**
 
 No JavaScript is required for the slide navigation and animations—everything is powered by cutting-edge CSS features combined with Tailwind CSS for styling.
+
+## 🌓 Light/Dark Theme System
+
+The project includes a fully functional light/dark theme system with:
+- **Automatic theme detection** based on system preference
+- **Manual toggle button** in the top-right corner
+- **Persistent theme selection** saved to localStorage
+- **Dual syntax highlighting** that automatically switches between `github-light` and `github-dark` themes
+- **Modern CSS** using `light-dark()` function and `color-scheme` property
+- **Smooth transitions** between themes
+
+### Theme Configuration
+
+All theme settings are centralized in `/src/config/theme.config.ts`:
+
+```typescript
+export const themeConfig = {
+  shiki: {
+    light: "github-light",    // Shiki light theme
+    dark: "github-dark",       // Shiki dark theme
+  },
+  defaultTheme: "system",      // "system" | "light" | "dark"
+  storageKey: "theme",
+  enableTransitions: true,
+  transitionDuration: 300,
+};
+```
+
+You can customize:
+- **Shiki themes**: Change `light` and `dark` to any supported [Shiki theme](https://shiki.style/themes)
+- **Default behavior**: Set to `"system"`, `"light"`, or `"dark"`
+- **Storage key**: Change localStorage key name
+- **Transitions**: Enable/disable smooth theme transitions
 
 ## 🚀 Installation
 
@@ -46,15 +79,48 @@ Theme colors are defined as CSS custom properties in `src/styles/global.css`. To
 
 ```css
 @theme {
-  --color-theme-500: oklch(65% 0.25 310);  /* Primary theme color */
-  --color-theme-600: oklch(70% 0.22 310);  /* Lighter variant */
-  --color-theme-200: oklch(92% 0.08 310);  /* Background tint */
+  --color-theme-500: hsl(283 91% 57%);  /* Primary theme color */
+  --color-theme-600: hsl(283 91% 65%);  /* Lighter variant */
+  --color-theme-200: hsl(279deg 92% 90%);  /* Background tint */
 }
 ```
 
+### Light/Dark Mode Colors
+
+Colors automatically adapt to the theme using the modern `light-dark()` CSS function:
+
+```css
+/* Background colors */
+--color-elephant-bone: hsl(48 20% 96%);  /* Light mode background */
+--color-bg-primary: light-dark(var(--color-elephant-bone), hsl(0 0% 10%));
+--color-bg-secondary: light-dark(hsl(48 20% 96% / 0.85), hsl(0 0% 10% / 0.85));
+
+/* Text colors */
+--color-text-primary: light-dark(hsl(0 0% 0%), hsl(0 0% 100%));
+```
+
 These colors are used throughout the presentation for:
-- List markers
+- List markers and bullets
 - Code block backgrounds
 - Accent elements
+- Slide backgrounds
+- Text and headings
 
-Simply update the OKLCH values to match your desired color scheme. Enjoy! 🚀
+Simply update the HSL values to match your desired color scheme. The `light-dark()` function automatically switches values based on the active theme! 🚀
+
+## 🔧 Project Structure
+
+```
+src/
+├── config/
+│   └── theme.config.ts       # Theme configuration
+├── components/
+│   ├── theme-toggle/         # Theme toggle button
+│   ├── slide/                # Slide component
+│   └── ...
+├── slides/                   # Individual slide files
+├── styles/
+│   └── global.css           # Global styles with light/dark support
+└── utils/
+    └── shiki-helper.ts      # Syntax highlighting helper
+```
