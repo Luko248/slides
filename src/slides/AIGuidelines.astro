@@ -1,0 +1,58 @@
+---
+import Slide from "../components/slide/Slide.astro";
+import { highlightCode } from "../utils/shiki-helper";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const guidelineExample = `# NeuronButton
+
+## Usage
+Primary action button for forms and CTAs.
+
+## Code Snippet
+\`\`\`tsx
+<NeuronButton variant="primary" size="medium">
+  Submit
+</NeuronButton>
+\`\`\`
+
+## Props
+| Prop    | Type                      |
+|---------|---------------------------|
+| variant | 'primary' | 'secondary'  |
+| size    | 'small' | 'medium'       |
+| onClick | () => void                |
+
+## Best Practices
+- Use primary for main CTA
+- Max 1 primary button per section`;
+
+const highlightedCode = await highlightCode(guidelineExample, "markdown");
+---
+
+<Slide title="AI Guidelines" desc="Markdown dokumentácia pre AI" order={order}>
+  <div slot="left">
+    <p>
+      Sada <strong>markdown súborov</strong>.
+      Každý popisoval komponentu a jej najčastejšie prípady použitia.
+    </p>
+    <br />
+    <p>
+      Obsahovali <strong>code snippety</strong> s návodmi.
+    </p>
+    <br />
+    <p>
+      Viac ako <strong>80 komponentov</strong> zdokumentovaných.
+    </p>
+    <br />
+    <p>
+      Adaptéry: <code>CLAUDE.md</code>, <code>.windsurfrules</code>,
+      <code>COPILOT-INSTRUCTIONS.md</code>
+    </p>
+  </div>
+  <div slot="right" set:html={highlightedCode} />
+</Slide>

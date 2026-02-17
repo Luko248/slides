@@ -1,0 +1,53 @@
+---
+import Slide from "../components/slide/Slide.astro";
+import { highlightCode } from "../utils/shiki-helper";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const comparisonTable = `# Stav pred templatami
+
+┌────────────────┬────────┬──────────┐
+│ Adapter        │ Skills │ Commands │
+├────────────────┼────────┼──────────┤
+│ Claude Code    │   32   │    88    │
+│ Windsurf       │   33   │    90    │
+│ GitHub Copilot │   31   │    90    │
+└────────────────┴────────┴──────────┘
+
+# Problém:
+# - Chýbajúce skills v niektorých adaptéroch
+# - Rôzny počet commandov
+# - Žiadny "single source of truth"
+# - Manuálna synchronizácia = chyby
+# - ~400+ súborov na údržbu`;
+
+const highlightedCode = await highlightCode(comparisonTable, "markdown");
+---
+
+<Slide title="Problém údržby" desc="Žiadny single source of truth" order={order}>
+  <div slot="left">
+    <p>
+      Jedného dňa som si všimol, že v jednom adaptéri
+      <strong>chýba skill</strong>.
+    </p>
+    <br />
+    <p>
+      Nechal som si to zosumarizovať a výsledok:
+    </p>
+    <br />
+    <p>
+      <strong>32 vs 33 vs 31</strong> skills.
+      <br />
+      <strong>88 vs 90 vs 90</strong> commands.
+    </p>
+    <br />
+    <p>
+      Potrebovali sme <strong>templating</strong>.
+    </p>
+  </div>
+  <div slot="right" set:html={highlightedCode} />
+</Slide>

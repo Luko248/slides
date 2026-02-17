@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+/* Pixelify Sans - pixel font with full Slovak diacritic support */
+@font-face {
+  font-family: 'Pixelify Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/pixelifysans/v3/CHy2V-3HFUT7aC4iv1TxGDR9DHEserHN25py2TTp0H1Y.ttf) format('truetype');
+}
+
 /* Configure content sources for tree-shaking optimization */
 @source "../../src/**/*.{astro,html,js,jsx,ts,tsx,md,mdx}";
 
@@ -9,29 +18,31 @@
 @theme {
   /* Base colors */
   --black-trans: hsl(0 0% 0% / 0.5);
-  --color-theme-500: hsl(283 91% 57%);
-  --color-theme-600: hsl(283 91% 65%);
-  --color-theme-200: hsl(279deg 92% 90%);
+  --color-theme-500: #59d5ff;
+  --color-theme-600: #7adeff;
+  --color-theme-200: #d4f3ff;
   --color-blue-500: hsl(207.67 100% 51.96%);
   --text-8xl: 12svb;
   --text-6xl: 8svb;
   --paragraph-dynamic: 3.5svb;
 
-  /* League Spartan font family for headings */
+  /* Font families */
   --font-family-heading: "League Spartan", sans-serif;
-  --font-family-spartan: "League Spartan", sans-serif;
 
   /* Elephant bone color for light mode background */
   --color-elephant-bone: hsl(48 20% 96%);
-  
+
   /* Theme colors using light-dark() function */
   --color-bg-primary: light-dark(var(--color-elephant-bone), hsl(0 0% 10%));
-  --color-bg-secondary: light-dark(hsl(48 20% 96% / 0.85), hsl(0 0% 10% / 0.85));
+  --color-bg-secondary: light-dark(
+    hsl(48 20% 96% / 0.85),
+    hsl(0 0% 10% / 0.85)
+  );
   --color-text-primary: light-dark(hsl(0 0% 0%), hsl(0 0% 100%));
   --color-text-secondary: light-dark(hsl(0 0% 20%), hsl(0 0% 85%));
   --color-gray-700: light-dark(hsl(0 0% 40%), hsl(0 0% 70%));
   --color-gray-900: light-dark(hsl(0 0% 10%), hsl(0 0% 90%));
-  --color-code-bg: light-dark(hsl(279deg 92% 90%), hsl(283 91% 20%));
+  --color-code-bg: light-dark(#d4f3ff, #0a3a4f);
 }
 
 /* Main carousel */
@@ -42,6 +53,7 @@
   overflow-x: hidden;
   scroll-snap-type: y mandatory;
   scroll-marker-group: after;
+
   scroll-timeline: --progress block;
 }
 
@@ -133,7 +145,7 @@ p {
 
 :where(p, ul) code {
   @apply px-2 rounded-[.25em] text-[.8em] font-light;
-  background-color: light-dark(hsl(279deg 92% 90%), hsl(283 91% 20%));
+  background-color: light-dark(#d4f3ff, #0a3a4f);
   color: light-dark(black, white);
 }
 

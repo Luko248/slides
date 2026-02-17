@@ -1,0 +1,39 @@
+---
+import Slide from "../components/slide/Slide.astro";
+import { highlightCode } from "../utils/shiki-helper";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const badOutput = `// ❌ AI output without Code Connect
+import { Button } from '@mui/material';
+import { Select } from 'antd';
+import { Card } from 'react-bootstrap';
+
+// AI identified components in Figma
+// but used WRONG libraries!
+// Not our design system components.`;
+
+const highlightedCode = await highlightCode(badOutput, "tsx");
+---
+
+<Slide title="Figma MCP" desc="Prvý pokus" order={order}>
+  <div slot="left">
+    <p>
+      Veľký <strong>MCP boom</strong> – do rúk sa mi dostal Figma MCP.
+    </p>
+    <br />
+    <p>
+      Prvý výstup bol <strong>hrozný</strong>.
+    </p>
+    <br />
+    <p>
+      AI identifikovalo všetky komponenty v design systéme,
+      ale <strong>nepoužívalo naše komponenty</strong>.
+    </p>
+  </div>
+  <div slot="right" set:html={highlightedCode} />
+</Slide>

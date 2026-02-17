@@ -1,0 +1,21 @@
+---
+import Slide from "../components/slide/Slide.astro";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide title="Časová os" desc="Evolúcia AI workflow" order={order}>
+  <ul>
+    <li><span><strong>Apríl 2025</strong> – Figma MCP + Code Connect</span></li>
+    <li><span><strong>Máj 2025</strong> – AI Guidelines v1 (markdown súbory)</span></li>
+    <li><span><strong>Jún 2025</strong> – npm balík s post-install distribúciou</span></li>
+    <li><span><strong>Leto 2025</strong> – Slash commands / workflows</span></li>
+    <li><span><strong>Jeseň 2025</strong> – Skills abstrakcia, multi-tool podpora</span></li>
+    <li><span><strong>Zima 2025</strong> – Template engine, AI agenti</span></li>
+    <li><span><strong>2026</strong> – Skill Creator optimalizácia, one-shot generovanie</span></li>
+  </ul>
+</Slide>

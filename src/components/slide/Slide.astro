@@ -24,11 +24,10 @@ const { title, desc, order, sampleUrl, image, center, speaker, outro } =
 // Base classes for different layouts
 const getSlideClasses = () => {
   const base =
-    "h-svh grid gap-[8svb] p-[8svb] backdrop-blur-lg relative z-50 transition-colors duration-300";
-  const bgStyle = "style='background-color: var(--color-bg-secondary);'";
-  if (speaker) return `${base} grid-rows-[auto_1fr] content-start`;
-  if (center) return `${base} content-center`;
-  return `${base} content-start`;
+    "h-svh grid p-[8svb] backdrop-blur-lg relative z-50 transition-colors duration-300";
+  if (speaker) return `${base} grid-rows-[auto_1fr] gap-[8svb] content-start`;
+  if (center) return `${base} gap-[8svb] content-center`;
+  return `${base} grid-cols-[7fr_5fr] grid-rows-[auto_1fr] gap-x-[8svb] gap-y-[4svb] content-start`;
 };
 
 const getTitleClasses = () => {
@@ -62,14 +61,11 @@ const getContentClasses = () => {
       line-height: 1;
       content: counter(slides-counter);
       background-color: var(--marker-bg, var(--black-trans));
-      inline-size: 1rem;
-      block-size: 1rem;
-      font-size: 0.65em;
+      font-size: 1rem;
       display: grid;
+      translate: -35% -60%;
       place-items: center;
       box-sizing: border-box;
-      border-radius: 100vmax;
-      border: 2px solid var(--color-theme-500);
       scale: 1 !important;
       z-index: 1;
       transition:
@@ -79,11 +75,15 @@ const getContentClasses = () => {
     }
 
     &::scroll-marker:target-current {
-      --marker-bg: var(--color-theme-500);
       color: white;
       opacity: 1;
       scale: 1.5 !important;
       z-index: 2;
+    }
+
+    &::scroll-marker:target-before,
+    &::scroll-marker:target-after {
+      display: none;
     }
     :where(.top, .left, .right) {
       opacity: 0;
@@ -119,16 +119,23 @@ const getContentClasses = () => {
   }
 </style>
 
-<section class={getSlideClasses()} data-order={order} style="background-color: var(--color-bg-secondary);">
+<section
+  class={getSlideClasses()}
+  data-order={order}
+  style="background-color: var(--color-bg-secondary);"
+>
   {outro && <Heart />}
   <div
-    class={`top ${sampleUrl ? "flex flex-row flex-nowrap justify-between items-start" : ""}`}
+    class={`top ${sampleUrl ? "flex flex-row flex-nowrap justify-between items-start" : ""} ${!center && !speaker ? "col-start-1" : ""}`}
   >
     <h2 class={getTitleClasses()}>
       <slot name="title">{title}</slot>
       {
         desc && (
-          <small class="text-theme-500 font-semibold block mt-[.35em] text-[.6em]">
+          <small
+            class="text-theme-500 font-semibold block mt-[.35em] text-[.6em]"
+            style="font-family: 'Pixelify Sans', sans-serif !important;"
+          >
             {desc}
           </small>
         )
@@ -148,18 +155,12 @@ const getContentClasses = () => {
     }
   </div>
 
-  <div
-    class="grid grid-cols-[7fr_5fr] gap-[8svb] align-start [&:has(.left:empty,.right:empty)]:hidden"
-  >
-    <div class={getContentClasses()}>
-      <slot name="left">
-        <slot />
-      </slot>
-    </div>
-    <div class="right relative grid items-center [&:empty]:hidden">
-      <slot name="right">
-        {
-          image && (
+  {/* Default layout: right column spans full height from top */}
+  {
+    !center && !speaker && (
+      <div class="right col-start-2 row-start-1 row-end-[-1] relative grid items-start [&:empty]:hidden">
+        <slot name="right">
+          {image && (
             <img
               src={image.url}
               loading="lazy"
@@ -168,9 +169,38 @@ const getContentClasses = () => {
               height={image.height}
               class="max-h-[70svb] max-w-[768px] object-contain w-auto absolute rounded-[.5em] border-[3px"
             />
-          )
-        }
+          )}
+        </slot>
+      </div>
+    )
+  }
+
+  <div
+    class={`${!center && !speaker ? "col-start-1" : "grid grid-cols-[7fr_5fr] gap-[8svb] align-start [&:has(.left:empty,.right:empty)]:hidden"}`}
+  >
+    <div class={getContentClasses()}>
+      <slot name="left">
+        <slot />
       </slot>
     </div>
+    {/* Center/speaker layout: right stays inside content grid */}
+    {
+      (center || speaker) && (
+        <div class="right relative grid items-center [&:empty]:hidden">
+          <slot name="right">
+            {image && (
+              <img
+                src={image.url}
+                loading="lazy"
+                alt={image.alt}
+                width={image.width}
+                height={image.height}
+                class="max-h-[70svb] max-w-[768px] object-contain w-auto absolute rounded-[.5em] border-[3px"
+              />
+            )}
+          </slot>
+        </div>
+      )
+    }
   </div>
 </section>

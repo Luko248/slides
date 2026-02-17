@@ -1,0 +1,19 @@
+---
+import Slide from "../components/slide/Slide.astro";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide title="AIS Servis" desc="Vienna Insurance Group" order={order}>
+  <ul>
+    <li><span>Informačné systémy a webové aplikácie pre svet poisťovní</span></li>
+    <li><span>Český trh v rámci skupiny Vienna Insurance Group</span></li>
+    <li><span>Desiatky aplikácií paralelne – väčšie aj menšie</span></li>
+    <li><span>Stovky vývojárov, desiatky frontend vývojárov</span></li>
+    <li><span>Každá aplikácia má vlastný vývojový tím</span></li>
+  </ul>
+</Slide>

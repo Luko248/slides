@@ -1,0 +1,63 @@
+---
+import Slide from "../components/slide/Slide.astro";
+import { highlightCode } from "../utils/shiki-helper";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const skillExample = `---
+name: neuron-ui-buttons
+description: >
+  Button variants, groups, dropdowns,
+  and system buttons for Neuron UI.
+---
+
+# Neuron UI Buttons Skill
+
+You are an expert in Neuron button components.
+
+## Available commands:
+- /ui-button
+- /ui-toggleButton
+- /ui-buttonGroup
+- /ui-dropdown
+- /ui-systemButton
+
+## You know:
+- All button variants and sizes
+- Icon button configurations
+- Button group layouts
+- Dropdown menu patterns
+- Loading and disabled states
+
+Use the appropriate slash command
+for the specific button type needed.`;
+
+const highlightedCode = await highlightCode(skillExample, "markdown");
+---
+
+<Slide title="Skills" desc="Abstrakcia nad slash commandami" order={order}>
+  <div slot="left">
+    <p>
+      Druhá <strong>abstraktná vrstva</strong> nad slash commandami.
+    </p>
+    <br />
+    <p>
+      Skill na <strong>tlačidlá</strong> – pozná všetky typy:
+      <code>/button</code>, <code>/toggleButton</code>, <code>/buttonGroup</code>...
+    </p>
+    <br />
+    <p>
+      Skill na <strong>formuláre</strong> – pozná komponenty,
+      validáciu v <strong>Zod</strong>, React Hook Form, form composition.
+    </p>
+    <br />
+    <p>
+      Písanie promptov <strong>výrazne jednoduchšie</strong>.
+    </p>
+  </div>
+  <div slot="right" set:html={highlightedCode} />
+</Slide>

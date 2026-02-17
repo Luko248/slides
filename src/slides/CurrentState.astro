@@ -1,0 +1,39 @@
+---
+import Slide from "../components/slide/Slide.astro";
+import { highlightCode } from "../utils/shiki-helper";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const promptExample = `> Create a new insurance claim form page
+  with validation, i18n support,
+  and RTK Query integration.
+
+✓ Generated complete page
+✓ All framework conventions followed
+✓ Design system components used
+✓ Ready for code review`;
+
+const highlightedCode = await highlightCode(promptExample, "markdown");
+---
+
+<Slide title="Kde sme dnes?" desc="One-shot generovanie" order={order}>
+  <div slot="left">
+    <p>
+      Dokážeme často <strong>na one shot</strong> vygenerovať
+      jednotlivé stránky webových aplikácií.
+    </p>
+    <br />
+    <p>
+      Aj <strong>celé menšie aplikácie</strong> pomocou AI.
+    </p>
+    <br />
+    <p>
+      Podmienka: dobre vytvorená <strong>špecifikácia zadania</strong>.
+    </p>
+  </div>
+  <div slot="right" set:html={highlightedCode} />
+</Slide>

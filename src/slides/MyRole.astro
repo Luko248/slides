@@ -1,0 +1,41 @@
+---
+import Slide from "../components/slide/Slide.astro";
+import { highlightCode } from "../utils/shiki-helper";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const monorepoStructure = `# NX Monorepo – ~20 interných balíkov
+
+packages/
+├── core/              # Core package
+├── auth/              # Authorization
+├── design-system/     # VIGo Design System
+├── logger/            # Logging
+├── i18n/              # Internationalization
+├── forms/             # Form utilities
+├── rtk-query/         # API layer
+├── routing/           # Routing
+├── ...                # And more
+└── ai-guidelines/     # AI abstractions ★`;
+
+const highlightedCode = await highlightCode(monorepoStructure, "markdown");
+---
+
+<Slide title="Moja rola" desc="Frontend framework & Design System" order={order}>
+  <div slot="left">
+    <p>
+      Frontend vývojár na firemnom <strong>frameworku</strong>
+      a hlavný vývojár <strong>design systému</strong>.
+    </p>
+    <br />
+    <p>
+      Každý piatok <strong>nová verzia</strong> – vývojári ich
+      denne používajú pri vývoji aplikácií.
+    </p>
+  </div>
+  <div slot="right" set:html={highlightedCode} />
+</Slide>

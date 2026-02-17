@@ -1,0 +1,19 @@
+---
+import Slide from "../components/slide/Slide.astro";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide title="Výsledky" desc="Násobné zvýšenie výkonu" order={order} center>
+  <ul>
+    <li><span>Násobné zvýšenie <strong>výkonu pri vývoji</strong></span></li>
+    <li><span>Kód je <strong>čistý</strong> a zodpovedá frameworkovým pravidlám</span></li>
+    <li><span>Výstup je prakticky <strong>dokonalý</strong></span></li>
+    <li><span>One-shot generovanie celých stránok</span></li>
+    <li><span><strong>Single source of truth</strong> pre všetky AI nástroje</span></li>
+  </ul>
+</Slide>

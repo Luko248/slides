@@ -1,0 +1,65 @@
+---
+import Slide from "../components/slide/Slide.astro";
+import { highlightCode } from "../utils/shiki-helper";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const outputTree = `# Po npm install
+
+project-root/
+├── README-AI.md
+├── AGENTS.md
+├── docs/framework/guidelines/
+│   ├── neuron-ui/
+│   │   ├── buttons/         # 5 components
+│   │   ├── form/            # 12 components
+│   │   ├── data/            # 8 components
+│   │   ├── overlays/        # 3 components
+│   │   ├── panels/          # 5 components
+│   │   ├── messages/        # 3 components
+│   │   └── ...              # 14 categories
+│   └── content/
+│
+├── .claude/                  # 109 files
+│   ├── commands/             # 77 commands
+│   ├── skills/               # 30 skills
+│   └── agents/               # 2 agents
+│
+├── .github/                  # 109 files
+│   ├── prompts/              # 77 prompts
+│   ├── skills/               # 30 skills
+│   └── agents/               # 2 agents
+│
+└── .windsurf/                # 116 files
+    ├── workflows/            # 77 workflows
+    ├── skills/               # 30 skills
+    └── rules/                # 9 rules`;
+
+const highlightedCode = await highlightCode(outputTree, "markdown");
+---
+
+<Slide title="Output štruktúra" desc="Výsledok po npm install" order={order}>
+  <div slot="left">
+    <p>
+      Jediný <code>npm install</code> vytvorí
+      <strong>celú AI infraštruktúru</strong>.
+    </p>
+    <br />
+    <ul>
+      <li><span>~75 guideline docs</span></li>
+      <li><span>77 command templates</span></li>
+      <li><span>30 skill kategórií</span></li>
+      <li><span>2 agent definície</span></li>
+      <li><span>9 Windsurf rules</span></li>
+    </ul>
+    <br />
+    <p>
+      <strong>400+ vygenerovaných súborov</strong> naprieč 3 adaptérmi.
+    </p>
+  </div>
+  <div slot="right" set:html={highlightedCode} />
+</Slide>

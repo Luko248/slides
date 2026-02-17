@@ -1,0 +1,58 @@
+---
+import Slide from "../components/slide/Slide.astro";
+import { highlightCode } from "../utils/shiki-helper";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const codeReviewSkill = `---
+name: code-review
+description: >
+  Automated code review using framework
+  conventions and design system rules.
+---
+
+# Code Review Skill
+
+## Review checklist:
+1. ✓ Correct design system components used
+2. ✓ Props match guidelines specification
+3. ✓ i18n keys properly structured
+4. ✓ Form validation with Zod schemas
+5. ✓ RTK Query patterns followed
+6. ✓ Folder structure conventions
+7. ✓ No external UI library imports
+8. ✓ Accessibility requirements met
+
+## Usage:
+# Developers run this before every push
+> /code-review
+
+# Skill verifies against all guidelines
+# and reports violations with fix suggestions`;
+
+const highlightedCode = await highlightCode(codeReviewSkill, "markdown");
+---
+
+<Slide title="Code Review Skill" desc="Pred každým pushom" order={order}>
+  <div slot="left">
+    <p>
+      Skill na <strong>code review</strong>, ktorý dnes
+      vývojári používajú pred každým pushom.
+    </p>
+    <br />
+    <p>
+      Overuje dodržiavanie <strong>frameworkových konvencií</strong>
+      a design system pravidiel.
+    </p>
+    <br />
+    <p>
+      Automaticky kontroluje importy, props, i18n,
+      validáciu, folder structure.
+    </p>
+  </div>
+  <div slot="right" set:html={highlightedCode} />
+</Slide>

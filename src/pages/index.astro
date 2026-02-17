@@ -6,22 +6,43 @@ import ThemeToggle from "../components/theme-toggle/ThemeToggle.astro";
 import "../styles/global.css";
 
 // Import all slide components
-import BasicSyntax from "../slides/BasicSyntax.astro";
-import Intro from "../slides/Intro.astro";
 import Main from "../slides/Main.astro";
-import ScrollableState from "../slides/ScrollableState.astro";
 import Speaker from "../slides/Speaker.astro";
-import ScrollableStateAdvanced from "../slides/ScrollableStateAdvanced.astro";
-import StuckState from "../slides/StuckState.astro";
-import StuckStateAdvanced from "../slides/StuckStateAdvanced.astro";
-import SnappedState from "../slides/SnappedState.astro";
-import SnappedStateAdvanced from "../slides/SnappedStateAdvanced.astro";
-import AdvancedSyntax from "../slides/AdvancedSyntax.astro";
-import BestPractices from "../slides/BestPractices.astro";
-import Outro from "../slides/Outro.astro";
-import BrowserSupport from "../slides/BrowserSupport.astro";
+import AISContext from "../slides/AISContext.astro";
+import CurrentState from "../slides/CurrentState.astro";
+import TheBeginning from "../slides/TheBeginning.astro";
+import MyRole from "../slides/MyRole.astro";
+import FigmaMCP from "../slides/FigmaMCP.astro";
+import FigmaCodeConnect from "../slides/FigmaCodeConnect.astro";
+import PainPoint1 from "../slides/PainPoint1.astro";
+import AIGuidelines from "../slides/AIGuidelines.astro";
+import GuidelinesStructure from "../slides/GuidelinesStructure.astro";
+import Distribution from "../slides/Distribution.astro";
+import FirstVersion from "../slides/FirstVersion.astro";
+import FirstProblems from "../slides/FirstProblems.astro";
+import BeyondUI from "../slides/BeyondUI.astro";
+import HallucinationProblem from "../slides/HallucinationProblem.astro";
+import SlashCommands from "../slides/SlashCommands.astro";
+import Skills from "../slides/Skills.astro";
+import CodeReviewSkill from "../slides/CodeReviewSkill.astro";
+import MultiToolSupport from "../slides/MultiToolSupport.astro";
+import MaintenanceProblem from "../slides/MaintenanceProblem.astro";
+import TemplateEngine from "../slides/TemplateEngine.astro";
+import AdapterConfigs from "../slides/AdapterConfigs.astro";
+import TemplateToOutput from "../slides/TemplateToOutput.astro";
+import SkillTemplate from "../slides/SkillTemplate.astro";
+import AgentTemplates from "../slides/AgentTemplates.astro";
+import ShipItFlow from "../slides/ShipItFlow.astro";
+import SmartMerge from "../slides/SmartMerge.astro";
+import OutputStructure from "../slides/OutputStructure.astro";
+import FinalOptimization from "../slides/FinalOptimization.astro";
+import WindsurfRules from "../slides/WindsurfRules.astro";
+import Results from "../slides/Results.astro";
+import HumanProblem from "../slides/HumanProblem.astro";
+import Timeline from "../slides/Timeline.astro";
+import Summary from "../slides/Summary.astro";
 import Social from "../slides/Social.astro";
-import Intro2 from "../slides/Intro2.astro";
+import Outro from "../slides/Outro.astro";
 ---
 
 <html lang="sk">
@@ -39,9 +60,9 @@ import Intro2 from "../slides/Intro2.astro";
         }
         return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
       })();
-      
+
       const html = document.documentElement;
-      
+
       // Apply theme immediately
       if (theme === 'dark') {
         html.classList.add('dark');
@@ -58,18 +79,17 @@ import Intro2 from "../slides/Intro2.astro";
       rel="stylesheet"
     />
     <title>
-      CSS container scroll-state queries | Frontkon 25 | Lukáš Chylik
+      AI abstractions over Design System | Lukáš Chylík
     </title>
     <meta
       name="description"
-      content="Objavte silu CSS container scroll-state queries - modernej technológie pre detekciu stavu scrollovania kontajnerov. Prezentácia z Frontkon 25 od Lukáša Chylika."
+      content="Cesta od vibe codingu k AI-first vývoju v AIS Servis. AI abstrakcie nad design systémom pre frontend vývojárov."
     />
     <meta name="author" content="Lukas Chylik" />
     <meta
       name="keywords"
-      content="CSS container scroll-state queries, CSS, Web Development, Presentation"
+      content="AI, Design System, AI Guidelines, Frontend Development, Claude Code, GitHub Copilot, Windsurf"
     />
-    <!-- Shiki syntax highlighting (server-side generated) -->
   </head>
   <body class="m-0 max-h-svh overflow-hidden transition-colors duration-300" style="background-color: var(--color-bg-primary);">
     <ThemeToggle />
@@ -78,20 +98,41 @@ import Intro2 from "../slides/Intro2.astro";
       <Progress />
       <Main order={1} />
       <Speaker order={2} />
-      <Intro order={3} />
-      <Intro2 order={4} />
-      <BasicSyntax order={5} />
-      <AdvancedSyntax order={6} />
-      <ScrollableState order={7} />
-      <ScrollableStateAdvanced order={8} />
-      <StuckState order={9} />
-      <StuckStateAdvanced order={10} />
-      <SnappedState order={11} />
-      <SnappedStateAdvanced order={12} />
-      <BestPractices order={13} />
-      <BrowserSupport order={14} />
-      <Social order={15} />
-      <Outro order={16} />
+      <AISContext order={3} />
+      <CurrentState order={4} />
+      <TheBeginning order={5} />
+      <MyRole order={6} />
+      <FigmaMCP order={7} />
+      <FigmaCodeConnect order={8} />
+      <PainPoint1 order={9} />
+      <AIGuidelines order={10} />
+      <GuidelinesStructure order={11} />
+      <Distribution order={12} />
+      <FirstVersion order={13} />
+      <FirstProblems order={14} />
+      <BeyondUI order={15} />
+      <HallucinationProblem order={16} />
+      <SlashCommands order={17} />
+      <Skills order={18} />
+      <CodeReviewSkill order={19} />
+      <MultiToolSupport order={20} />
+      <MaintenanceProblem order={21} />
+      <TemplateEngine order={22} />
+      <AdapterConfigs order={23} />
+      <TemplateToOutput order={24} />
+      <SkillTemplate order={25} />
+      <AgentTemplates order={26} />
+      <ShipItFlow order={27} />
+      <SmartMerge order={28} />
+      <OutputStructure order={29} />
+      <FinalOptimization order={30} />
+      <WindsurfRules order={31} />
+      <Results order={32} />
+      <HumanProblem order={33} />
+      <Timeline order={34} />
+      <Summary order={35} />
+      <Social order={36} />
+      <Outro order={37} />
     </div>
     <Footer />
   </body>

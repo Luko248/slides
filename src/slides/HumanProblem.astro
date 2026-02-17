@@ -1,0 +1,27 @@
+---
+import Slide from "../components/slide/Slide.astro";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide title="Mindset" desc="Jediný zostávajúci problém" order={order} center>
+  <p class="text-center">
+    Zmeniť <strong>mindset ľudí</strong>.
+  </p>
+  <br />
+  <p class="text-center">
+    Vývojári to majú priamo pod nosom,
+    <br />
+    na <strong>striebornom podnose</strong>.
+  </p>
+  <br />
+  <p class="text-center">
+    No len hŕstka z nich to naozaj používa
+    <br />
+    alebo <strong>chce používať</strong>.
+  </p>
+</Slide>

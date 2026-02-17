@@ -1,0 +1,23 @@
+---
+import Slide from "../components/slide/Slide.astro";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide title="Pain Point #1" desc="Čo bez Figmy?" order={order} center>
+  <p class="text-center">
+    Fungovalo to len s <strong>jasne nadefinovanou Figmou</strong>.
+  </p>
+  <br />
+  <p class="text-center">
+    Čo keď chcem promptovať <strong>bez Figmy</strong>?
+    <br />
+    Pridávam jednoduchú funkcionalitu?
+    <br />
+    Chcem rýchlo vytvoriť <strong>MVP verziu</strong>?
+  </p>
+</Slide>
