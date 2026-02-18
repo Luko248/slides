@@ -12,6 +12,13 @@
     block-size: var(--rect);
   }
 
+  .heart-shape {
+    inline-size: var(--rect);
+    block-size: var(--rect);
+    border-radius: 9999px;
+    background: radial-gradient(circle at 30% 30%, #ffd4df 0%, #ff6b8a 45%, #b1003a 100%);
+  }
+
   @keyframes slideAround {
     0% {
       grid-template-columns: 70% 1fr;
@@ -40,12 +47,6 @@
   <div
     class="grid place-items-center place-self-end rect-size aspect-square box-border"
   >
-    <img
-      class="mx-auto object-cover"
-      src="/slides/assets/heart-symbol.svg"
-      alt="Frontendisti heart symbol"
-      width="250"
-      height="250"
-    />
+    <div class="heart-shape mx-auto" aria-hidden="true"></div>
   </div>
 </div>

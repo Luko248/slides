@@ -1,23 +1,11 @@
 ---
 import Slide from "../components/slide/Slide.astro";
-import { highlightCode } from "../utils/shiki-helper";
 
 interface Props {
   order?: number;
 }
 
 const { order } = Astro.props;
-
-const promptExample = `> Create a new insurance claim form page
-  with validation, i18n support,
-  and RTK Query integration.
-
-✓ Generated complete page
-✓ All framework conventions followed
-✓ Design system components used
-✓ Ready for code review`;
-
-const highlightedCode = await highlightCode(promptExample, "markdown");
 ---
 
 <Slide title="Kde sme dnes?" desc="One-shot generovanie" order={order}>
@@ -35,5 +23,4 @@ const highlightedCode = await highlightCode(promptExample, "markdown");
       Podmienka: dobre vytvorená <strong>špecifikácia zadania</strong>.
     </p>
   </div>
-  <div slot="right" set:html={highlightedCode} />
 </Slide>
