@@ -1,6 +1,6 @@
 ---
 import { tv } from "tailwind-variants";
-import Heart from "../heart/Heart.astro";
+import Confetti from "../confetti/Confetti.astro";
 
 interface Props {
   title?: string;
@@ -124,7 +124,7 @@ const getContentClasses = () => {
   data-order={order}
   style="background-color: var(--color-bg-secondary);"
 >
-  {outro && <Heart />}
+  {outro && <Confetti />}
   <div
     class={`top ${sampleUrl ? "flex flex-row flex-nowrap justify-between items-start" : ""} ${!center && !speaker ? "col-start-1" : ""}`}
   >
