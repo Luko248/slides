@@ -8,17 +8,16 @@ interface Props {
 
 const { order } = Astro.props;
 
-const monorepoStructure = `# NX Monorepo – ~20 interných balíkov
+const monorepoStructure = `# NX Monorepo – 15 interných balíkov
 
 packages/
 ├── core/              # Core package
 ├── auth/              # Authorization
-├── design-system/     # VIGo Design System
+├── ui/                # VIGo Design System
 ├── logger/            # Logging
-├── i18n/              # Internationalization
-├── forms/             # Form utilities
-├── rtk-query/         # API layer
-├── routing/           # Routing
+├── storybook/         # Component documentation
+├── config/            # Shared configuration
+├── debug-tools/       # Debug utilities
 ├── ...                # And more
 └── ai-guidelines/     # AI abstractions ★`;
 
