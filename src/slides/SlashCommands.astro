@@ -9,30 +9,16 @@ interface Props {
 const { order } = Astro.props;
 
 const workflowExample = `---
-description: Create Button component
+description: Use button component
 ---
 
 Your task: integrate Button component.
 
 ## Steps:
 1. Read @docs/neuron-ui/buttons/button-guidelines.md
-2. Identify the correct variant from the prompt
+2. Setup component based on prompt
 3. Import from '@neuron/ui'
-4. Apply i18n for button labels
-5. Follow spacing rules from guidelines
-
-## Available variants:
-- primary | secondary | tertiary | ghost
-- small | medium | large
-
-## Example:
-\`\`\`tsx
-import { Button } from '@neuron/ui';
-
-<Button variant="primary" size="medium">
-  {t('common.submit')}
-</Button>
-\`\`\``;
+`;
 
 const highlightedCode = await highlightCode(workflowExample, "markdown");
 ---
