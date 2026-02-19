@@ -33,19 +33,27 @@ const indexStructure = `# Index.md – Form Components
 const highlightedCode = await highlightCode(indexStructure, "markdown");
 ---
 
-<Slide title="Štruktúra guidelines" desc="Index súbory a kategórie" order={order}>
+<Slide
+  title="Štruktúra guidelines"
+  desc="Index súbory a kategórie"
+  order={order}
+>
   <div slot="left">
     <p>
       Markdown súbory boli naindexované do <code>Index.md</code> súborov.
     </p>
     <br />
     <p>
-      Popisovali <strong>kategórie komponentov</strong>:
-      formulárové prvky, panely, tlačidlá, helpery, messages...
+      Popisovali <strong>kategórie komponentov</strong>: formulárové prvky,
+      panely, tlačidlá, helpery, messages...
     </p>
     <br />
     <p>
       Indexy boli <strong>nalinkované</strong> do AI adaptéra.
+    </p>
+    <br />
+    <p>
+      Adaptér: <code>.windsurfrules</code>
     </p>
   </div>
   <div slot="right" set:html={highlightedCode} />
