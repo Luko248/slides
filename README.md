@@ -133,12 +133,12 @@ src/
 
 The presentation app consumes one source package at a time.
 
-- Current source package: `@slides/source-ai-workflow`
+- Current source package: `@slides/source-css-scroll-state`
 - Source selector: `src/config/app.config.ts`
 
 ```ts
 export const appConfig = {
-  slidesSource: "ai-workflow",
+  slidesSource: "css-scroll-state",
 } as const;
 ```
 

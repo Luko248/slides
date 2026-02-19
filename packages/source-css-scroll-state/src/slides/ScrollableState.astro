@@ -1,0 +1,46 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+import { highlightCode } from "@presentation/utils/shiki-helper";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const scrollStateTypes = `/* Možné scrollovanie zhora */
+@container scroll-state(scrollable: top | block-start) { /* ... */ }
+/* Možné scrollovanie zdola */
+@container scroll-state(scrollable: bottom | block-end) { /* ... */ }
+/* Možné scrollovanie zľava */
+@container scroll-state(scrollable: left | inline-start) { /* ... */ }
+/* Možné scrollovanie zprava */
+@container scroll-state(scrollable: right | inline-end) { /* ... */ }
+/* Možné scrollovanie po x osi */
+@container scroll-state(scrollable: x | inline) { /* ... */ }
+/* Možné scrollovanie po y osi */
+@container scroll-state(scrollable: y | block) { /* ... */ }
+`;
+
+const highlightedTypes = await highlightCode(scrollStateTypes, "css");
+---
+
+<Slide
+  title="Scrollable state"
+  desc="Detekcia možnosti scrollovania"
+  order={order}
+>
+  <div slot="left">
+    <p>
+      <code>scrollable</code> detekuje, či je možné scrollovať v danom smere.
+    </p>
+    <br />
+    <br />
+    <p>
+      Podporuje ako fyzické smery <code>top</code>, <code>bottom</code>,
+      <code>left</code>, <code>right</code> tak aj logické <code>inline</code>,
+      <code>block</code> pre prácu s <code>writing-mode</code>.
+    </p>
+  </div>
+  <div slot="right" set:html={highlightedTypes} />
+</Slide>

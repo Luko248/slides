@@ -37,6 +37,7 @@ import Timeline from "./slides/Timeline.astro";
 import Results from "./slides/Results.astro";
 import HumanProblem from "./slides/HumanProblem.astro";
 import Outro from "./slides/Outro.astro";
+import aisLogo from "./assets/ais-logo.svg?url";
 
 const slides = [
   Main,
@@ -95,9 +96,11 @@ export const aiWorkflowSource = {
     colorTheme500: "#59d5ff",
     colorTheme600: "#7adeff",
     colorTheme200: "#d4f3ff",
+    codeBgLight: "#d4f3ff",
+    codeBgDark: "#0a3a4f",
   },
   footer: {
-    logoSrc: "/slides/assets/ais-logo.svg",
+    logoSrc: aisLogo,
     logoAlt: "AIS logo",
     websiteHref: "https://lukaschylik.dev",
     websiteLabel: "lukaschylik.dev",

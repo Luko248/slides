@@ -1,0 +1,35 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+import { highlightCode } from "@presentation/utils/shiki-helper";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const stuckedTypes = `/* Prichytený zhora */
+@container scroll-state(stuck: top | block-start) { /* ... */ }
+/* Prichytený zdola */
+@container scroll-state(stuck: bottom | block-end) { /* ... */ }
+/* Prichytený zľava */
+@container scroll-state(stuck: left | inline-start) { /* ... */ }
+/* Prichytený zprava */
+@container scroll-state(stuck: right | inline-end) { /* ... */ }
+`;
+
+const highlightedTypes = await highlightCode(stuckedTypes, "css");
+---
+
+<Slide title="Stuck state" desc="Sledovanie prichytania elementu" order={order}>
+  <div slot="left">
+    <p>
+      <code>stuck</code> detekuje, či je element prichytený pomocou&nbsp;
+      <code>position: sticky</code>
+    </p>
+    <br />
+    <br />
+    <p>Podporuje fyzické aj logické smery.</p>
+  </div>
+  <div slot="right" set:html={highlightedTypes} />
+</Slide>

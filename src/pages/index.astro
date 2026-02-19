@@ -4,15 +4,15 @@ import Lava from "../components/lava/Lava.astro";
 import Progress from "../components/progress/Progress.astro";
 import ThemeToggle from "../components/theme-toggle/ThemeToggle.astro";
 import { getActiveSlidesSource } from "../config/slides-sources";
-import { getThemeCssVariables } from "../utils/source-theme";
+import { getThemeStyleAttribute } from "../utils/source-theme";
 import "../styles/global.css";
 
 const slidesSource = getActiveSlidesSource();
-const themeCssVariables = getThemeCssVariables(slidesSource.theme);
+const themeStyleAttribute = getThemeStyleAttribute(slidesSource.theme);
 const slidesCount = slidesSource.slides.length;
 ---
 
-<html lang={slidesSource.meta.language}>
+<html lang={slidesSource.meta.language} style={themeStyleAttribute}>
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/slides/favicon.svg" />
@@ -39,7 +39,6 @@ const slidesCount = slidesSource.slides.length;
       html.style.colorScheme = theme;
       localStorage.setItem('theme', theme);
     </script>
-    {themeCssVariables && <style is:inline>{themeCssVariables}</style>}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

@@ -1,0 +1,49 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+import { highlightCode } from "@presentation/utils/shiki-helper";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const snapTypes = `.carousel {
+  overflow: auto clip;
+  scroll-snap-type: inline mandatory;
+
+  > .card {
+    container-type: scroll-state;
+
+    &:after {
+      @container scroll-state(snapped: inline) {
+        opacity: 1;
+        scale: 1;
+      }
+    }
+  }
+}`;
+
+const highlightedTypes = await highlightCode(snapTypes, "css");
+---
+
+<Slide
+  title="Snap state"
+  desc="Reálny príklad"
+  sampleUrl="https://codepen.io/luko248/pen/jEOQOGw?editors=1100"
+  order={order}
+>
+  <div slot="left">
+    <p>
+      Horizontálny <code>carousel</code> s niekoľkými <code>card</code>
+      elementmi.
+    </p>
+    <br />
+    <p>
+      Obsah <code>card</code> elementu ktorý <strong>má</strong> práve <code
+        >snapped</code
+      > pozíciu, má nastavenú <code>opacity: 1</code> a <code>scale: 1</code>.
+    </p>
+  </div>
+  <div slot="right" set:html={highlightedTypes} />
+</Slide>

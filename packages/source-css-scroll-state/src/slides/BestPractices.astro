@@ -1,0 +1,42 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+import { highlightCode } from "@presentation/utils/shiki-helper";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const bestPractices = `/* Podpora scroll-state */
+@supports (container-type: scroll-state) {
+
+  /* Vypnúť animácie v scroll-state */
+  @media (prefers-reduced-motion: reduce) {
+    
+    @container scroll-state(*) {
+      transition: none;
+      animation: none;
+    }
+  }
+}`;
+
+const highlightedBestPractices = await highlightCode(bestPractices, "css");
+---
+
+<Slide title="Best practices" desc="Fallback & accessibility" order={order}>
+  <div slot="left">
+    <p>
+      Vždy používajte <code>@supports</code> pre detekciu podpory prehliadača.
+    </p>
+    <br />
+    <br />
+    <p>
+      Rešpektujte <code>prefers-reduced-motion</code> pre accessibility.
+    </p>
+    <p>
+      Vypnite animácie v scroll-state pre používateľov s citlivosťou na pohyb.
+    </p>
+  </div>
+  <div slot="right" set:html={highlightedBestPractices} />
+</Slide>

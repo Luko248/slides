@@ -1,0 +1,26 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+import illustration from "../assets/illustration.avif?url";
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide
+  title="Čo sú scroll-state container queries?"
+  order={order}
+  speaker
+  image={{
+    url: illustration,
+    width: 768,
+    height: 768,
+    alt: "Scroll state container queries illustration",
+  }}
+>
+  <p>
+    Nový prírastok do rodiny <strong>container queries</strong>.<br />
+    Umožňujú štýlovanie na základe <strong>scroll stavu</strong>.<br />
+  </p>
+</Slide>

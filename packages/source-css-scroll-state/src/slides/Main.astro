@@ -1,0 +1,20 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide order={order} center>
+  <Fragment slot="title">
+    CSS scroll-state
+    <br />
+    container queries
+  </Fragment>
+  <strong class="text-center text-theme-500 mx-auto block text-5xl">
+    Nový spôsob reagovania na stav scrollu v CSS
+  </strong>
+</Slide>
