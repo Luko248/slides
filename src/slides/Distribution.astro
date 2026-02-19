@@ -31,9 +31,7 @@ fs.cpSync(
   path.join(source, '.windsurf'),
   path.join(target, '.windsurf'),
   { recursive: true }
-);
-
-console.log('✓ AI guidelines installed');`;
+);`;
 
 const highlightedCode = await highlightCode(postInstallScript, "javascript");
 ---

@@ -10,8 +10,7 @@ const { order } = Astro.props;
 
 const skillExample = `---
 name: neuron-ui-buttons
-description: >
-  Button variants, groups, dropdowns,
+description: Button variants, groups, dropdowns,
   and system buttons for Neuron UI.
 ---
 
@@ -24,17 +23,7 @@ You are an expert in Neuron button components.
 - /ui-toggleButton
 - /ui-buttonGroup
 - /ui-dropdown
-- /ui-systemButton
-
-## You know:
-- All button variants and sizes
-- Icon button configurations
-- Button group layouts
-- Dropdown menu patterns
-- Loading and disabled states
-
-Use the appropriate slash command
-for the specific button type needed.`;
+- /ui-systemButton`;
 
 const highlightedCode = await highlightCode(skillExample, "markdown");
 ---
@@ -47,12 +36,14 @@ const highlightedCode = await highlightCode(skillExample, "markdown");
     <br />
     <p>
       Skill na <strong>tlačidlá</strong> – pozná všetky typy:
-      <code>/button</code>, <code>/toggleButton</code>, <code>/buttonGroup</code>...
+      <code>/button</code>, <code>/toggleButton</code>, <code>/buttonGroup</code
+      >...
     </p>
     <br />
     <p>
-      Skill na <strong>formuláre</strong> – pozná komponenty,
-      validáciu v <strong>Zod</strong>, React Hook Form, form composition.
+      Skill na <strong>formuláre</strong> – pozná komponenty, validáciu v <strong
+        >Zod</strong
+      >, React Hook Form, form composition.
     </p>
     <br />
     <p>

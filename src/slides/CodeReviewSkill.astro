@@ -10,49 +10,35 @@ const { order } = Astro.props;
 
 const codeReviewSkill = `---
 name: code-review
-description: >
-  Automated code review using framework
-  conventions and design system rules.
+description: Production readiness review before merge.
 ---
 
-# Code Review Skill
+# Code Review
 
-## Review checklist:
-1. ✓ Correct design system components used
-2. ✓ Props match guidelines specification
-3. ✓ i18n keys properly structured
-4. ✓ Form validation with Zod schemas
-5. ✓ RTK Query patterns followed
-6. ✓ Folder structure conventions
-7. ✓ No external UI library imports
-8. ✓ Accessibility requirements met
+## Process
+1. Scope: files / diff / component
 
-## Usage:
-# Developers run this before every push
-> /code-review
+## Must-have checks
+- Type Safety, Error Handling, Performance
+- React Best Practices, Clean Code
 
-# Skill verifies against all guidelines
-# and reports violations with fix suggestions`;
+## Severity
+- Critical / Important / Suggestion
+
+## Output
+- Ready to merge: Yes / No / With fixes`;
 
 const highlightedCode = await highlightCode(codeReviewSkill, "markdown");
 ---
 
 <Slide title="Code Review Skill" desc="Pred každým pushom" order={order}>
   <div slot="left">
-    <p>
-      Skill na <strong>code review</strong>, ktorý dnes
-      vývojári používajú pred každým pushom.
-    </p>
-    <br />
-    <p>
-      Overuje dodržiavanie <strong>frameworkových konvencií</strong>
-      a design system pravidiel.
-    </p>
-    <br />
-    <p>
-      Automaticky kontroluje importy, props, i18n,
-      validáciu, folder structure.
-    </p>
+    <ul class="list-disc pl-8 space-y-3">
+      <li><span>Spúšťame pred merge: <strong>/code-review</strong></span></li>
+      <li><span>Scope: súbor / git diff / komponent</span></li>
+      <li><span>Kontroly: type safety, errors, performance, React best practices</span></li>
+      <li><span>Výstup: Critical / Important / Suggestion + <strong>Ready to merge</strong></span></li>
+    </ul>
   </div>
   <div slot="right" set:html={highlightedCode} />
 </Slide>

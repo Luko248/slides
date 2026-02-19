@@ -8,28 +8,24 @@ interface Props {
 
 const { order } = Astro.props;
 
-const contextBubble = `# AI Agent Rules – Context Bubble
+const contextBubble = `# AI Agent Role – Context Bubble
 
-## STRICT RULES:
-1. ONLY use components from guidelines
-2. NEVER import from external libraries
-3. If component doesn't exist in guidelines,
-   ASK before proceeding
-4. Read guidelines COMPLETELY before coding
+## Project Overview
+- Company: AIS-Servis
+- Client: Vienna Insurance Group
+- Domain: Insurance web applications
+- Stack: Neuron Framework, Neuron UI
+- Architecture: Enterprise web applications
 
-## How to read guidelines:
-1. Start with Index.md for the category
-2. Follow links to specific component
-3. Check "Best Practices" section
-4. Check "Do NOT use when" section
-5. Use exact code snippets as templates
+## Rules
+1. Use only components from guidelines.
+2. Import only from '@neuron/ui' and '@neuron/core'.
+3. If component is missing, ask before proceeding.
+4. Do not use external UI libraries.
 
-## Context boundary:
-- @neuron/ui  ✅
-- @neuron/core           ✅
-- @mui/material          ❌
-- antd                   ❌
-- react-bootstrap        ❌`;
+## Allowed / Blocked
+- @neuron/ui, @neuron/core ✅
+- @mui/material, antd, react-bootstrap ❌`;
 
 const highlightedCode = await highlightCode(contextBubble, "markdown");
 ---
@@ -50,8 +46,8 @@ const highlightedCode = await highlightCode(contextBubble, "markdown");
     </p>
     <br />
     <p>
-      <strong>Claude Sonnet 3.7</strong> – výrazne lepšie výsledky,
-      menej priamych referencií.
+      <strong>Claude Sonnet 4.0</strong> – výrazne lepšie výsledky, menej priamych
+      referencií.
     </p>
   </div>
   <div slot="right" set:html={highlightedCode} />
