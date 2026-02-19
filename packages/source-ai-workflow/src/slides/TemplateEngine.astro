@@ -1,0 +1,61 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+import { highlightCode } from "@presentation/utils/shiki-helper";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const templateEngineCode = `// template-engine.ts
+interface AdapterConfig {
+  name: string;
+  outputDir: string;
+  directories: {
+    skills: string;
+    commands: string;      // commands | prompts | workflows
+    [key: string]: string;
+  };
+  templates: {
+    skill: { instruction: string };
+    command: {
+      frontmatter: string;
+      extension: string;   // .md | .prompt.md
+    };
+    agent?: {
+      frontmatter: string;
+      extension: string;
+    };
+  };
+  specialFiles?: Record<string, string>;
+}`;
+
+const highlightedCode = await highlightCode(templateEngineCode, "typescript");
+---
+
+<Slide
+  title="Template Engine"
+  desc="Jeden template, viac výstupov"
+  order={order}
+>
+  <div slot="left">
+    <p>
+      Eliminuje <strong>~67% duplicity</strong> súborov.
+    </p>
+    <br />
+    <p>
+      Jeden template s <code>{"{{variable}}"}</code> syntaxou sa renderuje pre každý
+      adaptér.
+    </p>
+    <br />
+    <p>
+      Frontmatter (YAML) drží <strong>metadáta</strong>.
+    </p>
+    <br />
+    <p>
+      Nový nástroj = otázka <strong>minút</strong>.
+    </p>
+  </div>
+  <div slot="right" set:html={highlightedCode} />
+</Slide>

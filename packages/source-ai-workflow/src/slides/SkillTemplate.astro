@@ -1,0 +1,56 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+import { highlightCode } from "@presentation/utils/shiki-helper";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const skillTemplateFlow = `# INPUT: SKILL.template.md
+---
+name: neuron-ui-buttons
+description: Button variants, groups, dropdowns
+commands: ui-button, ui-buttongroup, ui-dropdown
+---
+{{skill.instruction}}
+
+# OUTPUT → Claude Code:
+---
+name: neuron-ui-buttons
+description: Button variants, groups, dropdowns
+---
+Use custom slash commands
+\`/ui-button\`, \`/ui-buttongroup\`, \`/ui-dropdown\`.
+
+# OUTPUT → Windsurf:
+---
+name: neuron-ui-buttons
+description: Button variants, groups, dropdowns
+---
+Use workflows
+\`/ui-button\`, \`/ui-buttongroup\`, \`/ui-dropdown\`.`;
+
+const highlightedCode = await highlightCode(skillTemplateFlow, "markdown");
+---
+
+<Slide title="Skill Templates" desc="Kategorizácia commandov" order={order}>
+  <div slot="left">
+    <p>
+      <code>{"{{skill.instruction}}"}</code> sa nahradí
+      podľa <strong>adapter configu</strong>.
+    </p>
+    <br />
+    <p>
+      <code>{"{{commands}}"}</code> sa interpoluje do
+      zoznamu slash commandov s <code>/</code> prefixom.
+    </p>
+    <br />
+    <p>
+      <strong>30 skill kategórií</strong> zoskupuje
+      77 commandov do logických celkov.
+    </p>
+  </div>
+  <div slot="right" set:html={highlightedCode} />
+</Slide>

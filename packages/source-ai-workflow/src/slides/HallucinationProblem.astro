@@ -1,0 +1,54 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+import { highlightCode } from "@presentation/utils/shiki-helper";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const contextBubble = `# AI Agent Role – Context Bubble
+
+## Project Overview
+- Company: AIS-Servis
+- Client: Vienna Insurance Group
+- Domain: Insurance web applications
+- Stack: Neuron Framework, Neuron UI
+- Architecture: Enterprise web applications
+
+## Rules
+1. Use only components from guidelines.
+2. Import only from '@neuron/ui' and '@neuron/core'.
+3. If component is missing, ask before proceeding.
+4. Do not use external UI libraries.
+
+## Allowed / Blocked
+- @neuron/ui, @neuron/core ✅
+- @mui/material, antd, react-bootstrap ❌`;
+
+const highlightedCode = await highlightCode(contextBubble, "markdown");
+---
+
+<Slide title="Halucinácie" desc="Kontextová bublina" order={order}>
+  <div slot="left">
+    <p>
+      S rastúcim kontextom sa objavil problém s <strong>halucináciami</strong>.
+    </p>
+    <br />
+    <p>
+      AI agent uzavretý do <strong>kontextovej bubliny</strong>
+      – aby si nevymýšľal.
+    </p>
+    <br />
+    <p>
+      Pravidlá, ako správne <strong>čítať guidelines</strong>.
+    </p>
+    <br />
+    <p>
+      <strong>Claude Sonnet 4.0</strong> – výrazne lepšie výsledky, menej priamych
+      referencií.
+    </p>
+  </div>
+  <div slot="right" set:html={highlightedCode} />
+</Slide>

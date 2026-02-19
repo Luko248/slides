@@ -1,0 +1,51 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+import { highlightCode } from "@presentation/utils/shiki-helper";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const multiToolStructure = `# Podpora troch nástrojov
+
+project-root/
+├── AGENTS.md
+├── CLAUDE.md
+├── .claude/                    # Claude Code
+│   ├── commands/
+│   ├── skills/
+│   └── agents/
+├── .github/                    # GitHub Copilot
+│   ├── COPILOT-INSTRUCTIONS.md
+│   ├── prompts/
+│   ├── skills/
+│   └── agents/
+└── .windsurf/                  # Windsurf
+    ├── workflows/
+    ├── skills/
+    └── rules/`;
+
+const highlightedCode = await highlightCode(multiToolStructure, "markdown");
+---
+
+<Slide title="Multi-tool podpora" desc="Claude Code, Copilot, Windsurf" order={order}>
+  <div slot="left">
+    <p>
+      Postupne sme pridali podporu pre <strong>tri nástroje</strong>.
+    </p>
+    <br />
+    <ul>
+      <li><span><strong>Claude Code</strong> – commands, skills, agents</span></li>
+      <li><span><strong>GitHub Copilot</strong> – prompts, skills, agents</span></li>
+      <li><span><strong>Windsurf</strong> – workflows, skills, rules</span></li>
+    </ul>
+    <br />
+    <p>
+      Každý nástroj <strong>iné pomenovanie</strong>,
+      ale rovnaký AI workflow.
+    </p>
+  </div>
+  <div slot="right" set:html={highlightedCode} />
+</Slide>

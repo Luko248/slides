@@ -1,0 +1,23 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide title="Pain Point #4" desc="Mindset" order={order} center>
+  <p class="text-center">
+    Zmeniť <strong>mindset ľudí</strong>.
+  </p>
+  <br />
+  <p class="text-center">Vývojári to majú naservírované priamo pod nosom.</p>
+  <br />
+  <p class="text-center">
+    No len hŕstka z nich to naozaj používa
+    <br />
+    alebo <strong>chce používať</strong>.
+  </p>
+</Slide>

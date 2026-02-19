@@ -11,6 +11,7 @@
 
 /* Configure content sources for tree-shaking optimization */
 @source "../../src/**/*.{astro,html,js,jsx,ts,tsx,md,mdx}";
+@source "../../packages/**/*.{astro,html,js,jsx,ts,tsx,md,mdx}";
 
 /* Configure dark mode to use .dark class (Tailwind 4) */
 @custom-variant dark (&:where(.dark, .dark *));

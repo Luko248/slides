@@ -1,0 +1,15 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide title="Pain Point #2" desc="Ťažkopádne používanie, halucinácie" order={order} center>
+  <p class="text-center">
+    AI nevidia <strong>markdown súbory</strong>.
+  </p>
+</Slide>

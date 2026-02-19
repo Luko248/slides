@@ -1,0 +1,25 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide title="Apríl 2025" desc="Kde to všetko začalo" order={order} center>
+  <p class="text-center">
+    AI sa vo firme používalo len <strong>zriedka</strong>
+    <br />
+    a často skôr vo forme <strong>vibe codingu</strong>.
+  </p>
+  <br />
+  <p class="text-center">
+    Žiadne slash commandy. Žiadne agent skills.
+    <br />
+    Žiadni custom agenti.
+    <br />
+    <strong>Celý AI workflow bol ešte v plienkach.</strong>
+  </p>
+</Slide>

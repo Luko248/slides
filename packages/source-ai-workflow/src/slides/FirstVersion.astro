@@ -1,0 +1,51 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+import { highlightCode } from "@presentation/utils/shiki-helper";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const firstStructure = `# Prvá verzia - jednoduchá štruktúra
+
+project-root/
+├── docs/
+│   └── ai-guidelines/
+│       ├── index.md
+│       ├── buttons/
+│       │   ├── button-guidelines.md
+│       │   └── dropdown-guidelines.md
+│       ├── form/
+│       │   ├── input-guidelines.md
+│       │   └── checkbox-guidelines.md
+│       └── messages/
+│           ├── toast-guidelines.md
+│           └── messagebox-guidelines.md
+│
+└── .windsurf/
+    └── .windsurfrules    # → links to docs/`;
+
+const highlightedCode = await highlightCode(firstStructure, "markdown");
+---
+
+<Slide title="Prvá verzia" desc="Jednoduchá distribúcia" order={order}>
+  <div slot="left">
+    <p>
+      Do rootu projektu sa pridala zložka <code>/docs</code>
+      s AI guidelines.
+    </p>
+    <br />
+    <p>
+      Vytvorila sa zložka <code>.windsurf</code> s defaultným
+      konfigurákom.
+    </p>
+    <br />
+    <p>
+      Prvá verzia <strong>distribúcie AI abstrakcie</strong>
+      nad design systémom pre vývojárov.
+    </p>
+  </div>
+  <div slot="right" set:html={highlightedCode} />
+</Slide>

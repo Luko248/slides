@@ -1,0 +1,60 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+import { highlightCode } from "@presentation/utils/shiki-helper";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const smartMergeCode = `# button-guidelines.md
+
+## System part (overwritten on update)
+Import: @neuron/ui
+Component: NeuronButton
+
+### Variants
+- primary | secondary | tertiary | ghost
+
+### Props
+| Prop    | Type    | Required |
+|---------|---------|----------|
+| variant | string  | yes      |
+| size    | string  | no       |
+| icon    | string  | no       |
+
+---
+
+## User override part (PRESERVED!)
+### Our team conventions:
+- Always use "medium" size in our app
+- Primary buttons only in form footers
+- Use ghost variant for table actions`;
+
+const highlightedCode = await highlightCode(smartMergeCode, "markdown");
+---
+
+<Slide title="Smart Merge" desc="Systémová vs. užívateľská časť" order={order}>
+  <div slot="left">
+    <p>
+      Guidelines používajú <code>---</code> delimiter mechanizmus.
+    </p>
+    <br />
+    <p>
+      Nad delimitrom: <strong>systémová časť</strong>
+      – prepísaná pri update.
+    </p>
+    <br />
+    <p>
+      Pod delimitrom: <strong>užívateľská časť</strong>
+      – zachovaná naprieč aktualizáciami.
+    </p>
+    <br />
+    <p>
+      Tímy si môžu <strong>prispôsobiť</strong> guidelines
+      bez straty pri updatoch.
+    </p>
+  </div>
+  <div slot="right" set:html={highlightedCode} />
+</Slide>

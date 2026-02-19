@@ -1,3 +1,15 @@
+---
+interface Props {
+  logoSrc: string;
+  logoAlt: string;
+  websiteHref: string;
+  websiteLabel: string;
+  slidesCount: number;
+}
+
+const { logoSrc, logoAlt, websiteHref, websiteLabel, slidesCount } = Astro.props;
+---
+
 <style>
   .presentation:has(> section::scroll-marker:target-current) + footer {
     display: none;
@@ -9,14 +21,14 @@
   style="background-color: light-dark(black, hsl(0 0% 5%));"
 >
   <img
-    src="/slides/assets/ais-logo.svg"
-    alt="AIS logo"
+    src={logoSrc}
+    alt={logoAlt}
     class="h-[3.6svb] w-auto"
     loading="eager"
     decoding="async"
   />
-  <span class="absolute left-1/2 text-white/50 text-2xl" style="translate: 30% 0;">/ 39</span>
-  <a href="https://lukaschylik.dev" class="text-white text-3xl" target="_blank"
-    >lukaschylik.dev</a
-  >
+  <span class="absolute left-1/2 text-white/50 text-2xl" style="translate: 30% 0;">
+    / {slidesCount}
+  </span>
+  <a href={websiteHref} class="text-white text-3xl" target="_blank">{websiteLabel}</a>
 </footer>

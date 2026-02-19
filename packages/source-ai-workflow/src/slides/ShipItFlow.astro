@@ -1,0 +1,57 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+import { highlightCode } from "@presentation/utils/shiki-helper";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const shipItCode = `// ai-shipper.ts – main entry point
+export async function shipIt() {
+  // 1. Component docs with smart merge
+  await exportGuidelines();
+
+  // 2. Templates → Claude/Copilot/Windsurf
+  await generateAdapters();
+
+  // 3. AI onboarding readme
+  await exportReadme();
+
+  // 4. Copilot-specific instructions
+  await exportCopilotInstructions();
+
+  // 5. Agent definitions
+  await exportAgents();
+}
+
+// Smart merge: user customizations preserved!
+// Everything above --- is "system" (overwritten)
+// Everything below --- is "user" (preserved)
+
+// Triggered by postinstall.js after npm install
+// Single source of truth → 400+ output files`;
+
+const highlightedCode = await highlightCode(shipItCode, "typescript");
+---
+
+<Slide title="shipIt()" desc="Hlavný entry point" order={order}>
+  <div slot="left">
+    <p>
+      Funkcia <code>shipIt()</code> beží po <code>npm install</code>.
+    </p>
+    <br />
+    <p>
+      5 krokov sekvenčne:
+    </p>
+    <ul>
+      <li><code>exportGuidelines()</code> <span>– docs so smart merge</span></li>
+      <li><code>generateAdapters()</code> <span>– templates → výstupy</span></li>
+      <li><code>exportReadme()</code> <span>– AI onboarding</span></li>
+      <li><code>exportCopilotInstructions()</code></li>
+      <li><code>exportAgents()</code> <span>– AGENTS.md</span></li>
+    </ul>
+  </div>
+  <div slot="right" set:html={highlightedCode} />
+</Slide>

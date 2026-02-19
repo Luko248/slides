@@ -1,0 +1,26 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide title="Kde sme dnes?" desc="One-shot generovanie" order={order}>
+  <div slot="left">
+    <p>
+      Dokážeme často <strong>na one shot</strong> vygenerovať
+      jednotlivé stránky webových aplikácií.
+    </p>
+    <br />
+    <p>
+      Aj <strong>celé menšie aplikácie</strong> pomocou AI.
+    </p>
+    <br />
+    <p>
+      Podmienka: dobre vytvorená <strong>špecifikácia zadania</strong>.
+    </p>
+  </div>
+</Slide>

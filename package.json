@@ -1,7 +1,11 @@
 {
   "name": "web-science",
+  "private": true,
   "type": "module",
   "version": "0.0.1",
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "dev": "astro dev",
     "build": "astro check && astro build",
@@ -10,14 +14,17 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@slides/source-ai-workflow": "workspace:*",
     "@astrojs/mdx": "^4.3.6",
     "astro": "^5.14.1",
     "tailwind-merge": "^3.3.1",
     "tailwind-variants": "^3.1.1"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.4",
     "@tailwindcss/vite": "^4.1.13",
     "shiki": "^3.13.0",
-    "tailwindcss": "^4.1.13"
+    "tailwindcss": "^4.1.13",
+    "typescript": "^5.9.2"
   }
 }

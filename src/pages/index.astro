@@ -3,52 +3,16 @@ import Footer from "../components/footer/Footer.astro";
 import Lava from "../components/lava/Lava.astro";
 import Progress from "../components/progress/Progress.astro";
 import ThemeToggle from "../components/theme-toggle/ThemeToggle.astro";
+import { getActiveSlidesSource } from "../config/slides-sources";
+import { getThemeCssVariables } from "../utils/source-theme";
 import "../styles/global.css";
 
-// Import all slide components
-import Main from "../slides/Main.astro";
-import Speaker from "../slides/Speaker.astro";
-import AISContext from "../slides/AISContext.astro";
-import CurrentState from "../slides/CurrentState.astro";
-import TheBeginning from "../slides/TheBeginning.astro";
-import MyRole from "../slides/MyRole.astro";
-import FigmaMCP from "../slides/FigmaMCP.astro";
-import FigmaCodeConnect from "../slides/FigmaCodeConnect.astro";
-import PainPoint1 from "../slides/PainPoint1.astro";
-import PainPoint2 from "../slides/PainPoint2.astro";
-import PainPoint3 from "../slides/PainPoint3.astro";
-import AIGuidelines from "../slides/AIGuidelines.astro";
-import GuidelinesStructure from "../slides/GuidelinesStructure.astro";
-import Distribution from "../slides/Distribution.astro";
-import FirstVersion from "../slides/FirstVersion.astro";
-import FirstProblems from "../slides/FirstProblems.astro";
-import BeyondUI from "../slides/BeyondUI.astro";
-import HallucinationProblem from "../slides/HallucinationProblem.astro";
-import SlashCommands from "../slides/SlashCommands.astro";
-import Skills from "../slides/Skills.astro";
-import CodeReviewSkill from "../slides/CodeReviewSkill.astro";
-import MultiToolSupport from "../slides/MultiToolSupport.astro";
-import MaintenanceProblem from "../slides/MaintenanceProblem.astro";
-import HejKamo from "../slides/HejKamo.astro";
-import TemplateEngine from "../slides/TemplateEngine.astro";
-import AdapterConfigs from "../slides/AdapterConfigs.astro";
-import TemplateToOutput from "../slides/TemplateToOutput.astro";
-import SkillTemplate from "../slides/SkillTemplate.astro";
-import AgentTemplates from "../slides/AgentTemplates.astro";
-import ShipItFlow from "../slides/ShipItFlow.astro";
-import SmartMerge from "../slides/SmartMerge.astro";
-import OutputStructure from "../slides/OutputStructure.astro";
-import FinalOptimization from "../slides/FinalOptimization.astro";
-import WindsurfRules from "../slides/WindsurfRules.astro";
-import Results from "../slides/Results.astro";
-import HumanProblem from "../slides/HumanProblem.astro";
-import Timeline from "../slides/Timeline.astro";
-import Summary from "../slides/Summary.astro";
-import Social from "../slides/Social.astro";
-import Outro from "../slides/Outro.astro";
+const slidesSource = getActiveSlidesSource();
+const themeCssVariables = getThemeCssVariables(slidesSource.theme);
+const slidesCount = slidesSource.slides.length;
 ---
 
-<html lang="sk">
+<html lang={slidesSource.meta.language}>
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/slides/favicon.svg" />
@@ -75,71 +39,35 @@ import Outro from "../slides/Outro.astro";
       html.style.colorScheme = theme;
       localStorage.setItem('theme', theme);
     </script>
+    {themeCssVariables && <style is:inline>{themeCssVariables}</style>}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@200..800&family=League+Spartan:wght@100..900&display=swap"
       rel="stylesheet"
     />
-    <title>
-      AI abstractions over Design System | Lukáš Chylík
-    </title>
-    <meta
-      name="description"
-      content="Cesta od vibe codingu k AI-first vývoju v AIS Servis. AI abstrakcie nad design systémom pre frontend vývojárov."
-    />
-    <meta name="author" content="Lukas Chylik" />
-    <meta
-      name="keywords"
-      content="AI, Design System, AI Guidelines, Frontend Development, Claude Code, GitHub Copilot, Windsurf"
-    />
+    <title>{slidesSource.meta.title}</title>
+    <meta name="description" content={slidesSource.meta.description} />
+    <meta name="author" content={slidesSource.meta.author} />
+    <meta name="keywords" content={slidesSource.meta.keywords} />
   </head>
   <body class="m-0 max-h-svh overflow-hidden transition-colors duration-300" style="background-color: var(--color-bg-primary);">
     <ThemeToggle />
     <div class="presentation max-h-svh relative">
       <Lava />
       <Progress />
-      <Main order={1} />
-      <Speaker order={2} />
-      <AISContext order={3} />
-      <MyRole order={4} />
-      <CurrentState order={5} />
-      <TheBeginning order={6} />
-      <FigmaMCP order={7} />
-      <FigmaCodeConnect order={8} />
-      <PainPoint1 order={9} />
-      <AIGuidelines order={10} />
-      <GuidelinesStructure order={11} />
-      <Distribution order={12} />
-      <FirstVersion order={13} />
-      <PainPoint2 order={14} />
-      <FirstProblems order={15} />
-      <SmartMerge order={16} />
-      <BeyondUI order={17} />
-      <HallucinationProblem order={18} />
-      <SlashCommands order={19} />
-      <Skills order={20} />
-      <CodeReviewSkill order={21} />
-      <MultiToolSupport order={22} />
-      <PainPoint3 order={23} />
-      <MaintenanceProblem order={24} />
-      <HejKamo order={25} />
-      <TemplateEngine order={26} />
-      <AdapterConfigs order={27} />
-      <TemplateToOutput order={28} />
-      <SkillTemplate order={29} />
-      <AgentTemplates order={30} />
-      <WindsurfRules order={31} />
-      <ShipItFlow order={32} />
-      <OutputStructure order={33} />
-      <FinalOptimization order={34} />
-      <Summary order={35} />
-      <Timeline order={36} />
-      <Results order={37} />
-      <HumanProblem order={38} />
-      {/* <Social order={40} /> */}
-      <Outro order={39} />
+      {
+        slidesSource.slides.map(({ component: SlideComponent, order }) => (
+          <SlideComponent order={order} />
+        ))
+      }
     </div>
-    <Footer />
+    <Footer
+      logoSrc={slidesSource.footer.logoSrc}
+      logoAlt={slidesSource.footer.logoAlt}
+      websiteHref={slidesSource.footer.websiteHref}
+      websiteLabel={slidesSource.footer.websiteLabel}
+      slidesCount={slidesCount}
+    />
   </body>
 </html>

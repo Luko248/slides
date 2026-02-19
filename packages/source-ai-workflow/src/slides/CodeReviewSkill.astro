@@ -1,0 +1,44 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+import { highlightCode } from "@presentation/utils/shiki-helper";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const codeReviewSkill = `---
+name: code-review
+description: Production readiness review before merge.
+---
+
+# Code Review
+
+## Process
+1. Scope: files / diff / component
+
+## Must-have checks
+- Type Safety, Error Handling, Performance
+- React Best Practices, Clean Code
+
+## Severity
+- Critical / Important / Suggestion
+
+## Output
+- Ready to merge: Yes / No / With fixes`;
+
+const highlightedCode = await highlightCode(codeReviewSkill, "markdown");
+---
+
+<Slide title="Code Review Skill" desc="Pred každým pushom" order={order}>
+  <div slot="left">
+    <ul class="list-disc pl-8 space-y-3">
+      <li><span>Spúšťame pred merge: <strong>/code-review</strong></span></li>
+      <li><span>Scope: súbor / git diff / komponent</span></li>
+      <li><span>Kontroly: type safety, errors, performance, React best practices</span></li>
+      <li><span>Výstup: Critical / Important / Suggestion + <strong>Ready to merge</strong></span></li>
+    </ul>
+  </div>
+  <div slot="right" set:html={highlightedCode} />
+</Slide>

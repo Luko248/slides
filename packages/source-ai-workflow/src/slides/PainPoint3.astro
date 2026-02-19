@@ -1,0 +1,13 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide title="Pain Point #3" desc="Rastúca komplexita" order={order} center>
+  <p class="text-center">Viac nástrojov = viac rozdielov v súboroch.</p>
+</Slide>

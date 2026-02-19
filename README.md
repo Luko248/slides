@@ -108,19 +108,43 @@ These colors are used throughout the presentation for:
 
 Simply update the HSL values to match your desired color scheme. The `light-dark()` function automatically switches values based on the active theme! 🚀
 
-## 🔧 Project Structure
+## 🔧 Monorepo Structure
 
 ```
+packages/
+└── source-ai-workflow/       # Slide source package (content + source config)
+
 src/
 ├── config/
-│   └── theme.config.ts       # Theme configuration
-├── components/
-│   ├── theme-toggle/         # Theme toggle button
-│   ├── slide/                # Slide component
-│   └── ...
-├── slides/                   # Individual slide files
+│   ├── app.config.ts         # Active source selection (slidesSource)
+│   ├── slides-sources.ts     # Source registry
+│   └── theme.config.ts       # Theme/shiki configuration
+├── components/               # Shared presentation UI
+├── pages/
+│   └── index.astro           # Presentation app shell
 ├── styles/
-│   └── global.css           # Global styles with light/dark support
+│   └── global.css            # Global styles
 └── utils/
-    └── shiki-helper.ts      # Syntax highlighting helper
+    ├── shiki-helper.ts
+    └── source-theme.ts       # Applies source theme overrides
 ```
+
+## 🧩 Slide Sources
+
+The presentation app consumes one source package at a time.
+
+- Current source package: `@slides/source-ai-workflow`
+- Source selector: `src/config/app.config.ts`
+
+```ts
+export const appConfig = {
+  slidesSource: "ai-workflow",
+} as const;
+```
+
+To add a new presentation source:
+
+1. Create a new workspace package in `packages/` (for example `packages/source-new-topic`).
+2. Export a source object from that package (metadata, theme, footer, ordered slides).
+3. Register it in `src/config/slides-sources.ts`.
+4. Change `slidesSource` in `src/config/app.config.ts`.

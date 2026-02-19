@@ -1,0 +1,62 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+import { highlightCode } from "@presentation/utils/shiki-helper";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const adapterCode = `export const claudeCodeAdapter: AdapterConfig = {
+  name: "claude-code",
+  outputDir: ".claude",
+  directories: {
+    skills: "skills",
+    commands: "commands",
+    agents: "agents",
+  },
+  templates: {
+    skill: {
+      instruction:
+        "Use custom slash commands {{commands}}.",
+    },
+    command: {
+      frontmatter: "description: {{description}}",
+      extension: ".md",
+    },
+    agent: {
+      frontmatter: \`name: {{name}}
+description: {{claude_description}}
+model: {{claude_model}}
+color: {{claude_color}}\`,
+      extension: ".md",
+    },
+  },
+};`;
+
+const highlightedCode = await highlightCode(adapterCode, "typescript");
+---
+
+<Slide title="Adapter Configs" desc="Konfigurácia per nástroj" order={order}>
+  <div slot="left">
+    <p>
+      Každý AI nástroj má vlastný <strong>config</strong>
+      implementujúci <code>AdapterConfig</code>.
+    </p>
+    <br />
+    <ul>
+      <li><span><strong>Claude Code</strong> – commands, .md</span></li>
+      <li><span><strong>Copilot</strong> – prompts, .prompt.md</span></li>
+      <li>
+        <span><strong>Windsurf</strong> – workflows, auto_execution_mode</span>
+      </li>
+    </ul>
+    <br />
+    <p>
+      Rovnaký obsah, <strong>rôzny frontmatter</strong>
+      a prípona súboru.
+    </p>
+  </div>
+  <div slot="right" set:html={highlightedCode} />
+</Slide>
