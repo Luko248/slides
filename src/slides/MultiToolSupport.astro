@@ -11,19 +11,21 @@ const { order } = Astro.props;
 const multiToolStructure = `# Podpora troch nástrojov
 
 project-root/
+├── AGENTS.md
 ├── CLAUDE.md
 ├── .claude/                    # Claude Code
 │   ├── commands/
 │   ├── skills/
 │   └── agents/
 ├── .github/                    # GitHub Copilot
-│   ├── commands/
+│   ├── COPILOT-INSTRUCTIONS.md
+│   ├── prompts/
 │   ├── skills/
 │   └── agents/
 └── .windsurf/                  # Windsurf
-    ├── commands/
+    ├── workflows/
     ├── skills/
-    └── agents/`;
+    └── rules/`;
 
 const highlightedCode = await highlightCode(multiToolStructure, "markdown");
 ---
@@ -36,8 +38,8 @@ const highlightedCode = await highlightCode(multiToolStructure, "markdown");
     <br />
     <ul>
       <li><span><strong>Claude Code</strong> – commands, skills, agents</span></li>
-      <li><span><strong>GitHub Copilot</strong> – commands, skills, agents</span></li>
-      <li><span><strong>Windsurf</strong> – commands, skills, agents</span></li>
+      <li><span><strong>GitHub Copilot</strong> – prompts, skills, agents</span></li>
+      <li><span><strong>Windsurf</strong> – workflows, skills, rules</span></li>
     </ul>
     <br />
     <p>

@@ -1,0 +1,20 @@
+---
+import Slide from "../components/slide/Slide.astro";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide order={order} center>
+  <Fragment slot="title">Hej Kámo!</Fragment>
+  <img
+    src="/slides/assets/hej-kamo.png"
+    alt="Hej Kámo"
+    class="mx-auto w-[55svi] max-w-[720px] rounded-2xl"
+    loading="eager"
+    decoding="async"
+  />
+</Slide>

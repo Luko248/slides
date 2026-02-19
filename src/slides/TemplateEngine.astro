@@ -29,26 +29,24 @@ interface AdapterConfig {
     };
   };
   specialFiles?: Record<string, string>;
-}
-
-// Template uses {{variable}} syntax
-// Frontmatter (YAML between --- markers)
-// holds metadata
-// Engine reads template → parses frontmatter
-// → interpolates variables → writes output`;
+}`;
 
 const highlightedCode = await highlightCode(templateEngineCode, "typescript");
 ---
 
-<Slide title="Template Engine" desc="Jeden template, viac výstupov" order={order}>
+<Slide
+  title="Template Engine"
+  desc="Jeden template, viac výstupov"
+  order={order}
+>
   <div slot="left">
     <p>
       Eliminuje <strong>~67% duplicity</strong> súborov.
     </p>
     <br />
     <p>
-      Jeden template s <code>{"{{variable}}"}</code> syntaxou
-      sa renderuje pre každý adaptér.
+      Jeden template s <code>{"{{variable}}"}</code> syntaxou sa renderuje pre každý
+      adaptér.
     </p>
     <br />
     <p>

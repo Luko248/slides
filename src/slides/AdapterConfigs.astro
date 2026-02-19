@@ -8,8 +8,7 @@ interface Props {
 
 const { order } = Astro.props;
 
-const adapterCode = `// claude-code.config.ts
-export const claudeCodeAdapter: AdapterConfig = {
+const adapterCode = `export const claudeCodeAdapter: AdapterConfig = {
   name: "claude-code",
   outputDir: ".claude",
   directories: {
@@ -49,7 +48,9 @@ const highlightedCode = await highlightCode(adapterCode, "typescript");
     <ul>
       <li><span><strong>Claude Code</strong> – commands, .md</span></li>
       <li><span><strong>Copilot</strong> – prompts, .prompt.md</span></li>
-      <li><span><strong>Windsurf</strong> – workflows, auto_execution_mode</span></li>
+      <li>
+        <span><strong>Windsurf</strong> – workflows, auto_execution_mode</span>
+      </li>
     </ul>
     <br />
     <p>

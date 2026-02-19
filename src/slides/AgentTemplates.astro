@@ -11,56 +11,37 @@ const { order } = Astro.props;
 const agentTemplateCode = `# INPUT: neuron-frontend-dev.agent.template.md
 ---
 name: neuron-frontend-dev
-description: Neuron Framework frontend dev
-claude_description: "Use this agent when..."
+description: "Neuron Framework frontend dev"
 claude_model: opus
 claude_color: green
-github_argument_hint: Describe the feature...
+github_argument_hint: "Describe the feature..."
 github_tools: ["runCommands", "runTasks"]
 ---
 You are an elite Neuron Frontend Developer...
 
-# OUTPUT → Claude Code:
+# OUTPUT → Claude Code (diff only)
 ---
-name: neuron-frontend-dev
-description: Use this agent when...
 model: opus
 color: green
 ---
-You are an elite Neuron Frontend Developer...
 
-# OUTPUT → GitHub Copilot:
+# OUTPUT → GitHub Copilot (diff only)
 ---
-name: neuron-frontend-dev
-description: Neuron Framework frontend dev
-argument-hint: Describe the feature...
+argument-hint: "Describe the feature..."
 tools: ["runCommands", "runTasks"]
----
-You are an elite Neuron Frontend Developer...`;
+---`;
 
 const highlightedCode = await highlightCode(agentTemplateCode, "markdown");
 ---
 
 <Slide title="AI Agenti" desc="Frontend developer & kóder" order={order}>
   <div slot="left">
-    <p>
-      Dvaja agenti: <strong>frontend vývojár</strong> a <strong>kóder</strong>.
-    </p>
-    <br />
-    <p>
-      Vývojár si volá kódera pre custom domain komponenty
-      mimo design systém.
-    </p>
-    <br />
-    <p>
-      Tiež postavení na <strong>template-based</strong> mechanizme.
-    </p>
-    <br />
-    <p>
-      Dostupní v <strong>Claude Code</strong> a <strong>GitHub Copilot</strong>.
-      <br />
-      Windsurf zatiaľ custom agentov nepodporuje.
-    </p>
+    <ul class="list-disc pl-8 space-y-3">
+      <li><span>2 agenti: <strong>frontend vývojár</strong> + <strong>kóder</strong></span></li>
+      <li><span>Kóder rieši custom domain komponenty mimo UI</span></li>
+      <li><span>Obaja sú generovaní z rovnakého template</span></li>
+      <li><span>Podpora: <strong>Claude Code</strong> a <strong>GitHub Copilot</strong></span></li>
+    </ul>
   </div>
   <div slot="right" set:html={highlightedCode} />
 </Slide>

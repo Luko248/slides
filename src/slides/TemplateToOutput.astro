@@ -39,8 +39,8 @@ const highlightedCode = await highlightCode(templateFlow, "markdown");
 <Slide title="Template → Output" desc="Jeden vstup, tri výstupy" order={order}>
   <div slot="left">
     <p>
-      Rovnaký <strong>content body</strong>,
-      rôzny frontmatter a file extension per adaptér.
+      Rovnaký <strong>content body</strong>, rôzny frontmatter a file extension
+      per adaptér.
     </p>
     <br />
     <p>
@@ -49,11 +49,6 @@ const highlightedCode = await highlightCode(templateFlow, "markdown");
     <br />
     <p>
       <code>{"{{commands}}"}</code> → interpoluje zoznam commandov
-    </p>
-    <br />
-    <p>
-      Riadky s nevyriešenými <code>{"{{...}}"}</code> placeholdermi
-      sú <strong>automaticky odstránené</strong>.
     </p>
   </div>
   <div slot="right" set:html={highlightedCode} />
