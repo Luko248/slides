@@ -170,4 +170,9 @@ html:not(.dark) .shiki span {
 
 img[alt="Lukáš Chylík"] {
   scale: 1.25;
+  filter:
+    drop-shadow(.25svb 0 0 white)
+    drop-shadow(-.25svb 0 0 white)
+    drop-shadow(0 .25svb 0 white)
+    drop-shadow(0 -.25svb 0 white);
 }
