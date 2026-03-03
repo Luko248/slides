@@ -1,0 +1,46 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+import { highlightCode } from "@presentation/utils/shiki-helper";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const code = `# 1. Inštalácia
+npm install -g @figma/mcp-server-figma
+
+# 2. Konfigurácia Claude Desktop
+# claude_desktop_config.json
+{
+  "mcpServers": {
+    "figma": {
+      "command": "mcp-server-figma",
+      "env": {
+        "FIGMA_ACCESS_TOKEN": "figd_xxxxxxxx"
+      }
+    }
+  }
+}`;
+
+const highlightedCode = await highlightCode(code, "bash");
+---
+
+<Slide title="MCP Setup" desc="Konfigurácia" order={order}>
+  <div slot="left">
+    <p>
+      Nainštalujte Figma MCP Server <strong>globálne</strong>.
+    </p>
+    <br />
+    <p>
+      Nakonfigurujte ho v <strong>Claude Desktop</strong>
+      alebo inom AI nástroji.
+    </p>
+    <br />
+    <p>
+      Potrebujete len <strong>Figma Access Token</strong>.
+    </p>
+  </div>
+  <div slot="right" set:html={highlightedCode} />
+</Slide>

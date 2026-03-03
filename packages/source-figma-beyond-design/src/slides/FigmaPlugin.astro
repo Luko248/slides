@@ -1,0 +1,44 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+import { highlightCode } from "@presentation/utils/shiki-helper";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const code = `// manifest.json
+{
+  "name": "CSS Variables Converter & Exporter",
+  "api": "1.0.0",
+  "main": "code.js",
+  "ui": "ui.html",
+  "capabilities": ["codegen"],
+  "networkAccess": {
+    "allowedDomains": [
+      "https://api.github.com"
+    ]
+  }
+}`;
+
+const highlightedCode = await highlightCode(code, "json");
+---
+
+<Slide title="Custom Figma Plugin" desc="Automatizácia na jeden klik" order={order}>
+  <div slot="left">
+    <p>
+      Vlastný <strong>Figma plugin</strong>, ktorý celý proces automatizuje.
+    </p>
+    <br />
+    <p>
+      Skonvertuje variables, pošle výsledok priamo do <strong>Git repozitára</strong>.
+    </p>
+    <br />
+    <p>
+      Každý plugin začína súborom <code>manifest.json</code>
+      s definíciou capabilities a povolených domén.
+    </p>
+  </div>
+  <div slot="right" set:html={highlightedCode} />
+</Slide>

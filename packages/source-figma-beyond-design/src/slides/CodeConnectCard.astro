@@ -1,0 +1,58 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+import { highlightCode } from "@presentation/utils/shiki-helper";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const code = `figma.connect(Card, figmaUrl, {
+  props: {
+    title: figma.string("Title"),
+    description: figma.string("Description"),
+    image: figma.instance("Image"),
+    actions: figma.children("Actions")
+  },
+  example: (props) => (
+    <Card>
+      {props.image &&
+        <Card.Image src={props.image} />}
+      <Card.Content>
+        <Card.Title>{props.title}</Card.Title>
+        <Card.Description>
+          {props.description}
+        </Card.Description>
+      </Card.Content>
+      {props.actions &&
+        <Card.Actions>
+          {props.actions}
+        </Card.Actions>}
+    </Card>
+  )
+});`;
+
+const highlightedCode = await highlightCode(code, "tsx");
+---
+
+<Slide title="Code Connect" desc="Card komponent" order={order}>
+  <div slot="left">
+    <p>
+      Komplexnejšie komponenty s <strong>viacerými typmi props</strong>.
+    </p>
+    <br />
+    <ul>
+      <li><span><code>figma.string()</code> – textové props</span></li>
+      <li><span><code>figma.enum()</code> – výberové varianty</span></li>
+      <li><span><code>figma.instance()</code> – vnorené inštancie</span></li>
+      <li><span><code>figma.children()</code> – child elementy</span></li>
+    </ul>
+    <br />
+    <p>
+      Most medzi svetom dizajnu a kódu, ktorý
+      funguje <strong>v oboch smeroch</strong>.
+    </p>
+  </div>
+  <div slot="right" set:html={highlightedCode} />
+</Slide>

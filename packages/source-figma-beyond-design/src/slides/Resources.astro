@@ -1,0 +1,30 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide title="Zdroje" desc="Ďalšie čítanie" order={order}>
+  <div slot="left">
+    <ul>
+      <li><span>Figma Plugin API – Kompletná dokumentácia</span></li>
+      <li><span>Figma Variables API – API pre prácu s premennými</span></li>
+      <li><span>Code Connect Documentation – Framework guide</span></li>
+      <li><span>Figma MCP Server – Model Context Protocol</span></li>
+    </ul>
+  </div>
+  <div slot="right">
+    <ul>
+      <li><span>CSS Variables Converter & Exporter – Plugin z prezentácie</span></li>
+      <li><span>GitHub: Luko248/figma-variables-converter-and-exporter</span></li>
+    </ul>
+    <br />
+    <p>
+      <strong class="text-theme-500">lukaschylik.dev</strong>
+    </p>
+  </div>
+</Slide>

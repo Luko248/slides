@@ -18,6 +18,7 @@ export interface SlidesSource {
     colorTheme200?: string;
     codeBgLight?: string;
     codeBgDark?: string;
+    fontFamilyDesc?: string;
   };
   footer: {
     logoSrc: string;

@@ -1,0 +1,47 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+import { highlightCode } from "@presentation/utils/shiki-helper";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const code = `export async function pushToGitHub(
+  themeFiles: ThemeCssOutput
+) {
+  // 1. Vytvor feature branch s timestampom
+  const branch =
+    \`feat/figma-variables-\${timestamp}\`;
+  await createBranch(branch, baseSha);
+
+  // 2. Commitni všetky theme súbory naraz
+  const commitMessage =
+    \`feat(figma-variables): \${timestamp}\`;
+  await createCommit(commitMessage, themeFiles);
+
+  // 3. Hotovo!
+}`;
+
+const highlightedCode = await highlightCode(code, "typescript");
+---
+
+<Slide title="GitHub integrácia" desc="Automatický push do repozitára" order={order}>
+  <div slot="left">
+    <p>
+      Plugin automaticky pushne výsledky do <strong>Git repozitára</strong>.
+    </p>
+    <br />
+    <p>
+      Vytvorí <strong>feature branch</strong> s timestampom
+      a commitne všetky theme súbory naraz.
+    </p>
+    <br />
+    <p>
+      Celý proces trvá pár sekúnd a eliminuje
+      manuálne <strong>copy-paste chyby</strong>.
+    </p>
+  </div>
+  <div slot="right" set:html={highlightedCode} />
+</Slide>

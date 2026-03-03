@@ -1,0 +1,33 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide title="Zhrnutie" desc="Kompletný design-to-code ecosystem" order={order} center>
+  <div style="text-align: center;">
+    <ul
+      style="text-align: left; display: inline-flex; flex-direction: column; gap: 1rem;"
+    >
+      <li>
+        <span><strong>Variable Code Syntax</strong> – Prepája Figma premenné s produkčným kódom</span>
+      </li>
+      <li>
+        <span><strong>Export Automation</strong> – Plugin exportuje design tokeny do Git repozitára</span>
+      </li>
+      <li>
+        <span><strong>Code Connect</strong> – Prepája Figma komponenty s kódom v codebase</span>
+      </li>
+      <li>
+        <span><strong>MCP Server</strong> – AI generuje production-ready kód z dizajnu</span>
+      </li>
+      <li>
+        <span><strong>Agent SKILLS</strong> – AI sa správa konzistentne s produktom</span>
+      </li>
+    </ul>
+  </div>
+</Slide>

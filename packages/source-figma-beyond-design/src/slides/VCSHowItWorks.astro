@@ -1,0 +1,46 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+import { highlightCode } from "@presentation/utils/shiki-helper";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const code = `const collection = await figma.variables
+  .getLocalVariableCollectionsAsync();
+
+collection.variableIds.forEach(async (id) => {
+  const variable = await figma.variables
+    .getVariableByIdAsync(id);
+
+  // "color/primary/500" → "var(--colorPrimary500)"
+  variable.setVariableCodeSyntax(
+    "WEB",
+    \`var(--\${variable.name
+      .replace(/\\//g, "-")
+      .toLowerCase()})\`
+  );
+});`;
+
+const highlightedCode = await highlightCode(code, "javascript");
+---
+
+<Slide title="Variable Code Syntax" desc="Ako to funguje?" order={order}>
+  <div slot="left">
+    <p>
+      Figma API poskytuje metódu <code>setVariableCodeSyntax()</code>.
+    </p>
+    <br />
+    <p>
+      Umožňuje definovať, ako sa premenná
+      <strong>zobrazí v kóde</strong>.
+    </p>
+    <br />
+    <p>
+      Žiadne manuálne konverzie, žiadne chyby v názvoch premenných.
+    </p>
+  </div>
+  <div slot="right" set:html={highlightedCode} />
+</Slide>

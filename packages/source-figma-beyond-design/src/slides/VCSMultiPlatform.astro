@@ -1,0 +1,46 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+import { highlightCode } from "@presentation/utils/shiki-helper";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const code = `// Web (CSS Custom Properties)
+variable.setVariableCodeSyntax(
+  "WEB", \`var(--\${cssName})\`
+);
+
+// Android (XML Resources)
+variable.setVariableCodeSyntax(
+  "ANDROID", \`@color/\${androidName}\`
+);
+
+// iOS (Swift)
+variable.setVariableCodeSyntax(
+  "iOS", \`Color.\${swiftName}\`
+);`;
+
+const highlightedCode = await highlightCode(code, "javascript");
+---
+
+<Slide title="Multi-platform podpora" desc="Jeden dizajn, viaceré platformy" order={order}>
+  <div slot="left">
+    <p>
+      Variable Code Syntax podporuje <strong>rôzne platformy</strong>:
+      Web, Android, iOS.
+    </p>
+    <br />
+    <p>
+      Dizajnéri aj vývojári hovoria <strong>rovnakým jazykom</strong>
+      naprieč celým stackom.
+    </p>
+    <br />
+    <p>
+      Vývojár rovno copy-pastne presný názov premennej do kódu.
+    </p>
+  </div>
+  <div slot="right" set:html={highlightedCode} />
+</Slide>

@@ -1,0 +1,40 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide title="Variable Code Syntax" desc="Mostík medzi dizajnom a kódom" order={order}>
+  <div slot="left">
+    <p>
+      Dizajnéri vytvárajú premenné ako <code>color/primary/500</code>,
+      <code>spacing/md</code>.
+    </p>
+    <br />
+    <p>
+      Vývojári používajú inú konvenciu:
+      <code>--colorPrimary500</code>, <code>--spacingMd</code>.
+    </p>
+    <br />
+    <p>
+      <strong>Variable Code Syntax</strong> – natívna Figma funkcia,
+      ktorá nastaví, ako sa premenné zobrazujú vo <strong>Figma Dev Mode</strong>
+      pre rôzne platformy.
+    </p>
+  </div>
+  <div slot="right">
+    <div style="text-align: center;">
+      <p style="font-size: 1.5em; opacity: 0.5;">Figma</p>
+      <p><code>color/primary/500</code></p>
+      <br />
+      <p style="font-size: 2em;">&#8595;</p>
+      <br />
+      <p style="font-size: 1.5em;" class="text-theme-500">Dev Mode</p>
+      <p><code>var(--color-primary-500)</code></p>
+    </div>
+  </div>
+</Slide>

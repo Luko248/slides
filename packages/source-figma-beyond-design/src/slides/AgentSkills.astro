@@ -1,0 +1,39 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide title="Agent SKILLS" desc="Maximalizujte kvalitu AI výstupu" order={order}>
+  <div slot="left">
+    <p>
+      Pre <strong>maximálnu kvalitu</strong> AI výstupu vytvorte
+      <code>SKILL.md</code> pre skupiny komponent.
+    </p>
+    <br />
+    <p>
+      Popisuje najčastejšie prípady použitia, business logiku,
+      UX writing a typické UX správanie.
+    </p>
+    <br />
+    <p>
+      AI má jasné pravidlá a generuje kód <strong>konzistentne</strong>
+      s vaším produktom.
+    </p>
+  </div>
+  <div slot="right">
+    <p><strong>Čo v skille nechýba:</strong></p>
+    <br />
+    <ul>
+      <li><span>Najčastejšie scenáre použitia</span></li>
+      <li><span>Výnimky a dôvody správania</span></li>
+      <li><span>UX writing: texty, tón, formulácie</span></li>
+      <li><span>UX správanie: pozícia, timing, animácie</span></li>
+      <li><span>Edge cases a fallbacky</span></li>
+    </ul>
+  </div>
+</Slide>

@@ -1,0 +1,35 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide title="MCP Server" desc="AI-powered code generation" order={order}>
+  <div slot="left">
+    <p>
+      <strong>Model Context Protocol</strong> – open-source štandard
+      od Anthropic.
+    </p>
+    <br />
+    <p>
+      Umožňuje AI modelom pristupovať k <strong>externým zdrojom dát</strong>.
+    </p>
+    <br />
+    <p>
+      Figma MCP Server sprístupňuje dizajny z Figmy
+      ako <strong>kontext pre AI</strong>.
+    </p>
+  </div>
+  <div slot="right">
+    <ul>
+      <li><span>Čítať štruktúru Figma súborov</span></li>
+      <li><span>Rozpoznávať komponenty a ich vlastnosti</span></li>
+      <li><span>Využívať Code Connect mappingy</span></li>
+      <li><span>Generovať kód na základe dizajnu</span></li>
+    </ul>
+  </div>
+</Slide>

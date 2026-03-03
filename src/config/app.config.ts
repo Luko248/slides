@@ -1,3 +1,3 @@
 export const appConfig = {
-  slidesSource: "ai-workflow",
+  slidesSource: "figma-beyond-design",
 } as const;

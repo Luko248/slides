@@ -1,0 +1,53 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+import { highlightCode } from "@presentation/utils/shiki-helper";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const code = `import Colorizr from "colorizr";
+
+function convertColorToOKLCH(rgbaValue) {
+  const r = Math.round(rgbaValue.r * 255);
+  const g = Math.round(rgbaValue.g * 255);
+  const b = Math.round(rgbaValue.b * 255);
+  const alpha = rgbaValue.a || 1;
+
+  const color = new Colorizr({ r, g, b, alpha });
+  const oklch = color.oklch();
+
+  if (alpha < 1) {
+    return \`oklch(\${oklch.l} \${oklch.c} \${oklch.h} / \${alpha})\`;
+  }
+
+  return \`oklch(\${oklch.l} \${oklch.c} \${oklch.h})\`;
+}
+
+// Spacing: px → rem
+const BASE_FONT_SIZE = 16;
+const pxToRem = (px) => \`\${px / BASE_FONT_SIZE}rem\`;`;
+
+const highlightedCode = await highlightCode(code, "javascript");
+---
+
+<Slide title="Konverzia hodnôt" desc="OKLCH farby + rem units" order={order}>
+  <div slot="left">
+    <p>
+      <strong>Farby</strong> – používajte OKLCH formát!
+      Lepšia perceptuálna uniformita ako HSL.
+    </p>
+    <br />
+    <p>
+      <strong>Spacing</strong> – konvertujte px na <code>rem</code> jednotky
+      pre lepšiu škálovateľnosť.
+    </p>
+    <br />
+    <p>
+      NPM balík <code>colorizr</code> pomôže s konverziou farieb.
+    </p>
+  </div>
+  <div slot="right" set:html={highlightedCode} />
+</Slide>

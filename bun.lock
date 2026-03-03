@@ -7,6 +7,7 @@
         "@astrojs/mdx": "^4.3.6",
         "@slides/source-ai-workflow": "workspace:*",
         "@slides/source-css-scroll-state": "workspace:*",
+        "@slides/source-figma-beyond-design": "workspace:*",
         "astro": "^5.14.1",
         "tailwind-merge": "^3.3.1",
         "tailwind-variants": "^3.1.1",
@@ -25,6 +26,10 @@
     },
     "packages/source-css-scroll-state": {
       "name": "@slides/source-css-scroll-state",
+      "version": "0.0.1",
+    },
+    "packages/source-figma-beyond-design": {
+      "name": "@slides/source-figma-beyond-design",
       "version": "0.0.1",
     },
   },
@@ -248,6 +253,8 @@
     "@slides/source-ai-workflow": ["@slides/source-ai-workflow@workspace:packages/source-ai-workflow"],
 
     "@slides/source-css-scroll-state": ["@slides/source-css-scroll-state@workspace:packages/source-css-scroll-state"],
+
+    "@slides/source-figma-beyond-design": ["@slides/source-figma-beyond-design@workspace:packages/source-figma-beyond-design"],
 
     "@swc/helpers": ["@swc/helpers@0.5.17", "", { "dependencies": { "tslib": "^2.8.0" } }, "sha512-5IKx/Y13RsYd+sauPb2x+U/xZikHjolzfuDgTAl/Tdf3Q8rslRvC19NKDLgAJQ6wsqADk10ntlv08nPFw/gO/A=="],
 

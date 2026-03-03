@@ -25,6 +25,10 @@ export function getThemeStyleAttribute(theme: SlidesSource["theme"]): string {
     );
   }
 
+  if (theme.fontFamilyDesc) {
+    styleParts.push(`--font-family-desc: ${theme.fontFamilyDesc};`);
+  }
+
   if (styleParts.length === 0) {
     return "";
   }

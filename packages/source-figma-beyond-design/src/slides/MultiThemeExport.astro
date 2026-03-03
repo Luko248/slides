@@ -1,0 +1,51 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+import { highlightCode } from "@presentation/utils/shiki-helper";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const code = `/*
+ * Design tokens exported from Figma
+ * Theme: dark
+ */
+:root {
+  /* Colors */
+  --colorPrimary: oklch(0.65 0.2 250);
+  --colorSurface: oklch(0.15 0.01 240 / 0.95);
+
+  /* Fonts */
+  --fontFamilyBase: "Inter";
+  --fontWeightBold: 600;
+  --fontSizeH1: 2rem;
+
+  /* Measures */
+  --spacing8: 0.5rem;
+  --spacing16: 1rem;
+  --radiusMd: 0.5rem;
+}`;
+
+const highlightedCode = await highlightCode(code, "css");
+---
+
+<Slide title="Multi-theme export" desc="Light, Dark, High-contrast" order={order}>
+  <div slot="left">
+    <p>
+      Moderné design systémy používajú <strong>viacero tém</strong>.
+    </p>
+    <br />
+    <p>
+      Figma to podporuje cez <strong>modes</strong> – každá kolekcia
+      môže mať viacero módov.
+    </p>
+    <br />
+    <p>
+      Výstup: prehľadné CSS s premennými zoskupenými podľa typu,
+      OKLCH farbami a rem units.
+    </p>
+  </div>
+  <div slot="right" set:html={highlightedCode} />
+</Slide>

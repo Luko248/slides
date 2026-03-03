@@ -1,0 +1,38 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide title="Code Connect" desc="Prepojenie komponent s kódom" order={order}>
+  <div slot="left">
+    <p>
+      <strong>Figma Code Connect</strong> – NPM balík, ktorý
+      prepája Figma komponenty s reálnym kódom.
+    </p>
+    <br />
+    <p>
+      <strong>Bez Code Connect:</strong>
+    </p>
+    <ul>
+      <li><span>Dizajnér nevie, ako sa Button používa v kóde</span></li>
+      <li><span>Vývojár nevie, ktorý komponent zodpovedá jeho <code>Button.tsx</code></span></li>
+      <li><span>Manuálna synchronizácia plná chýb</span></li>
+    </ul>
+  </div>
+  <div slot="right">
+    <p>
+      <strong>S Code Connect:</strong>
+    </p>
+    <br />
+    <ul>
+      <li><span>Automatické prepojenie dizajn &#8596; kód</span></li>
+      <li><span>Dizajnér vidí real-world príklady použitia</span></li>
+      <li><span>Vývojár má jasný mapping na Figma komponenty</span></li>
+    </ul>
+  </div>
+</Slide>

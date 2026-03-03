@@ -1,0 +1,30 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide title="Budúcnosť" desc="Čo nás čaká?" order={order} center>
+  <div style="text-align: center;">
+    <ul
+      style="text-align: left; display: inline-flex; flex-direction: column; gap: 1rem;"
+    >
+      <li>
+        <span>AI automaticky deteguje zmeny v dizajne a generuje <strong>pull requesty</strong></span>
+      </li>
+      <li>
+        <span>Design systém sa zlepšuje na základe <strong>reálneho použitia</strong> v produkcii</span>
+      </li>
+      <li>
+        <span>Vývojári sa sústredia na <strong>business logiku</strong> namiesto styling-u</span>
+      </li>
+      <li>
+        <span>Každý projekt má vlastný <strong>Figma &#8594; Git &#8594; Production</strong> pipeline</span>
+      </li>
+    </ul>
+  </div>
+</Slide>

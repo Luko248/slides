@@ -1,0 +1,34 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide title="Gamechanger" desc="5-10x rýchlejší development" order={order}>
+  <div slot="left">
+    <p><strong>Bez MCP + Code Connect:</strong></p>
+    <ul>
+      <li><span>Dizajnér pošle Figma link</span></li>
+      <li><span>Vývojár manuálne analyzuje dizajn</span></li>
+      <li><span>Píše kód 30-60 minút</span></li>
+      <li><span>Review a iterácia</span></li>
+    </ul>
+  </div>
+  <div slot="right">
+    <p><strong class="text-theme-500">S MCP + Code Connect:</strong></p>
+    <ul>
+      <li><span>Dizajnér pošle Figma link</span></li>
+      <li><span>Vývojár ho pastne AI agentovi</span></li>
+      <li><span>AI vygeneruje kód so správnymi komponentmi</span></li>
+      <li><span>Kontrola a úprava (5-10 minút)</span></li>
+    </ul>
+    <br />
+    <p>
+      <strong class="text-theme-500">Garantovaná konzistencia</strong> s Design Systémom.
+    </p>
+  </div>
+</Slide>
