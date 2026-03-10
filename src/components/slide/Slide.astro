@@ -15,9 +15,10 @@ interface Props {
   center?: boolean;
   speaker?: boolean;
   outro?: boolean;
+  colSpan?: boolean;
 }
 
-const { title, desc, order, sampleUrl, image, center, speaker, outro } =
+const { title, desc, order, sampleUrl, image, center, speaker, outro, colSpan = true } =
   Astro.props;
 
 // Base classes for different layouts
@@ -125,7 +126,7 @@ const getContentClasses = () => {
 >
   {outro && <Confetti />}
   <div
-    class={`top ${sampleUrl ? "flex flex-row flex-nowrap justify-between items-start" : ""} ${!center && !speaker ? "col-start-1" : ""}`}
+    class={`top ${sampleUrl ? "flex flex-row flex-nowrap justify-between items-start" : ""} ${!center && !speaker ? (colSpan ? "col-span-2" : "col-start-1") : ""}`}
   >
     <h2 class={getTitleClasses()}>
       <slot name="title">{title}</slot>
@@ -157,7 +158,7 @@ const getContentClasses = () => {
   {/* Default layout: right column spans full height from top */}
   {
     !center && !speaker && (
-      <div class="right col-start-2 row-start-1 row-end-[-1] relative grid items-start [&:empty]:hidden">
+      <div class={`right col-start-2 ${colSpan ? "row-start-2" : "row-start-1"} row-end-[-1] relative grid items-start [&:empty]:hidden`}>
         <slot name="right">
           {image && (
             <img

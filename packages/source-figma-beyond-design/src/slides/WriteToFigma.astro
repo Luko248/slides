@@ -1,0 +1,18 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide order={order} center>
+  <Fragment slot="title">
+    A čo zápis do Figmy?
+  </Fragment>
+  <strong class="text-center text-theme-500 mx-auto block text-5xl">
+    Je možné to spraviť aj opačne a upravovať pomocou AI design vo Figme? Jasné! Poďme na to.
+  </strong>
+</Slide>

@@ -23,9 +23,8 @@ import MCPCodeConnect from "./slides/MCPCodeConnect.astro";
 import MCPGamechanger from "./slides/MCPGamechanger.astro";
 import AgentSkills from "./slides/AgentSkills.astro";
 import SkillStructure from "./slides/SkillStructure.astro";
+import WriteToFigma from "./slides/WriteToFigma.astro";
 import Summary from "./slides/Summary.astro";
-import Future from "./slides/Future.astro";
-import Resources from "./slides/Resources.astro";
 import Outro from "./slides/Outro.astro";
 import aisLogo from "./assets/ais-logo.svg?url";
 
@@ -55,9 +54,8 @@ const slides = [
   MCPGamechanger,
   AgentSkills,
   SkillStructure,
+  WriteToFigma,
   Summary,
-  Future,
-  Resources,
   Outro,
 ].map((component, index) => ({ component, order: index + 1 }));
 
