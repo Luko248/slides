@@ -8,18 +8,11 @@ interface Props {
 
 const { order } = Astro.props;
 
-const code = `# 1. Inštalácia
-npm install -g @figma/mcp-server-figma
-
-# 2. Konfigurácia Claude Desktop
-# claude_desktop_config.json
+const code = `# Claude Code config.json
 {
   "mcpServers": {
-    "figma": {
-      "command": "mcp-server-figma",
-      "env": {
-        "FIGMA_ACCESS_TOKEN": "figd_xxxxxxxx"
-      }
+    "figma-remote-mcp-server": {
+      "serverUrl": "https://mcp.figma.com/mcp"
     }
   }
 }`;
@@ -30,16 +23,15 @@ const highlightedCode = await highlightCode(code, "bash");
 <Slide title="MCP Setup" desc="Konfigurácia" order={order}>
   <div slot="left">
     <p>
-      Nainštalujte Figma MCP Server <strong>globálne</strong>.
+      Figma ponúka <strong>remote MCP server</strong> — žiadna lokálna inštalácia.
     </p>
     <br />
     <p>
-      Nakonfigurujte ho v <strong>Claude Desktop</strong>
-      alebo inom AI nástroji.
+      Stačí pridať URL do <strong>Claude Code</strong> config súboru.
     </p>
     <br />
     <p>
-      Potrebujete len <strong>Figma Access Token</strong>.
+      Autorizácia prebieha cez <strong>OAuth</strong> priamo v prehliadači.
     </p>
   </div>
   <div slot="right" set:html={highlightedCode} />
