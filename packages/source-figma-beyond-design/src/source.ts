@@ -2,6 +2,7 @@ import Main from "./slides/Main.astro";
 import Speaker from "./slides/Speaker.astro";
 import Intro from "./slides/Intro.astro";
 import VariableCodeSyntax from "./slides/VariableCodeSyntax.astro";
+import VCSPreview from "./slides/VCSPreview.astro";
 import VCSHowItWorks from "./slides/VCSHowItWorks.astro";
 import VCSMultiPlatform from "./slides/VCSMultiPlatform.astro";
 import ExportTokens from "./slides/ExportTokens.astro";
@@ -17,6 +18,7 @@ import PluginQR from "./slides/PluginQR.astro";
 import CodeConnect from "./slides/CodeConnect.astro";
 import CodeConnectMapping from "./slides/CodeConnectMapping.astro";
 import CodeConnectCard from "./slides/CodeConnectCard.astro";
+import CodeConnectVideo from "./slides/CodeConnectVideo.astro";
 import MCPServer from "./slides/MCPServer.astro";
 import MCPSetup from "./slides/MCPSetup.astro";
 import MCPButtonExample from "./slides/MCPButtonExample.astro";
@@ -24,6 +26,7 @@ import MCPCodeConnect from "./slides/MCPCodeConnect.astro";
 import MCPGamechanger from "./slides/MCPGamechanger.astro";
 import AgentSkills from "./slides/AgentSkills.astro";
 import SkillStructure from "./slides/SkillStructure.astro";
+import CustomAgent from "./slides/CustomAgent.astro";
 import WriteToFigma from "./slides/WriteToFigma.astro";
 import WriteArchitecture from "./slides/WriteArchitecture.astro";
 import WriteFigmaDesktopMCP from "./slides/WriteFigmaDesktopMCP.astro";
@@ -41,6 +44,7 @@ const slides = [
   Intro,
   VariableCodeSyntax,
   VCSHowItWorks,
+  VCSPreview,
   VCSMultiPlatform,
   ExportTokens,
   TokensAPI,
@@ -55,6 +59,7 @@ const slides = [
   CodeConnect,
   CodeConnectMapping,
   CodeConnectCard,
+  CodeConnectVideo,
   MCPServer,
   MCPSetup,
   MCPButtonExample,
@@ -62,6 +67,7 @@ const slides = [
   MCPGamechanger,
   AgentSkills,
   SkillStructure,
+  CustomAgent,
   Summary,
   WriteToFigma,
   WriteArchitecture,

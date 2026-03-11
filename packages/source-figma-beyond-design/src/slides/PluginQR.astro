@@ -11,6 +11,6 @@ const { order } = Astro.props;
 
 <Slide order={order} center>
   <Fragment slot="title">
-    <img src={qrCode} alt="QR kód na Figma plugin" class="mx-auto max-h-[65svh] object-contain" />
+    <img src={qrCode} alt="QR kód na Figma plugin" loading="lazy" class="mx-auto max-h-[65svh] object-contain" />
   </Fragment>
 </Slide>

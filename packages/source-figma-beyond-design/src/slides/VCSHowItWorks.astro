@@ -15,7 +15,7 @@ collection.variableIds.forEach(async (id) => {
   const variable = await figma.variables
     .getVariableByIdAsync(id);
 
-  // "color/primary/500" → "var(--colorPrimary500)"
+  // "color/primary/500" → "var(--color-primary-500)"
   variable.setVariableCodeSyntax(
     "WEB",
     \`var(--\${variable.name

@@ -1,0 +1,23 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+import videoSrc from "../assets/code-connect-video.webm?url";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide order={order} center>
+  <Fragment slot="title">
+    <video
+      src={videoSrc}
+      autoplay
+      muted
+      loop
+      playsinline
+      class="mx-auto max-h-[70svh] w-[85%] object-contain rounded-[.25em]"
+    ></video>
+  </Fragment>
+</Slide>

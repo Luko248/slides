@@ -215,6 +215,8 @@
     position: absolute;
     aspect-ratio: 1;
     border-radius: 50%;
+    will-change: transform;
+    backface-visibility: hidden;
   }
 
   .blob-1 {
@@ -273,7 +275,7 @@
     animation-delay: -53s;
   }
 </style>
-<div class="lava-bg fixed h-svh w-svw overflow-hidden">
+<div class="lava-bg fixed h-svh w-svw overflow-hidden z-0">
   <div class="blob blob-1 bg-theme-500 w-[25svb] aspect-square"></div>
   <div class="blob blob-2 bg-indigo-500 w-[15svb] aspect-square"></div>
   <div class="blob blob-3 bg-theme-500 w-[10svb] aspect-square"></div>
