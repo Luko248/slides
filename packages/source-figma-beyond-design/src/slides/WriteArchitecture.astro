@@ -1,0 +1,39 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide
+  title="Zápis do Figmy"
+  desc="Figma Desktop + Claude Desktop + MCP"
+  order={order}
+>
+  <div slot="left">
+    <p>
+      Kombinácia <strong>Figma Desktop</strong> aplikácie a <strong
+        >Claude Desktop</strong
+      > s MCP servermi.
+    </p>
+    <br />
+    <p>
+      AI dokáže <strong>čítať aj zapisovať</strong> do Figma súborov v reálnom čase.
+    </p>
+    <br />
+    <p>
+      Potrebujete <strong>3 MCP servery</strong> a <strong
+        >1 Bridge plugin</strong
+      > — každý má svoju úlohu.
+    </p>
+    <br />
+    <p>
+      Predpoklad: <strong>Figma Pro</strong> (Dev Mode) + <strong
+        >Claude Pro/Max</strong
+      >
+    </p>
+  </div>
+</Slide>

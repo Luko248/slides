@@ -1,5 +1,6 @@
 ---
 import Slide from "@presentation/components/slide/Slide.astro";
+import thanksImg from "../assets/thanks.png?url";
 
 interface Props {
   order?: number;
@@ -9,5 +10,8 @@ const { order } = Astro.props;
 ---
 
 <Slide order={order} center outro>
-  <Fragment slot="title"> Ďakujem! </Fragment>
+  <Fragment slot="title">
+    Ďakujem!
+    <img src={thanksImg} alt="Evolution of human to AI" class="mx-auto mt-[4svb] max-w-[50%] max-h-[30svh] object-contain" />
+  </Fragment>
 </Slide>

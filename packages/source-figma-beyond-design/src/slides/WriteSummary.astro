@@ -1,0 +1,38 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide title="Zhrnutie" desc="Zápis do Figmy" order={order}>
+  <div slot="left">
+    <ul style="display: flex; flex-direction: column; gap: 1rem;">
+      <li>
+        <strong>Figma Desktop MCP</strong> — oči, číta kontext z canvas
+      </li>
+      <li>
+        <strong>Figma Console MCP</strong> — ruky, kreslí a edituje vo Figme
+      </li>
+      <li>
+        <strong>Design Systems Assistant</strong> — mozog, UX/UI best practices
+      </li>
+    </ul>
+  </div>
+  <div slot="right">
+    <ul style="display: flex; flex-direction: column; gap: 1rem;">
+      <li>
+        <strong>Desktop Bridge</strong> — pipeline, real-time WebSocket spojenie
+      </li>
+      <li>
+        <strong>Claude Desktop</strong> — orchestrátor celého workflow
+      </li>
+      <li>
+        <strong>Prompt → Canvas</strong> — design system v reálnom čase
+      </li>
+    </ul>
+  </div>
+</Slide>

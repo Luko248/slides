@@ -13,6 +13,7 @@ import PluginCore from "./slides/PluginCore.astro";
 import PluginGitHub from "./slides/PluginGitHub.astro";
 import PluginWorkflow from "./slides/PluginWorkflow.astro";
 import PluginDemo from "./slides/PluginDemo.astro";
+import PluginQR from "./slides/PluginQR.astro";
 import CodeConnect from "./slides/CodeConnect.astro";
 import CodeConnectMapping from "./slides/CodeConnectMapping.astro";
 import CodeConnectCard from "./slides/CodeConnectCard.astro";
@@ -24,7 +25,13 @@ import MCPGamechanger from "./slides/MCPGamechanger.astro";
 import AgentSkills from "./slides/AgentSkills.astro";
 import SkillStructure from "./slides/SkillStructure.astro";
 import WriteToFigma from "./slides/WriteToFigma.astro";
+import WriteArchitecture from "./slides/WriteArchitecture.astro";
+import WriteFigmaDesktopMCP from "./slides/WriteFigmaDesktopMCP.astro";
+import WriteConsoleMCP from "./slides/WriteConsoleMCP.astro";
+import WriteDesignSystemsMCP from "./slides/WriteDesignSystemsMCP.astro";
+import WriteBridgePlugin from "./slides/WriteBridgePlugin.astro";
 import Summary from "./slides/Summary.astro";
+import WriteSummary from "./slides/WriteSummary.astro";
 import Outro from "./slides/Outro.astro";
 import aisLogo from "./assets/ais-logo.svg?url";
 
@@ -37,13 +44,14 @@ const slides = [
   VCSMultiPlatform,
   ExportTokens,
   TokensAPI,
-  TokensConversion,
   MultiThemeExport,
   FigmaPlugin,
   PluginCore,
+  TokensConversion,
   PluginGitHub,
   PluginWorkflow,
   PluginDemo,
+  PluginQR,
   CodeConnect,
   CodeConnectMapping,
   CodeConnectCard,
@@ -54,8 +62,14 @@ const slides = [
   MCPGamechanger,
   AgentSkills,
   SkillStructure,
-  WriteToFigma,
   Summary,
+  WriteToFigma,
+  WriteArchitecture,
+  WriteFigmaDesktopMCP,
+  WriteConsoleMCP,
+  WriteDesignSystemsMCP,
+  WriteBridgePlugin,
+  WriteSummary,
   Outro,
 ].map((component, index) => ({ component, order: index + 1 }));
 

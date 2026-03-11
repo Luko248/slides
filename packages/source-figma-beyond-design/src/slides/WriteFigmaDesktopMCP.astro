@@ -1,0 +1,48 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+import { highlightCode } from "@presentation/utils/shiki-helper";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const code = `# claude_desktop_config.json
+{
+  "mcpServers": {
+    "figma-desktop": {
+      "serverUrl":
+        "http://127.0.0.1:3845/mcp"
+    }
+  }
+}
+
+# Figma Desktop spustiť s flagom:
+/Applications/Figma.app/Contents/MacOS/Figma \\
+  --args \\
+  --remote-debugging-port=9222`;
+
+const highlightedCode = await highlightCode(code, "bash");
+---
+
+<Slide title="Figma Desktop MCP" desc='Oči — číta kontext z Figmy' order={order}>
+  <div slot="left">
+    <p>
+      <strong>Oficiálny MCP server</strong> od Figmy — rovnaký ako pri čítaní.
+    </p>
+    <br />
+    <p>
+      Extrahuje <strong>farby, layout, komponenty</strong> a celý kontext dizajnu.
+    </p>
+    <br />
+    <p>
+      AI vďaka nemu <strong>rozumie</strong>, čo už na canvas existuje.
+    </p>
+    <br />
+    <p>
+      Inštalácia cez <strong>Extensions</strong> v Claude Desktop. Figma sa spúšťa s remote debugging portom.
+    </p>
+  </div>
+  <div slot="right" set:html={highlightedCode} />
+</Slide>

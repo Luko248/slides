@@ -8,25 +8,27 @@ interface Props {
 const { order } = Astro.props;
 ---
 
-<Slide title="Zhrnutie" desc="Kompletný design-to-code ecosystem" order={order} center>
-  <div style="text-align: center;">
-    <ul
-      style="text-align: left; display: inline-flex; flex-direction: column; gap: 1rem;"
-    >
+<Slide title="Zhrnutie" desc="Design-to-code ecosystem" order={order}>
+  <div slot="left">
+    <ul style="display: flex; flex-direction: column; gap: 1rem;">
       <li>
-        <span><strong>Variable Code Syntax</strong> – Prepája Figma premenné s produkčným kódom</span>
+        <strong>Variable Code Syntax</strong> — Figma premenné priamo v kóde
       </li>
       <li>
-        <span><strong>Export Automation</strong> – Plugin exportuje design tokeny do Git repozitára</span>
+        <strong>Export Automation</strong> — plugin exportuje tokeny do Gitu
       </li>
       <li>
-        <span><strong>Code Connect</strong> – Prepája Figma komponenty s kódom v codebase</span>
+        <strong>Code Connect</strong> — mapping Figma komponentov na codebase
+      </li>
+    </ul>
+  </div>
+  <div slot="right">
+    <ul style="display: flex; flex-direction: column; gap: 1rem;">
+      <li>
+        <strong>MCP Server</strong> — AI generuje kód z dizajnu
       </li>
       <li>
-        <span><strong>MCP Server</strong> – AI generuje production-ready kód z dizajnu</span>
-      </li>
-      <li>
-        <span><strong>Agent SKILLS</strong> – AI sa správa konzistentne s produktom</span>
+        <strong>Agent SKILLS</strong> — konzistentné AI správanie
       </li>
     </ul>
   </div>

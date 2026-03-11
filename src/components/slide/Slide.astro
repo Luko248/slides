@@ -120,6 +120,7 @@ const getContentClasses = () => {
 </style>
 
 <section
+  id={order ? String(order) : undefined}
   class={getSlideClasses()}
   data-order={order}
   style="background-color: var(--color-bg-secondary);"
@@ -176,7 +177,7 @@ const getContentClasses = () => {
   }
 
   <div
-    class={`${!center && !speaker ? "col-start-1" : "grid grid-cols-[7fr_5fr] gap-[8svb] align-start [&:has(.left:empty,.right:empty)]:hidden"}`}
+    class={`${!center && !speaker ? "col-start-1" : "grid grid-cols-[7fr_5fr] gap-[8svb] align-start [&:has(.left:empty)]:hidden"}`}
   >
     <div class={getContentClasses()}>
       <slot name="left">
