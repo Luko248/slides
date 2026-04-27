@@ -1,0 +1,23 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+import videoSrc from "../assets/Screen Recording 2026-04-27 at 14.31.46.mov?url";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide order={order} center>
+  <Fragment slot="title">
+    <video
+      src={videoSrc}
+      autoplay
+      muted
+      loop
+      playsinline
+      class="mx-auto h-[85svh] w-[85%] object-contain rounded-[.25em]"
+    ></video>
+  </Fragment>
+</Slide>

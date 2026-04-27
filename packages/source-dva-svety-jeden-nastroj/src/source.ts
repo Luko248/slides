@@ -3,6 +3,7 @@ import Speaker from "./slides/Speaker.astro";
 import Intro from "./slides/Intro.astro";
 import VariableCodeSyntax from "./slides/VariableCodeSyntax.astro";
 import FigmaPlugin from "./slides/FigmaPlugin.astro";
+import FigmaPluginVideo from "./slides/FigmaPluginVideo.astro";
 import CodeConnect from "./slides/CodeConnect.astro";
 import CodeConnectMapping from "./slides/CodeConnectMapping.astro";
 import CodeConnectCard from "./slides/CodeConnectCard.astro";
@@ -27,6 +28,7 @@ const slides = [
   Intro,
   VariableCodeSyntax,
   FigmaPlugin,
+  FigmaPluginVideo,
   CodeConnect,
   CodeConnectMapping,
   CodeConnectCard,
