@@ -16,6 +16,7 @@ import MCPGamechanger from "./slides/MCPGamechanger.astro";
 import AgentSkills from "./slides/AgentSkills.astro";
 import SkillStructure from "./slides/SkillStructure.astro";
 import CustomAgent from "./slides/CustomAgent.astro";
+import NeuronPlugin from "./slides/NeuronPlugin.astro";
 import OfficialFigmaWay from "./slides/OfficialFigmaWay.astro";
 import FigmaSkillsList from "./slides/FigmaSkillsList.astro";
 import Summary from "./slides/Summary.astro";
@@ -43,6 +44,7 @@ const slides = [
   AgentSkills,
   SkillStructure,
   CustomAgent,
+  NeuronPlugin,
   Summary,
   Outro,
 ].map((component, index) => ({ component, order: index + 1 }));

@@ -1,0 +1,56 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide
+  title="neuron-ai plugin"
+  desc="Celý FE workflow ako Copilot plugin"
+  order={order}
+>
+  <div slot="left">
+    <p>
+      Všetky <strong>agents</strong>, <strong>skills</strong> a <strong
+        >commands</strong
+      >
+      zabalené do jedného <strong>VS Code GitHub Copilot</strong> pluginu.
+    </p>
+    <br />
+    <p>
+      Pokrýva <strong>celý frontend workflow</strong> — od routingu cez formuláre,
+      i18n, styling, API až po code review a tvorbu MR.
+    </p>
+    <br />
+    <p>
+      Vývojár dostane konzistentnú AI asistenciu naprieč celým tímom — bez
+      manuálnej konfigurácie, priamo v Copilot Chate.
+    </p>
+  </div>
+  <div slot="right">
+    <p><strong>Čo je v plugine:</strong></p>
+    <br />
+    <ul>
+      <li>
+        <strong>80</strong> slash commands <span
+          >— jeden per Neuron UI komponent</span>
+      </li>
+      <li>
+        <strong>32</strong> skills <span
+          >— routing, auth, forms, styling, API, i18n…</span>
+      </li>
+      <li>
+        <strong>10</strong> agentov <span
+          >— 2 orchestrátori + 8 špecialistov</span>
+      </li>
+      <li>
+        <strong>3</strong> MCP servery <span
+          >— Figma, Context7, Playwright</span>
+      </li>
+    </ul>
+  </div>
+</Slide>
