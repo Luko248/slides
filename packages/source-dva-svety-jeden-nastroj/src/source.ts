@@ -36,12 +36,12 @@ const slides = [
   MCPButtonExample,
   MCPCodeConnect,
   MCPGamechanger,
+  OfficialFigmaWay,
+  FigmaSkillsList,
   AgentSkills,
   SkillStructure,
   CustomAgent,
   Summary,
-  OfficialFigmaWay,
-  FigmaSkillsList,
   Outro,
 ].map((component, index) => ({ component, order: index + 1 }));
 

@@ -8,27 +8,32 @@ interface Props {
 const { order } = Astro.props;
 ---
 
-<Slide title="Zhrnutie" desc="Design-to-code ecosystem" order={order}>
+<Slide title="Zhrnutie" desc="3 vrstvy jedného systému" order={order}>
   <div slot="left">
     <ul style="display: flex; flex-direction: column; gap: 1rem;">
       <li>
-        <strong>Variable Code Syntax</strong> — Figma premenné priamo v kóde
+        <strong>1. Tokeny</strong> — Variable Code Syntax a export držia naming aj hodnoty konzistentné
       </li>
       <li>
-        <strong>Export Automation</strong> — plugin exportuje tokeny do Gitu
+        <strong>2. Komponenty</strong> — Code Connect mapuje Figma komponenty na reálnu codebase
       </li>
       <li>
-        <strong>Code Connect</strong> — mapping Figma komponentov na codebase
-      </li>
-      <li>
-        <strong>MCP Server</strong> — AI generuje kód z dizajnu
-      </li>
-      <li>
-        <strong>Agent SKILLS</strong> — konzistentné AI správanie
-      </li>
-      <li>
-        <strong>Custom Agent</strong> — AI asistent pre váš design system
+        <strong>3. Agenti</strong> — MCP + skills dávajú AI kontext aj pravidlá pre kvalitný output
       </li>
     </ul>
+  </div>
+  <div slot="right">
+    <p>
+      Výsledok nie je len rýchlejší handoff.
+    </p>
+    <br />
+    <p>
+      Je to <strong>jeden prepojený systém</strong>, kde dizajn, kód aj AI pracujú
+      nad rovnakými komponentmi, tokenmi a pravidlami.
+    </p>
+    <br />
+    <p>
+      Presne v tom je <strong>dva svety - jeden nástroj</strong>.
+    </p>
   </div>
 </Slide>
