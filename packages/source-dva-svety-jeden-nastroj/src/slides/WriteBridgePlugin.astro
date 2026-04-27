@@ -1,0 +1,30 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide title="Desktop Bridge Plugin" desc="Pipeline — real-time spojenie" order={order}>
+  <div slot="left">
+    <p>
+      Lokálny <strong>WebSocket bridge</strong>, ktorý baypassuje Figma plugin sandbox.
+    </p>
+    <br />
+    <p>
+      Umožňuje <strong>real-time komunikáciu</strong> medzi Claude a Figmou — AI príkazy sa vykonávajú okamžite.
+    </p>
+    <br />
+    <p>
+      Import: Figma &rarr; Plugins &rarr; Development &rarr;
+      <strong>Import plugin from manifest</strong>.
+    </p>
+    <br />
+    <p>
+      Po spustení sa zobrazí okno s textom <strong>"MCP Ready"</strong>.
+    </p>
+  </div>
+</Slide>

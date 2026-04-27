@@ -1,0 +1,48 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+import { highlightCode } from "@presentation/utils/shiki-helper";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const code = `// AI použije existujúce komponenty
+
+import { Hero } from '@/components/Hero';
+import { FeatureGrid }
+  from '@/components/FeatureGrid';
+
+export function HomePage() {
+  return (
+    <div>
+      <Hero
+        title="Build better products"
+        primaryAction={{ label: "Start" }}
+      />
+      <FeatureGrid features={[...]} />
+    </div>
+  );
+}`;
+
+const highlightedCode = await highlightCode(code, "tsx");
+---
+
+<Slide title="MCP + Code Connect" desc="Production-ready kód" order={order} colSpan={false}>
+  <div slot="left">
+    <p>
+      Kombinácia MCP s Code Connect = skutočná <strong>automatizácia</strong>.
+    </p>
+    <br />
+    <p>
+      AI agent <strong>vie</strong>, ktoré komponenty z design systému použiť.
+    </p>
+    <br />
+    <p>
+      Generuje kód využívajúci <strong>existujúce komponenty</strong>,
+      nie generické knižnice.
+    </p>
+  </div>
+  <div slot="right" set:html={highlightedCode} />
+</Slide>

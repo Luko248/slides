@@ -1,0 +1,9 @@
+{
+  "name": "@slides/source-dva-svety-jeden-nastroj",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./source": "./src/source.ts"
+  }
+}

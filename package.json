@@ -16,6 +16,7 @@
   "dependencies": {
     "@slides/source-ai-workflow": "workspace:*",
     "@slides/source-css-scroll-state": "workspace:*",
+    "@slides/source-dva-svety-jeden-nastroj": "workspace:*",
     "@slides/source-figma-beyond-design": "workspace:*",
     "@astrojs/mdx": "^4.3.6",
     "astro": "^5.14.1",

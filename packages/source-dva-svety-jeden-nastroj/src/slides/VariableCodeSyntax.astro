@@ -1,0 +1,44 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide title="Variables -> code" desc="Vysoký level pohľad" order={order}>
+  <div slot="left">
+    <p>
+      Vo Figme máme variables ako <code>color/primary/500</code> alebo
+      <code>spacing/md</code>.
+    </p>
+    <br />
+    <p>
+      Vo vývoji potrebujeme rovnaké tokeny vo formáte pre codebase:
+      <code>var(--color-primary-500)</code>, <code>--spacing-md</code>.
+    </p>
+    <br />
+    <p>
+      <strong>Variable Code Syntax</strong> rieši názvoslovie v Dev Mode a
+      náš balík vie tie isté tokeny <strong>exportovať priamo do repozitára</strong>.
+    </p>
+  </div>
+  <div slot="right">
+    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+      <div style="text-align: center;">
+        <p style="font-size: 1.25em; opacity: 0.5;">Figma variable</p>
+        <p><code>color/primary/500</code></p>
+      </div>
+      <p style="font-size: 2em; text-align: center;">&#8595;</p>
+      <div style="text-align: center;">
+        <p style="font-size: 1.25em;" class="text-theme-500">Code syntax</p>
+        <p><code>var(--color-primary-500)</code></p>
+      </div>
+      <p style="text-align: center; opacity: 0.75;">
+        Figma -> package export -> codebase
+      </p>
+    </div>
+  </div>
+</Slide>

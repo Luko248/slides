@@ -1,0 +1,43 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+import { highlightCode } from "@presentation/utils/shiki-helper";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const code = `# claude_desktop_config.json
+{
+  "mcpServers": {
+    "design-systems": {
+      "url": "https://design-systems-mcp
+              .southleft.com/mcp"
+    }
+  }
+}`;
+
+const highlightedCode = await highlightCode(code, "json");
+---
+
+<Slide title="Design Systems Assistant" desc="Mozog — UX/UI best practices" order={order}>
+  <div slot="left">
+    <p>
+      <strong>Knowledge base</strong> od Southleft — AI sa neriadi len odhadom.
+    </p>
+    <br />
+    <p>
+      Obsahuje pravidlá pre <strong>accessibility, states, naming conventions</strong> a štruktúru komponentov.
+    </p>
+    <br />
+    <p>
+      AI vie, <strong>ako má</strong> komponent vyzerať ešte <strong>pred tým</strong>, než ho začne kresliť.
+    </p>
+    <br />
+    <p>
+      Remote server — stačí pridať URL do konfigurácie.
+    </p>
+  </div>
+  <div slot="right" set:html={highlightedCode} />
+</Slide>

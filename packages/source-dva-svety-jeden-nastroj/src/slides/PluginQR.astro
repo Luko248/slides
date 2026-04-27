@@ -1,0 +1,16 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+import qrCode from "../assets/qr-code-figma-plugin.png?url";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide order={order} center>
+  <Fragment slot="title">
+    <img src={qrCode} alt="QR kód na Figma plugin" loading="lazy" class="mx-auto max-h-[65svh] object-contain" />
+  </Fragment>
+</Slide>

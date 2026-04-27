@@ -1,0 +1,19 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide title="Figma Plugin" desc="Dostupný pre komunitu" order={order} center>
+  <p class="text-center">
+    Plugin je open-source a dostupný na <strong>Figma Community</strong>.
+  </p>
+  <br />
+  <p class="text-center">
+    <strong>CSS Variables Converter & Exporter</strong>
+  </p>
+</Slide>

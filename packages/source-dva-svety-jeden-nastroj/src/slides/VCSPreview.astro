@@ -1,0 +1,16 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+import codeSyntaxSample from "../assets/code-syntax-sample.png?url";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide title="Variable Code Syntax" order={order} center>
+  <div slot="left" class="col-span-2 flex justify-center">
+    <img src={codeSyntaxSample} alt="Variable Code Syntax v Figma Dev Mode" loading="lazy" class="max-h-[55svh] object-contain rounded-[.25em] scale-125" />
+  </div>
+</Slide>

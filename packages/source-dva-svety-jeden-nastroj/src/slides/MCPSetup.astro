@@ -1,0 +1,42 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+import { highlightCode } from "@presentation/utils/shiki-helper";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const code = `# Claude Code config.json
+{
+  "mcpServers": {
+    "figma-remote-mcp-server": {
+      "serverUrl": "https://mcp.figma.com/mcp"
+    }
+  }
+}`;
+
+const highlightedCode = await highlightCode(code, "bash");
+---
+
+<Slide title="MCP Setup" desc="Konfigurácia" order={order}>
+  <div slot="left">
+    <p>
+      Prvý krok: povoliť <strong>MCP server</strong> v nastaveniach Figmy.
+    </p>
+    <br />
+    <p>
+      Figma ponúka <strong>remote MCP server</strong> — žiadna lokálna inštalácia.
+    </p>
+    <br />
+    <p>
+      Stačí pridať URL do <strong>Claude Code</strong> config súboru.
+    </p>
+    <br />
+    <p>
+      Autorizácia prebieha cez <strong>OAuth</strong> priamo v prehliadači.
+    </p>
+  </div>
+  <div slot="right" set:html={highlightedCode} />
+</Slide>

@@ -1,0 +1,54 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+import { highlightCode } from "@presentation/utils/shiki-helper";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const code = `// Button.figma.tsx
+import figma from "@figma/code-connect";
+import { Button } from "./Button";
+
+figma.connect(
+  Button,
+  "https://figma.com/file/ABC123?node-id=1:2",
+  {
+    props: {
+      variant: figma.enum("Variant", {
+        Primary: "primary",
+        Secondary: "secondary",
+      }),
+      label: figma.string("Label")
+    },
+    example: (props) => (
+      <Button variant={props.variant}>
+        {props.label}
+      </Button>
+    )
+  }
+);`;
+
+const highlightedCode = await highlightCode(code, "tsx");
+---
+
+<Slide title="Code Connect" desc="Deklaratívny mapping" order={order} colSpan={false}>
+  <div slot="left">
+    <p>
+      Prepojenie pomocou <strong>deklaratívneho mapping súboru</strong>.
+    </p>
+    <br />
+    <p>
+      Mapuje Figma <strong>props</strong> (Variant, Label)
+      na React props (<code>variant</code>, <code>label</code>).
+    </p>
+    <br />
+    <p>
+      Vývojár vidí priamo vo Figme
+      <strong>zdrojový kód</strong> komponentu.
+    </p>
+  </div>
+  <div slot="right" set:html={highlightedCode} />
+</Slide>

@@ -1,0 +1,23 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide title="Export design tokenov" desc="Od Figmy do Git repozitára" order={order} center>
+  <p class="text-center">
+    Variable Code Syntax je skvelý prvý krok.
+  </p>
+  <br />
+  <p class="text-center">
+    Čo keď chceme design tokeny skutočne <strong>exportovať do codebase</strong>?
+  </p>
+  <br />
+  <p class="text-center">
+    <strong>Automatizácia pomocou Figma API</strong>.
+  </p>
+</Slide>

@@ -1,0 +1,55 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+import { highlightCode } from "@presentation/utils/shiki-helper";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const code = `---
+name: toast-crud
+description: CRUD Toast guide
+---
+
+# Toast (CRUD)
+
+## Purpose
+Feedback after CRUD actions.
+
+## When to Use / NOT to Use
+
+## Default Behavior
+
+## UX Writing
+
+## Business Rules
+
+## Accessibility
+
+## Do / Don't`;
+
+const highlightedCode = await highlightCode(code, "markdown");
+---
+
+<Slide title="SKILL.md" desc="Štruktúra" order={order} colSpan={false}>
+  <div slot="left">
+    <p>
+      Každý skill popisuje jednu <strong>skupinu komponent</strong>
+      alebo UX pattern.
+    </p>
+    <br />
+    <p>
+      Dôležité najmä pri AI generovaní screenov,
+      kde aj malé odchýlky spôsobia
+      <strong>nekompatibilitu</strong> s produktom.
+    </p>
+    <br />
+    <p>
+      AI sa potom správa <strong>konzistentne</strong>
+      s vašim design systémom.
+    </p>
+  </div>
+  <div slot="right" set:html={highlightedCode} />
+</Slide>

@@ -1,0 +1,45 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+import { highlightCode } from "@presentation/utils/shiki-helper";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const code = `# claude_desktop_config.json
+{
+  "mcpServers": {
+    "figma-console-local": {
+      "command": "node",
+      "args": [
+        "figma-console-mcp/dist/local.js"
+      ],
+      "env": {
+        "FIGMA_ACCESS_TOKEN": "figd_xxx",
+        "ENABLE_MCP_APPS": "true"
+      }
+    }
+  }
+}`;
+
+const highlightedCode = await highlightCode(code, "json");
+---
+
+<Slide title="Figma Console MCP" desc="Ruky — kreslí a edituje vo Figme" order={order}>
+  <div slot="left">
+    <p>
+      <strong>Southleft MCP server</strong> — dáva AI skutočný <strong>read/write prístup</strong> do Figmy.
+    </p>
+    <br />
+    <p>
+      Prekladá textové príkazy na <strong>Figma API volania</strong> — kreslí framy, generuje tokeny, edituje komponenty.
+    </p>
+    <br />
+    <p>
+      Beží <strong>lokálne</strong> cez Node.js — vyžaduje Personal Access Token.
+    </p>
+  </div>
+  <div slot="right" set:html={highlightedCode} />
+</Slide>

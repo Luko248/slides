@@ -1,3 +1,3 @@
 export const appConfig = {
-  slidesSource: "figma-beyond-design",
+  slidesSource: "dva-svety-jeden-nastroj",
 } as const;

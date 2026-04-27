@@ -1,0 +1,38 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+import speakerPhoto from "../assets/me.avif?url";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide
+  order={order}
+  title="Kto Som?"
+  desc="Lukáš Chylík"
+  image={{ url: speakerPhoto, alt: "Lukáš Chylík" }}
+  speaker={true}
+>
+  <p>
+    <ul>
+      <li>
+        <span
+          >AI frontend dev lead & VIGo Design System lead developer at AIS
+          Servis</span
+        >
+      </li>
+      <li>
+        <span>Frontendisti Brno meetups host</span>
+      </li>
+      <li>
+        <span>Lecturer & Mentor</span>
+      </li>
+      <li>
+        <span>CSS wizard</span>
+      </li>
+    </ul>
+  </p>
+</Slide>

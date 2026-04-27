@@ -1,0 +1,35 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide title="Oficiálna cesta do Figmy" desc="Figma MCP server + use_figma + skills" order={order}>
+  <div slot="left">
+    <p>
+      Figma otvorila canvas pre agentov natívne cez <strong>Figma MCP server</strong>.
+    </p>
+    <br />
+    <p>
+      Agent vie cez <code>use_figma</code> <strong>vytvárať a upravovať</strong>
+      komponenty, layouty a ďalšie assety priamo vo Figma súbore.
+    </p>
+    <br />
+    <p>
+      Veľká výhoda: agent pracuje s <strong>reálnym design systémom</strong>,
+      komponentmi a variables, nie mimo canvasu.
+    </p>
+  </div>
+  <div slot="right">
+    <ul style="display: flex; flex-direction: column; gap: 0.75rem;">
+      <li><strong>1.</strong> `generate_figma_design` dostane existujúce UI do Figmy</li>
+      <li><strong>2.</strong> `use_figma` potom design ďalej mení alebo vytvára nový</li>
+      <li><strong>3.</strong> Skills držia workflow, naming a pravidlá tímu</li>
+      <li><strong>4.</strong> Výstup ostáva editovateľný a napojený na design system</li>
+    </ul>
+  </div>
+</Slide>

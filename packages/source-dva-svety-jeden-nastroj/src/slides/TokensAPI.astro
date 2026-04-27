@@ -1,0 +1,44 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+import { highlightCode } from "@presentation/utils/shiki-helper";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const code = `// Načítanie všetkých kolekcií
+const collections = await figma.variables
+  .getLocalVariableCollectionsAsync();
+
+// Iterácia cez kolekcie
+for (const collection of collections) {
+  for (const variableId of collection.variableIds) {
+    const variable = await figma.variables
+      .getVariableByIdAsync(variableId);
+
+    // Process variable...
+  }
+}`;
+
+const highlightedCode = await highlightCode(code, "javascript");
+---
+
+<Slide title="Figma Variables API" desc="Načítanie premenných" order={order}>
+  <div slot="left">
+    <p>
+      Figma poskytuje robustné <strong>API pre prácu s premennými</strong>.
+    </p>
+    <br />
+    <p>
+      Kolekcie obsahujú premenné zoskupené podľa typu
+      (farby, spacing, typografia).
+    </p>
+    <br />
+    <p>
+      Každá kolekcia môže mať viacero <strong>módov</strong> (light, dark).
+    </p>
+  </div>
+  <div slot="right" set:html={highlightedCode} />
+</Slide>

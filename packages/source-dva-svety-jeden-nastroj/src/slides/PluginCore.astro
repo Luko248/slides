@@ -1,0 +1,56 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+import { highlightCode } from "@presentation/utils/shiki-helper";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const code = `export async function convertVariablesToCSS()
+  : Promise<ConversionResult> {
+  const collections = await figma.variables
+    .getLocalVariableCollectionsAsync();
+  const variablesByTheme: VariablesByTheme = {};
+
+  for (const collection of collections) {
+    for (const variableId of collection.variableIds) {
+      const variable = await figma.variables
+        .getVariableByIdAsync(variableId);
+      const cssName = generateCSSVariableName(
+        variable.name
+      );
+      const cssValue = await generateCSSValue(variable);
+
+      variablesByTheme[themeName].push({
+        name: cssName,
+        value: cssValue,
+        type: detectVariableType(variable.name)
+      });
+    }
+  }
+
+  return { variablesByTheme };
+}`;
+
+const highlightedCode = await highlightCode(code, "typescript");
+---
+
+<Slide title="Core konverzia" desc="Conversion service" order={order} colSpan={false}>
+  <div slot="left">
+    <p>
+      Hlavný <strong>conversion service</strong> orchestruje celý proces.
+    </p>
+    <br />
+    <p>
+      Načíta kolekcie, iteruje cez premenné, generuje CSS názvy
+      a hodnoty.
+    </p>
+    <br />
+    <p>
+      Výsledok je zoskupený podľa <strong>theme</strong> (light, dark...).
+    </p>
+  </div>
+  <div slot="right" set:html={highlightedCode} />
+</Slide>

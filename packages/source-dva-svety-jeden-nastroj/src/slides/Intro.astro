@@ -1,0 +1,19 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide title="Figma nie je len pre dizajnérov" desc="Plnohodnotná platforma" order={order} center>
+  <p class="text-center">
+    Figma je plnohodnotná platforma s <strong>API</strong>, <strong>pluginmi</strong> a <strong>automatizáciou</strong>.
+  </p>
+  <br />
+  <p class="text-center">
+    Dokáže výrazne zefektívniť váš <strong>design-to-code workflow</strong>.
+  </p>
+</Slide>

@@ -1,0 +1,52 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+import { highlightCode } from "@presentation/utils/shiki-helper";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const code = `// AI vygeneruje z Figma dizajnu:
+
+interface ButtonProps {
+  variant?: 'primary' | 'secondary';
+  size?: 'sm' | 'md' | 'lg';
+  children: React.ReactNode;
+}
+
+export function Button({
+  variant = 'primary',
+  size = 'md',
+  children
+}: ButtonProps) {
+  return (
+    <button className={cn(variants[variant],
+      sizes[size], 'rounded-lg font-medium')}>
+      {children}
+    </button>
+  );
+}`;
+
+const highlightedCode = await highlightCode(code, "tsx");
+---
+
+<Slide title="AI generuje komponent" desc="Z Figma dizajnu" order={order} colSpan={false}>
+  <div slot="left">
+    <p>
+      <strong>Prompt:</strong> Vygeneruj React TypeScript komponent
+      pre tento Figma Button.
+    </p>
+    <br />
+    <p>
+      AI agent analyzuje dizajn cez MCP a vygeneruje
+      <strong>production-ready kód</strong>.
+    </p>
+    <br />
+    <p>
+      Všetky varianty, typy, props – automaticky.
+    </p>
+  </div>
+  <div slot="right" set:html={highlightedCode} />
+</Slide>

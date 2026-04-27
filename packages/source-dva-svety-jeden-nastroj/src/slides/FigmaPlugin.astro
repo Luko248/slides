@@ -1,0 +1,30 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide title="Plugin export tokenov" desc="Čo existuje a čo z toho máme" order={order}>
+  <div slot="left">
+    <strong class="block mb-[2svh]">Ako funguje</strong>
+    <ul style="display: flex; flex-direction: column; gap: 0.75rem;">
+      <li>Plugin načíta variables z Figmy</li>
+      <li>Premapuje ich na tokeny pre web/codebase</li>
+      <li>Vygeneruje výstupné súbory a pošle ich do repozitára</li>
+      <li>Výsledkom je konzistentný most medzi design systémom a kódom</li>
+    </ul>
+  </div>
+  <div slot="right">
+    <strong class="block mb-[2svh]">Výhody / nevýhody</strong>
+    <ul style="display: flex; flex-direction: column; gap: 0.75rem;">
+      <li><strong>Plus:</strong> menej copy-paste, menej naming chýb, rýchlejší handoff</li>
+      <li><strong>Plus:</strong> jeden zdroj pravdy pre tokeny a témy</li>
+      <li><strong>Minus:</strong> treba udržiavať export logiku a naming pravidlá</li>
+      <li><strong>Minus:</strong> plugin nerieši všetko, stále treba review vo vývoji</li>
+    </ul>
+  </div>
+</Slide>

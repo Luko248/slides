@@ -1,0 +1,16 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide order={order} center>
+  <Fragment slot="title">BONUS</Fragment>
+  <strong class="text-center text-theme-500 mx-auto block text-5xl">
+    A čo zápis do Figmy?
+  </strong>
+</Slide>

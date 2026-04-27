@@ -1,0 +1,25 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide title="Custom Agent" desc="AI asistent pre váš design system" order={order}>
+  <div slot="left">
+    <p>
+      Agent pozná všetky <strong>SKILLS</strong>, best practices pre <strong>UX writing</strong> aj pravidlá vášho <strong>design systému</strong>.
+    </p>
+    <br />
+    <p>
+      Vývojár sa s ním baví <strong>ľudským jazykom</strong> — agent sa postará o implementáciu.
+    </p>
+    <br />
+    <p>
+      Konzistentný výstup naprieč celým tímom — žiadne hádanie, žiadne odchýlky.
+    </p>
+  </div>
+</Slide>
