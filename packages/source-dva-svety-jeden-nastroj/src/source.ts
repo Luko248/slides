@@ -1,6 +1,7 @@
 import Main from "./slides/Main.astro";
 import Speaker from "./slides/Speaker.astro";
 import Intro from "./slides/Intro.astro";
+import DesignSystem from "./slides/DesignSystem.astro";
 import VariableCodeSyntax from "./slides/VariableCodeSyntax.astro";
 import FigmaPlugin from "./slides/FigmaPlugin.astro";
 import FigmaPluginVideo from "./slides/FigmaPluginVideo.astro";
@@ -27,6 +28,7 @@ const slides = [
   Main,
   Speaker,
   Intro,
+  DesignSystem,
   VariableCodeSyntax,
   FigmaPlugin,
   FigmaPluginVideo,
