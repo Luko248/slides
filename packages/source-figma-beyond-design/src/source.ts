@@ -24,17 +24,13 @@ import MCPSetup from "./slides/MCPSetup.astro";
 import MCPButtonExample from "./slides/MCPButtonExample.astro";
 import MCPCodeConnect from "./slides/MCPCodeConnect.astro";
 import MCPGamechanger from "./slides/MCPGamechanger.astro";
+import OfficialFigmaWay from "./slides/OfficialFigmaWay.astro";
+import FigmaSkillsList from "./slides/FigmaSkillsList.astro";
 import AgentSkills from "./slides/AgentSkills.astro";
 import SkillStructure from "./slides/SkillStructure.astro";
 import CustomAgent from "./slides/CustomAgent.astro";
-import WriteToFigma from "./slides/WriteToFigma.astro";
-import WriteArchitecture from "./slides/WriteArchitecture.astro";
-import WriteFigmaDesktopMCP from "./slides/WriteFigmaDesktopMCP.astro";
-import WriteConsoleMCP from "./slides/WriteConsoleMCP.astro";
-import WriteDesignSystemsMCP from "./slides/WriteDesignSystemsMCP.astro";
-import WriteBridgePlugin from "./slides/WriteBridgePlugin.astro";
+import AgentPlugin from "./slides/AgentPlugin.astro";
 import Summary from "./slides/Summary.astro";
-import WriteSummary from "./slides/WriteSummary.astro";
 import Outro from "./slides/Outro.astro";
 import aisLogo from "./assets/ais-logo.svg?url";
 
@@ -65,17 +61,13 @@ const slides = [
   MCPButtonExample,
   MCPCodeConnect,
   MCPGamechanger,
+  OfficialFigmaWay,
+  FigmaSkillsList,
   AgentSkills,
   SkillStructure,
   CustomAgent,
+  AgentPlugin,
   Summary,
-  WriteToFigma,
-  WriteArchitecture,
-  WriteFigmaDesktopMCP,
-  WriteConsoleMCP,
-  WriteDesignSystemsMCP,
-  WriteBridgePlugin,
-  WriteSummary,
   Outro,
 ].map((component, index) => ({ component, order: index + 1 }));
 

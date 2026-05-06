@@ -1,0 +1,32 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide title="Skills pre Figma agenta" desc="`figma-use` je základ" order={order} colSpan={false}>
+  <div slot="left">
+    <p>
+      <strong>`figma-use`</strong> je hlavný a povinný skill pred každým
+      zápisom cez <code>use_figma</code>.
+    </p>
+    <br />
+    <p>
+      Dá agentovi pravidlá, ako bezpečne pracovať na canvase a ako krokovať
+      zmeny vo Figme.
+    </p>
+  </div>
+  <div slot="right">
+    <ul style="display: flex; flex-direction: column; gap: 0.75rem;">
+      <li><strong>`figma-use`</strong> — základný skill pre write/read operácie cez Plugin API</li>
+      <li><strong>`figma-generate-design`</strong> — skladá celé screeny z existujúcich komponentov a variables</li>
+      <li><strong>`figma-generate-library`</strong> — buduje alebo aktualizuje design system vo Figme</li>
+      <li><strong>`figma-implement-design`</strong> — prekladá Figma návrh späť do production kódu</li>
+      <li><strong>`figma-code-connect`</strong> — mapuje Figma komponenty na reálne code snippets</li>
+    </ul>
+  </div>
+</Slide>

@@ -1,0 +1,51 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+import { highlightCode } from "@presentation/utils/shiki-helper";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+
+const code = `{
+  "name": "my-frontend-stack",
+  "description": "Frontend workflow utilities",
+  "version": "1.0.0",
+  "author": { "name": "FE Team" },
+  "skills": "skills/",
+  "agents": "agents/",
+  "hooks": "hooks.json",
+  "mcpServers": ".mcp.json"
+}`;
+
+const highlightedCode = await highlightCode(code, "json");
+---
+
+<Slide
+  title="Zabaľ to ako plugin"
+  desc="VS Code Copilot agent plugin"
+  order={order}
+  colSpan={false}
+>
+  <div slot="left">
+    <p>
+      <strong>Skills</strong>, <strong>agents</strong>, slash commands,
+      <strong>hooks</strong> aj <strong>MCP servery</strong> môžeš zabaliť
+      do jedného plugin balíku.
+    </p>
+    <br />
+    <p>
+      <code>plugin.json</code> je manifest — VS Code ho auto-deteguje
+      a načíta všetko vovnútri.
+    </p>
+    <br />
+    <ul>
+      <li><code>skills/</code> — SKILL.md súbory</li>
+      <li><code>agents/</code> — *.agent.md definície</li>
+      <li><code>hooks.json</code> — lifecycle hooks</li>
+      <li><code>.mcp.json</code> — MCP servery</li>
+    </ul>
+  </div>
+  <div slot="right" set:html={highlightedCode} />
+</Slide>
