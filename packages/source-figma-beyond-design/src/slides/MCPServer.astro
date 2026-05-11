@@ -8,28 +8,21 @@ interface Props {
 const { order } = Astro.props;
 ---
 
-<Slide title="MCP Server" desc="AI-powered code generation" order={order}>
+<Slide title="MCP Server" desc="Read & Write prístup" order={order}>
   <div slot="left">
     <p>
-      <strong>Model Context Protocol</strong> – open-source štandard
-      od Anthropic.
+      <strong>Read</strong> — sprístupňuje design ako kontext pre AI agentov.
     </p>
-    <br />
-    <p>
-      Umožňuje AI modelom pristupovať k <strong>externým zdrojom dát</strong>.
-    </p>
-    <br />
-    <p>
-      Figma MCP Server sprístupňuje dizajny z Figmy
-      ako <strong>kontext pre AI</strong>.
+    <p class="text-[0.75em] mt-4 opacity-60 leading-relaxed font-mono">
+      whoami, get_libraries, search_design_system, get_design_context, get_metadata, get_variable_defs, get_screenshot, get_code_connect_suggestions, get_context_for_code_connect, get_code_connect_map, get_figjam
     </p>
   </div>
   <div slot="right">
-    <ul>
-      <li><span>Čítať štruktúru Figma súborov</span></li>
-      <li><span>Rozpoznávať komponenty a ich vlastnosti</span></li>
-      <li><span>Využívať Code Connect mappingy</span></li>
-      <li><span>Generovať kód na základe dizajnu</span></li>
-    </ul>
+    <p>
+      <strong>Write</strong> — umožňuje AI agentom zapisovať a kresliť na Figma canvas.
+    </p>
+    <p class="text-[0.75em] mt-4 opacity-60 leading-relaxed font-mono">
+      use_figma, create_new_file, upload_assets, generate_figma_design, add_code_connect_map, send_code_connect_mappings, create_design_system_rules, generate_diagram
+    </p>
   </div>
 </Slide>

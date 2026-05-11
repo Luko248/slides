@@ -8,25 +8,31 @@ interface Props {
 const { order } = Astro.props;
 ---
 
-<Slide title="Skills pre Figma agenta" desc="`figma-use` je základ" order={order} colSpan={false}>
+<Slide title="Skills pre Figma Agenta" desc="Oficiálne aj od komunity" order={order}>
   <div slot="left">
     <p>
-      <strong>`figma-use`</strong> je hlavný a povinný skill pred každým
-      zápisom cez <code>use_figma</code>.
+      Základom je skill <strong><code>/figma-use</code></strong>, na ktorom stavajú ostatné. Určuje pravidlá a bezpečné kroky na canvase.
     </p>
     <br />
     <p>
-      Dá agentovi pravidlá, ako bezpečne pracovať na canvase a ako krokovať
-      zmeny vo Figme.
+      Teraz nájdete skills od samotnej Figmy aj od <strong>komunity</strong> (dostupné na <em>figma.com/community/skills</em>).
     </p>
   </div>
   <div slot="right">
-    <ul style="display: flex; flex-direction: column; gap: 0.75rem;">
-      <li><strong>`figma-use`</strong> — základný skill pre write/read operácie cez Plugin API</li>
-      <li><strong>`figma-generate-design`</strong> — skladá celé screeny z existujúcich komponentov a variables</li>
-      <li><strong>`figma-generate-library`</strong> — buduje alebo aktualizuje design system vo Figme</li>
-      <li><strong>`figma-implement-design`</strong> — prekladá Figma návrh späť do production kódu</li>
-      <li><strong>`figma-code-connect`</strong> — mapuje Figma komponenty na reálne code snippets</li>
-    </ul>
+    <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+      <p><strong>Oficiálne skills:</strong></p>
+      <ul style="margin-bottom: 1rem;">
+        <li><code>/figma-use</code> — základný skill</li>
+        <li><code>/figma-generate-design</code> — skladá z existujúcich komponentov</li>
+        <li><code>/figma-generate-library</code> — vytvára/updatuje design system</li>
+      </ul>
+      <p><strong>Z komunity:</strong></p>
+      <ul>
+        <li><code>/create-voice</code> (Uber) — screen reader specs</li>
+        <li><code>/apply-design-system</code> — spája design s komponentmi</li>
+        <li><code>/rad-spacing</code> — hierachické odsadenia a premenné</li>
+        <li><code>/sync-figma-token</code> — synchronizácia design tokenov</li>
+      </ul>
+    </div>
   </div>
 </Slide>

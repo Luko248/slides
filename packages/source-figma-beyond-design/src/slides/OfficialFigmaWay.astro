@@ -8,28 +8,26 @@ interface Props {
 const { order } = Astro.props;
 ---
 
-<Slide title="Oficiálna cesta do Figmy" desc="Figma MCP server + use_figma + skills" order={order}>
+<Slide title="Writing to Figma" desc="Canvas is now open to agents" order={order}>
   <div slot="left">
     <p>
-      Figma otvorila canvas pre agentov natívne cez <strong>Figma MCP server</strong>.
+      Figma otvorila canvas pre agentov. Nástroj <strong><code>use_figma</code></strong> je hlavný most, ktorý zabezpečuje <strong>konektivitu s Figma canvasom</strong>.
     </p>
     <br />
     <p>
-      Agent vie cez <code>use_figma</code> <strong>vytvárať a upravovať</strong>
-      komponenty, layouty a ďalšie assety priamo vo Figma súbore.
+      Agenti vďaka nemu dokážu plynulo prepínať medzi kódom a canvasom a pracovať v rovnakom kontexte.
     </p>
     <br />
     <p>
-      Veľká výhoda: agent pracuje s <strong>reálnym design systémom</strong>,
-      komponentmi a variables, nie mimo canvasu.
+      Veľká výhoda: agent pracuje s <strong>reálnym design systémom</strong>, komponentmi a premennými, takže výsledok nie je generický.
     </p>
   </div>
   <div slot="right">
     <ul style="display: flex; flex-direction: column; gap: 0.75rem;">
-      <li>`generate_figma_design` dostane existujúce UI do Figmy</li>
-      <li>`use_figma` potom design ďalej mení alebo vytvára nový</li>
-      <li>Skills držia workflow, naming a pravidlá tímu</li>
-      <li>Výstup ostáva editovateľný a napojený na design system</li>
+      <li><code>generate_figma_design</code> – dostane existujúce UI z kódu do Figmy</li>
+      <li><code>use_figma</code> – následne tento design ďalej mení, alebo vytvára úplne nový</li>
+      <li>Skills držia workflow a pravidlá pre agentov priamo na canvase</li>
+      <li>Výstup ostáva editovateľný a napojený na váš design system</li>
     </ul>
   </div>
 </Slide>
