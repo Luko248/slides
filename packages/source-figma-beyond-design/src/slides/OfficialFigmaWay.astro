@@ -11,23 +11,20 @@ const { order } = Astro.props;
 <Slide title="Writing to Figma" desc="Canvas is now open to agents" order={order}>
   <div slot="left">
     <p>
-      Figma otvorila canvas pre agentov. Nástroj <strong><code>use_figma</code></strong> je hlavný most, ktorý zabezpečuje <strong>konektivitu s Figma canvasom</strong>.
+      Srdcom celého workflowu pre zápis je nástroj <strong><code>use_figma</code></strong>.
     </p>
     <br />
     <p>
-      Agenti vďaka nemu dokážu plynulo prepínať medzi kódom a canvasom a pracovať v rovnakom kontexte.
-    </p>
-    <br />
-    <p>
-      Veľká výhoda: agent pracuje s <strong>reálnym design systémom</strong>, komponentmi a premennými, takže výsledok nie je generický.
+      Umožňuje agentom priamo vytvárať, upravovať a mazať objekty na Figma canvase. Pracuje priamo s vaším design systémom.
     </p>
   </div>
   <div slot="right">
     <ul style="display: flex; flex-direction: column; gap: 0.75rem;">
-      <li><code>generate_figma_design</code> – dostane existujúce UI z kódu do Figmy</li>
-      <li><code>use_figma</code> – následne tento design ďalej mení, alebo vytvára úplne nový</li>
-      <li>Skills držia workflow a pravidlá pre agentov priamo na canvase</li>
-      <li>Výstup ostáva editovateľný a napojený na váš design system</li>
+      <li><strong><code>use_figma</code></strong> – univerzálny nástroj na akýkoľvek zápis a editáciu</li>
+      <li><strong><code>generate_figma_design</code></strong> – importuje UI z existujúceho kódu na canvas</li>
+      <li><strong><code>create_new_file</code></strong> – zakladá čisté Figma súbory pre nové návrhy</li>
+      <li><strong><code>upload_assets</code></strong> – nahráva obrázky priamo do dizajnov</li>
+      <li><strong><code>generate_diagram</code></strong> – tvorí diagramy priamo vo FigJame</li>
     </ul>
   </div>
 </Slide>

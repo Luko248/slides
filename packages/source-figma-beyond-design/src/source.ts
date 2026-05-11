@@ -20,7 +20,7 @@ import CodeConnectMapping from "./slides/CodeConnectMapping.astro";
 import CodeConnectCard from "./slides/CodeConnectCard.astro";
 import CodeConnectVideo from "./slides/CodeConnectVideo.astro";
 import MCPServer from "./slides/MCPServer.astro";
-import MCPSetup from "./slides/MCPSetup.astro";
+
 import MCPButtonExample from "./slides/MCPButtonExample.astro";
 import MCPCodeConnect from "./slides/MCPCodeConnect.astro";
 import MCPGamechanger from "./slides/MCPGamechanger.astro";
@@ -41,7 +41,7 @@ const slides = [
   MCPServer,
   OfficialFigmaWay,
   FigmaSkillsList,
-  MCPSetup,
+
   MCPButtonExample,
   MCPCodeConnect,
   MCPGamechanger,
