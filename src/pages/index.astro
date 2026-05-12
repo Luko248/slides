@@ -52,7 +52,7 @@ const slidesCount = slidesSource.slides.length;
   </head>
   <body class="m-0 max-h-svh overflow-hidden transition-colors duration-300" style="background-color: var(--color-bg-primary);">
     <ThemeToggle />
-    <div class="presentation max-h-svh relative">
+    <div class="presentation max-h-svh relative outline-none" tabindex="-1">
       <Lava />
       <Progress />
       {
@@ -61,6 +61,17 @@ const slidesCount = slidesSource.slides.length;
         ))
       }
     </div>
+    <script>
+      // Auto-focus presentation to keep keyboard/clicker working after tab switches
+      const presentation = document.querySelector('.presentation') as HTMLElement | null;
+      if (presentation) {
+        presentation.focus();
+        window.addEventListener('focus', () => presentation.focus());
+        window.addEventListener('keydown', () => {
+          if (document.activeElement !== presentation) presentation.focus();
+        });
+      }
+    </script>
     <Footer
       logoSrc={slidesSource.footer.logoSrc}
       logoAlt={slidesSource.footer.logoAlt}
