@@ -20,7 +20,7 @@ import CodeConnectMapping from "./slides/CodeConnectMapping.astro";
 import CodeConnectCard from "./slides/CodeConnectCard.astro";
 import CodeConnectVideo from "./slides/CodeConnectVideo.astro";
 import MCPServer from "./slides/MCPServer.astro";
-
+import GenerateUI from "./slides/GenerateUI.astro";
 import MCPButtonExample from "./slides/MCPButtonExample.astro";
 import MCPCodeConnect from "./slides/MCPCodeConnect.astro";
 import MCPGamechanger from "./slides/MCPGamechanger.astro";
@@ -54,19 +54,20 @@ const slides = [
   TokensConversion,
   PluginGitHub,
   PluginWorkflow,
-  MCPButtonExample,
-  MCPCodeConnect,
-  MCPGamechanger,
   PluginDemo,
   PluginQR,
+  GenerateUI,
+  MCPButtonExample,
+  MCPCodeConnect,
   CodeConnect,
   CodeConnectMapping,
   CodeConnectCard,
   CodeConnectVideo,
-// AgentSkills,
-  // SkillStructure,
-  // CustomAgent,
-  // AgentPlugin,
+  MCPGamechanger,
+AgentSkills,
+  SkillStructure,
+  CustomAgent,
+  AgentPlugin,
   Summary,
   Outro,
 ].map((component, index) => ({ component, order: index + 1 }));

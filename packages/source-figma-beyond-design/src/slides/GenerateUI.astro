@@ -1,0 +1,16 @@
+---
+import Slide from "@presentation/components/slide/Slide.astro";
+
+interface Props {
+  order?: number;
+}
+
+const { order } = Astro.props;
+---
+
+<Slide
+  title="Generovanie UI z Figmy"
+  desc="Od dizajnu priamo ku kódu"
+  order={order}
+  center
+/>
