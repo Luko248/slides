@@ -35,7 +35,7 @@ const highlightedCode = await highlightCode(code, "tsx");
 <Slide title="AI generuje komponent" desc="Z Figma dizajnu" order={order} colSpan={false}>
   <div slot="left">
     <p>
-      <strong>Prompt:</strong> Vygeneruj React TypeScript komponent
+      <strong>Prompt:</strong> Pomocou skillu <strong><code>/figma-implement-design</code></strong> vygeneruj React TypeScript komponent
       pre tento Figma Button.
     </p>
     <br />
@@ -45,7 +45,7 @@ const highlightedCode = await highlightCode(code, "tsx");
     </p>
     <br />
     <p>
-      Všetky varianty, typy, props – automaticky.
+      Všetky varianty, typy a props vytiahne z dizajnu – automaticky.
     </p>
   </div>
   <div slot="right" set:html={highlightedCode} />
