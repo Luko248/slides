@@ -8,23 +8,44 @@ interface Props {
 const { order } = Astro.props;
 ---
 
-<Slide title="Zápis do Figmy" desc="Canvas je otvorený pre agentov" order={order}>
+<Slide
+  title="Zápis do Figmy"
+  desc="Canvas je otvorený pre agentov"
+  order={order}
+>
   <div slot="left">
     <p>
-      Srdcom celého workflowu pre zápis je nástroj <strong><code>use_figma</code></strong>.
+      Srdcom celého workflow pre zápis je nástroj <strong
+        ><code>use_figma</code></strong
+      >.
     </p>
     <br />
     <p>
-      Umožňuje agentom priamo vytvárať, upravovať a mazať objekty na Figma canvase. Pracuje priamo s vaším design systémom.
+      Umožňuje agentom priamo vytvárať, upravovať a mazať objekty na Figma
+      canvase. Pracuje priamo s vaším design systémom.
     </p>
   </div>
   <div slot="right">
     <ul style="display: flex; flex-direction: column; gap: 0.75rem;">
-      <li><strong><code>use_figma</code></strong> – univerzálny nástroj na akýkoľvek zápis a editáciu</li>
-      <li><strong><code>generate_figma_design</code></strong> – importuje UI z existujúceho kódu na canvas</li>
-      <li><strong><code>create_new_file</code></strong> – zakladá čisté Figma súbory pre nové návrhy</li>
-      <li><strong><code>upload_assets</code></strong> – nahráva obrázky priamo do dizajnov</li>
-      <li><strong><code>generate_diagram</code></strong> – tvorí diagramy priamo vo FigJame</li>
+      <li>
+        <strong><code>use_figma</code></strong> – univerzálny nástroj na akýkoľvek
+        zápis a editáciu
+      </li>
+      <li>
+        <strong><code>generate_figma_design</code></strong> – importuje UI z existujúceho
+        kódu na canvas
+      </li>
+      <li>
+        <strong><code>create_new_file</code></strong> – zakladá čisté Figma súbory
+        pre nové návrhy
+      </li>
+      <li>
+        <strong><code>upload_assets</code></strong> – nahráva obrázky priamo do dizajnov
+      </li>
+      <li>
+        <strong><code>generate_diagram</code></strong> – tvorí diagramy priamo vo
+        FigJame
+      </li>
     </ul>
   </div>
 </Slide>
