@@ -83,11 +83,11 @@ export const figmaBeyondDesignSource = {
       "Figma, API, Variable Code Syntax, Code Connect, MCP Server, Design Tokens, AI, Design-to-Code",
   },
   theme: {
-    colorTheme500: "#BEE600",
-    colorTheme600: "#D4FF1A",
-    colorTheme200: "#F5FFD6",
-    codeBgLight: "#F5FFD6",
-    codeBgDark: "#2A3300",
+    colorTheme500: "#3cb371",
+    colorTheme600: "#32965e",
+    colorTheme200: "#d8f0e3",
+    codeBgLight: "#d8f0e3",
+    codeBgDark: "#0c2417",
     fontFamilyDesc: '"League Spartan"',
   },
   footer: {
