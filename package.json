@@ -6,6 +6,9 @@
   "workspaces": [
     "packages/*"
   ],
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro check && astro build",
